@@ -1,6 +1,6 @@
 # Strategy Backtester
 
-A modular systematic trading backtester. All data is sourced exclusively from **Alpaca Markets** (SIP feed) — no Yahoo Finance.
+atA modular systematic trading backtester. All data is sourced exclusively from **Alpaca Markets** (SIP feed) — no Yahoo Finance.
 
 ---
 
