@@ -9,8 +9,7 @@ __pycache__/
 *.pyd
 .Python
 
-# ── Generated outputs (reproducible, not worth tracking) ──────
-outputs/
+# ── Generated cache (large, reproducible, not worth tracking) ──
 data_cache/
 
 # ── Virtual environments ──────────────────────────────────────
