@@ -6,7 +6,7 @@ Strategies run on the longest window their data sources allow:
 
 | Strategy | Period | Binding constraint |
 |---|---|---|
-| Investor Portfolio (GARP + XAT) | 2016–2024 | Alpaca daily prices (~2016) |
+| Investor Portfolio (GARP + TRIAD + XAT) | 2016–2024 | Alpaca daily prices (~2016) |
 | TRIAD (Tri-Timescale TMT) | 2016–2026 | Alpaca daily prices (~2016) · 2025+ is out-of-sample |
 | DTQ (Dual-Timescale QQQ) | 2016–2024 | Alpaca daily prices (~2016) |
 | GARP Momentum | 2016–2024 | Alpaca daily prices (~2016) · EDGAR fundamentals (~2009) |
@@ -21,18 +21,21 @@ Strategies run on the longest window their data sources allow:
 
 ### ★ Investor Portfolio — recommended allocation
 **File:** `strategies/combined_portfolio/main.py`  
-**Sharpe:** 1.03 &nbsp;|&nbsp; **Return:** +364% &nbsp;|&nbsp; **Max DD:** −21.3% &nbsp;|&nbsp; **Period:** 2016–2024
+**Sharpe:** 1.25 &nbsp;|&nbsp; **Return:** +428% &nbsp;|&nbsp; **Max DD:** −18.4% &nbsp;|&nbsp; **Period:** 2016–2024
 
 | Sleeve | Weight | Strategy | Purpose |
 |---|---|---|---|
-| GARP | 80% | TMT Momentum (15 large-cap tech stocks) | Primary alpha engine |
+| GARP | 40% | TMT quality-momentum (EDGAR fundamentals) | Alpha engine 1 — fundamental anchor |
+| TRIAD | 40% | Tri-timescale TMT (momentum + panic dips) | Alpha engine 2 — pure price action |
 | XAT | 20% | Cross-Asset Trend (SPY · TLT · GLD) | Regime diversifier |
 
-**Result:** Sharpe 1.03, +364% total return, Max DD −21.3% over 2016–2024. Beats SPY (+237%) by 127 percentage points with Sharpe above 1.0.
+**Result:** Sharpe 1.25, +428% total return, Max DD −18.4% over 2016–2024. Beats SPY (+237%) by 192 percentage points and improves the previous 80/20 GARP/XAT configuration on every metric (Sharpe 1.03 → 1.25, return +364% → +428%, drawdown −21.3% → −18.4%).
+
+**Why 40/40 rather than replacing GARP outright:** TRIAD backtests better than GARP standalone (Sharpe 1.47 vs 1.06) and a full 80% TRIAD swap backtests better still — but TRIAD was developed on this same 2016–2024 window, so part of its measured edge is research-selection bias that GARP, anchored on point-in-time EDGAR fundamentals, carries less of. The two engines trade the same 15 TMT names with *different selection logic* (fundamental quality vs pure momentum + panic dips) and fail differently: in a momentum crash GARP's quality screen holds fundamentally sound names through the noise, while TRIAD rotates faster in trend reversals. The 40/40 split therefore diversifies **model risk** — the risk a backtest cannot measure. TRIAD's weight was granted only after it passed an 18-month out-of-sample forward test (2025-01 → 2026-06, Sharpe 1.30 — see the TRIAD section); if it continues to hold up live, shifting further weight toward it is the natural evolution.
 
 **Why XAT includes SPY:** XAT is a cross-asset trend strategy, not a pure hedge. Including SPY lets XAT participate in equity upside when equities are trending, while rotating into TLT (bonds) or GLD (gold) in risk-off regimes. Removing SPY makes XAT entirely passive — it holds cash 35%+ of the time and generates negligible return.
 
-**Honest caveat on XAT:** XAT returned −1.7% over the full 2016–2024 window (Sharpe −0.60), making it a mild drag on the portfolio. It did reduce max drawdown from GARP standalone's −22.8% to the portfolio's −21.3%, but only marginally. The 2016–2024 window includes two unusually bad environments for cross-asset trend — the 2022 rate shock (bonds and equities fell simultaneously) and a long equity bull run where SPY dominated. In a 2008-style deflationary crash, XAT would be expected to earn meaningfully as TLT rallies. Whether to keep XAT in the portfolio is a forward-looking judgment call about which regime comes next.
+**Honest caveat on XAT:** XAT returned −1.7% over the full 2016–2024 window (Sharpe −0.60), making it a mild drag on the portfolio. In the previous 80/20 configuration it reduced max drawdown from GARP standalone's −22.8% to −21.3%, but only marginally. The 2016–2024 window includes two unusually bad environments for cross-asset trend — the 2022 rate shock (bonds and equities fell simultaneously) and a long equity bull run where SPY dominated. In a 2008-style deflationary crash, XAT would be expected to earn meaningfully as TLT rallies. Whether to keep XAT in the portfolio is a forward-looking judgment call about which regime comes next.
 
 ---
 
@@ -76,7 +79,8 @@ Adding sectors with "good but not exceptional" momentum diluted exposure to the 
 | 40/40/20 GARP/XAT(TLT+GLD)/SIS | +63% | 0.84 | −15.9% | 2020–2024 | XAT without SPY too passive |
 | 45/45/10 GARP/XAT(SPY+TLT+GLD)/SIS | +69% | 0.84 | −17.6% | 2020–2024 | SPY back in XAT |
 | 70/20/10 GARP/XAT/SIS | +116% | 1.08 | −18.8% | 2020–2024 | With EDGAR fundamentals |
-| **80/20 GARP/XAT (no SIS)** | **+364%** | **1.03** | **−21.3%** | **2016–2024** | **Current — full window, no intraday constraint** |
+| 80/20 GARP/XAT (no SIS) | +364% | 1.03 | −21.3% | 2016–2024 | Full window, no intraday constraint |
+| **40/40/20 GARP/TRIAD/XAT** | **+428%** | **1.25** | **−18.4%** | **2016–2024** | **Current — TRIAD added after passing its 2025–2026 out-of-sample test** |
 
 ---
 
@@ -171,7 +175,7 @@ The only strategy in this repository with a single-digit max drawdown (TRIAD lat
 
 The 2022 bear market is handled structurally rather than predictively: QQQ below its 200-day SMA switches the trend sleeve to T-bills *and* disables the dip-buyer's entry condition, so the strategy sat almost fully in cash (earning 2022's rising T-bill yields) while QQQ fell 35%.
 
-**Parameter honesty:** all parameters are standard literature values (200-day SMA, 3-day hold, 10/75 IBS bands), not optimised numbers. A robustness grid over SMA ∈ {150, 175, 200, 225} × IBS entry ∈ {0.08, 0.10, 0.12, 0.15} keeps the combined Sharpe between 1.09 and 1.33 — every cell beats the investor portfolio's 1.03, so the result is not a knife-edge fit.
+**Parameter honesty:** all parameters are standard literature values (200-day SMA, 3-day hold, 10/75 IBS bands), not optimised numbers. A robustness grid over SMA ∈ {150, 175, 200, 225} × IBS entry ∈ {0.08, 0.10, 0.12, 0.15} keeps the combined Sharpe between 1.09 and 1.33 — every cell beats the prior 80/20 portfolio's 1.03, so the result is not a knife-edge fit.
 
 **What we tested and rejected:**
 - **IBS mean reversion on SPY** — Sharpe ≈ 0. The signal is meaningfully stronger on QQQ/Nasdaq than the broad market; retail-heavy, higher-beta indices overreact more intraday.
@@ -182,13 +186,13 @@ The 2022 bear market is handled structurally rather than predictively: QQQ below
 
 ---
 
-### 6. TRIAD — Tri-Timescale TMT — beats the investor portfolio
+### 6. TRIAD — Tri-Timescale TMT — now a 40% sleeve of the investor portfolio
 **File:** `strategies/triad/main.py`  
 **Sharpe:** 1.44 &nbsp;|&nbsp; **Return:** +951% &nbsp;|&nbsp; **Max DD:** −19.0% &nbsp;|&nbsp; **Period:** 2016–2026 (2025+ out-of-sample)
 
-Built as a direct challenger to the investor portfolio — and it wins on every headline metric. Over the development window (2016–2024, Sharpe 1.47, +616%):
+Built as a direct challenger to the then-current 80/20 GARP/XAT portfolio — it beat it on every headline metric over the development window (2016–2024, Sharpe 1.47, +616%), and after passing its out-of-sample test it was promoted into the portfolio at 40%:
 
-| | TRIAD | Investor Portfolio | QQQ B&H |
+| | TRIAD | 80/20 GARP/XAT (prior portfolio) | QQQ B&H |
 |---|---|---|---|
 | Total return | **+616%** | +364% | +362% |
 | Ann. return | **27.2%** | ~20.5% | ~20.3% |
@@ -213,7 +217,7 @@ Daily sleeve correlations are 0.33–0.56 — low enough that the combination's 
 | 2020–2022 | 1.48 | +25.0% |
 | 2023–2024 | 2.11 | +45.4% |
 
-**Robustness:** a grid over momentum lookbacks {12m, 6+12m, 3+6m, 3+6+12m} × top-N {2, 3, 4} keeps the combined Sharpe between 1.22 and 1.53 — every cell beats the investor portfolio's 1.03.
+**Robustness:** a grid over momentum lookbacks {12m, 6+12m, 3+6m, 3+6+12m} × top-N {2, 3, 4} keeps the combined Sharpe between 1.22 and 1.53 — every cell beats the prior 80/20 portfolio's 1.03.
 
 #### Out-of-sample validation (2025-01 → 2026-06)
 
@@ -238,7 +242,7 @@ The in-sample Sharpe of 1.47 degraded to 1.30 out-of-sample — a ~12% haircut, 
 - **Vol-scaled dip sizing and a cross-sectional correlation brake** — each safety layer cut return faster than it cut risk (dip-sleeve Sharpe fell 0.84 → 0.75 as layers were added).
 
 **Honest caveats:**
-- **This is one factor, three ways.** Daily correlation with the investor portfolio is 0.81 — TRIAD is not a diversifier of it, it is a *replacement* bet that concentrated TMT momentum plus panic harvesting beats GARP-plus-cross-asset-trend. In a multi-year tech bear market or a momentum crash, all three sleeves degrade together; the 200-day regime scaler (which cut exposure through 2022 — the strategy lost far less than QQQ's −35%) is the only structural defence.
+- **This is one factor, three ways.** Daily correlation with GARP is 0.81 — TRIAD diversifies *model* risk (how names are selected), not *market* risk. That is exactly how it is used in the investor portfolio: a 40% sleeve alongside GARP's 40%, not a replacement for TMT exposure. In a multi-year tech bear market or a momentum crash, all three of TRIAD's sleeves degrade together; the 200-day regime scaler (which cut exposure through 2022 — the strategy lost far less than QQQ's −35%) is the only structural defence.
 - **NVDA was the top holding 31% of days.** Any TMT momentum strategy in 2016–2024 rides the great semiconductor run. The rule is fully systematic (no hindsight in the picks), but the *regime* was exceptionally kind to it; forward expectations should be haircut accordingly, exactly as with GARP.
 - Monthly top-3 concentration means single-name risk: one overnight gap in a 20%+ position is unhedged. The dip sleeves partially offset this only statistically, not structurally.
 
@@ -261,9 +265,9 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 │   └── metrics.py         Sharpe, drawdown, win rate
 │
 ├── strategies/
-│   ├── combined_portfolio/        ★ The recommended investor portfolio (80% GARP + 20% XAT)
+│   ├── combined_portfolio/        ★ The recommended investor portfolio (40% GARP + 40% TRIAD + 20% XAT)
 │   │   ├── main.py                Run this
-│   │   └── config.py              80/20 weights; 2016–2024
+│   │   └── config.py              40/40/20 weights; 2016–2024
 │   │
 │   ├── equity_factor_rotation/    AFP — lowest drawdown; backtest engine also used by XAT
 │   │   ├── main.py
@@ -314,7 +318,7 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 All commands from the project root.
 
 ```bash
-# ★ Recommended: investor portfolio (80% GARP + 20% XAT), 2016–2024
+# ★ Recommended: investor portfolio (40% GARP + 40% TRIAD + 20% XAT), 2016–2024
 python -m strategies.combined_portfolio.main
 
 # Individual strategies

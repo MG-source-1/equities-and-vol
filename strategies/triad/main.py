@@ -147,7 +147,7 @@ def main():
     if inv_val is not None:
         inv_r = inv_val / inv_val.dropna().iloc[0] * 100
         ax.plot(inv_r.index, inv_r,
-                label=f"Investor Portfolio (80/20 GARP/XAT, to {inv_span})",
+                label=f"Investor Portfolio ({inv_span}; holds TRIAD at 40%)",
                 color="firebrick", linestyle="-.", linewidth=1.6)
     ax.plot(qqq_r.index, qqq_r, label="QQQ (buy & hold)", color="mediumpurple",
             linestyle="--", linewidth=1.4)

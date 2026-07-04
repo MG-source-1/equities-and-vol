@@ -1,7 +1,7 @@
 """
-Investor Portfolio — GARP Momentum + Cross-Asset Trend.
+Investor Portfolio — GARP Momentum + TRIAD + Cross-Asset Trend.
 
-  80%  GARP  — TMT Growth-at-Reasonable-Price + Momentum.
+  40%  GARP  — TMT Growth-at-Reasonable-Price + Momentum.
                Individual stock alpha: selects top 5 from a 15-stock TMT
                universe using price momentum + fundamental quality (PEG,
                ROE, EV/EBITDA, FCF yield, net margin, D/E) from SEC EDGAR.
@@ -10,11 +10,19 @@ Investor Portfolio — GARP Momentum + Cross-Asset Trend.
                  • SPY regime filter — cuts to 0.6× / 0.3× in market downtrends
                  • 15% drawdown stop — moves to cash for 21 days after large loss
 
+  40%  TRIAD — Tri-Timescale TMT (same 15-stock universe + QQQ).
+               Top-3 momentum concentration (months) + single-name panic
+               dips (days) + QQQ index dips (days). Forward-validated
+               out-of-sample on 2025-01 → 2026-06 (Sharpe 1.30).
+
   20%  XAT   — Cross-Asset Trend (SPY · TLT · GLD).
                Ranks SPY, TLT (bonds), and GLD (gold) by momentum each month.
                Participates in equity upside when SPY leads; rotates to bonds
                or gold in risk-off regimes. SPY is included so XAT can earn
                in good environments, not just protect in bad ones.
+
+GARP and TRIAD trade the same TMT names but select differently (fundamental
+quality vs pure price action) — the 40/40 split diversifies model risk.
 
 SIS (SPY Intraday Short) is excluded because it requires 5-minute intraday
 bars only available from 2020, which would shorten the backtest by 4 years.
@@ -56,6 +64,10 @@ from strategies.garp_momentum.config import (
     DRAWDOWN_STOP, TRANSACTION_COST,
 )
 
+from core.alpaca import fetch_bars
+from strategies.triad.backtest import run_triad_backtest
+from strategies.triad import config as triad_cfg
+
 from strategies.equity_factor_rotation.backtest import run_factor_backtest
 from strategies.equity_factor_rotation.config import (
     LOOKBACK_MONTHS as AFP_LB, RANK_TILT,
@@ -67,7 +79,7 @@ from strategies.equity_factor_rotation.config import (
 
 from strategies.combined_portfolio.config import (
     START_DATE, END_DATE, INITIAL_CAPITAL, OUTPUT_DIR, DATA_CACHE_DIR,
-    WEIGHT_GARP, WEIGHT_XAT,
+    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_XAT,
     XAT_TICKERS,
 )
 
@@ -75,15 +87,17 @@ from strategies.combined_portfolio.config import (
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    cap_garp = INITIAL_CAPITAL * WEIGHT_GARP
-    cap_xat  = INITIAL_CAPITAL * WEIGHT_XAT
+    cap_garp  = INITIAL_CAPITAL * WEIGHT_GARP
+    cap_triad = INITIAL_CAPITAL * WEIGHT_TRIAD
+    cap_xat   = INITIAL_CAPITAL * WEIGHT_XAT
 
     print(f"\n{'='*68}")
-    print(f"  INVESTOR PORTFOLIO  ({WEIGHT_GARP:.0%} GARP  ·  {WEIGHT_XAT:.0%} XAT)")
+    print(f"  INVESTOR PORTFOLIO  ({WEIGHT_GARP:.0%} GARP  ·  {WEIGHT_TRIAD:.0%} TRIAD  ·  {WEIGHT_XAT:.0%} XAT)")
     print(f"{'='*68}")
     print(f"  Period        : {START_DATE}  →  {END_DATE}")
     print(f"  Total capital : ${INITIAL_CAPITAL:,.0f}")
-    print(f"  GARP  {WEIGHT_GARP:.0%}  = ${cap_garp:,.0f}  TMT quality-momentum (individual stocks)")
+    print(f"  GARP  {WEIGHT_GARP:.0%}  = ${cap_garp:,.0f}  TMT quality-momentum (EDGAR fundamentals)")
+    print(f"  TRIAD {WEIGHT_TRIAD:.0%}  = ${cap_triad:,.0f}  Tri-timescale TMT (momentum + panic dips)")
     print(f"  XAT   {WEIGHT_XAT:.0%}  = ${cap_xat:,.0f}  Cross-Asset Trend (SPY · TLT · GLD)")
     print(f"  Design goal   : Sharpe > 1.0  |  Max DD < 25%")
     print(f"{'='*68}\n")
@@ -132,6 +146,19 @@ def main():
     garp_m   = compute_metrics(garp_portfolio, tbill_rate, cap_garp)
     print(f"  GARP return: {garp_ret:+.1%}  |  Sharpe: {garp_m['Sharpe Ratio']}  |  Max DD: {garp_m['Max Drawdown']}")
 
+    # ── Run TRIAD ─────────────────────────────────────────────
+    print("[TRIAD] Running tri-timescale TMT …")
+    triad_bars = {t: fetch_bars(t, START_DATE, END_DATE, "1Day",
+                                cache_dir=DATA_CACHE_DIR, verbose=False)
+                  for t in triad_cfg.TICKERS}
+    qqq_bars = fetch_bars(triad_cfg.INDEX_TICKER, START_DATE, END_DATE, "1Day",
+                          cache_dir=DATA_CACHE_DIR, verbose=False)
+    triad_portfolio = run_triad_backtest(triad_bars, qqq_bars, tbill_rate,
+                                         cap_triad, triad_cfg)
+    triad_ret = (triad_portfolio["portfolio_value"].iloc[-1] / cap_triad) - 1
+    triad_m   = compute_metrics(triad_portfolio, tbill_rate, cap_triad)
+    print(f"  TRIAD return: {triad_ret:+.1%}  |  Sharpe: {triad_m['Sharpe Ratio']}  |  Max DD: {triad_m['Max Drawdown']}")
+
     # ── Run XAT ───────────────────────────────────────────────
     print("[XAT] Running cross-asset trend (SPY · TLT · GLD) …")
     xat_portfolio = run_factor_backtest(
@@ -147,10 +174,12 @@ def main():
 
     # ── Combine ───────────────────────────────────────────────
     print("\n[portfolio] Combining …")
-    date_range   = garp_portfolio.index.union(xat_portfolio.index)
+    date_range   = garp_portfolio.index.union(xat_portfolio.index) \
+                                       .union(triad_portfolio.index)
     garp_val     = garp_portfolio["portfolio_value"].reindex(date_range).ffill().fillna(cap_garp)
+    triad_val    = triad_portfolio["portfolio_value"].reindex(date_range).ffill().fillna(cap_triad)
     xat_val      = xat_portfolio["portfolio_value"].reindex(date_range).ffill().fillna(cap_xat)
-    combined_val = garp_val + xat_val
+    combined_val = garp_val + triad_val + xat_val
 
     combined = pd.DataFrame(index=date_range)
     combined["portfolio_value"] = combined_val
@@ -171,8 +200,9 @@ def main():
     print("\nComponent Breakdown")
     print("─" * 56)
     for label, pf, cap in [
-        (f"GARP  {WEIGHT_GARP:.0%}", garp_portfolio, cap_garp),
-        (f"XAT   {WEIGHT_XAT:.0%}",  xat_portfolio,  cap_xat),
+        (f"GARP  {WEIGHT_GARP:.0%}",  garp_portfolio,  cap_garp),
+        (f"TRIAD {WEIGHT_TRIAD:.0%}", triad_portfolio, cap_triad),
+        (f"XAT   {WEIGHT_XAT:.0%}",   xat_portfolio,   cap_xat),
     ]:
         ret = (pf["portfolio_value"].iloc[-1] / cap) - 1
         m   = compute_metrics(pf, tbill_rate, cap)
@@ -188,8 +218,8 @@ def main():
     # ── Charts ────────────────────────────────────────────────
     fig, axes = plt.subplots(3, 1, figsize=(13, 15))
     fig.suptitle(
-        f"Investor Portfolio  ({WEIGHT_GARP:.0%} GARP Momentum  ·  {WEIGHT_XAT:.0%} Cross-Asset Trend)\n"
-        "TMT quality-momentum  +  cross-asset rotation (SPY · TLT · GLD)",
+        f"Investor Portfolio  ({WEIGHT_GARP:.0%} GARP  ·  {WEIGHT_TRIAD:.0%} TRIAD  ·  {WEIGHT_XAT:.0%} XAT)\n"
+        "TMT quality-momentum  +  tri-timescale TMT  +  cross-asset rotation (SPY · TLT · GLD)",
         fontsize=11, fontweight="bold",
     )
 
@@ -211,11 +241,14 @@ def main():
 
     # Panel 2: Stacked P&L by sleeve
     ax = axes[1]
-    g = garp_val - cap_garp
-    x = xat_val  - cap_xat
-    ax.fill_between(g.index, 0, g,     color="#2c7bb6", alpha=0.75,
-                    label=f"GARP {WEIGHT_GARP:.0%} (TMT individual stocks)")
-    ax.fill_between(x.index, g, g + x, color="#e9c46a", alpha=0.75,
+    g = garp_val  - cap_garp
+    t = triad_val - cap_triad
+    x = xat_val   - cap_xat
+    ax.fill_between(g.index, 0, g,             color="#2c7bb6", alpha=0.75,
+                    label=f"GARP {WEIGHT_GARP:.0%} (EDGAR quality-momentum)")
+    ax.fill_between(t.index, g, g + t,         color="#d7761b", alpha=0.75,
+                    label=f"TRIAD {WEIGHT_TRIAD:.0%} (tri-timescale TMT)")
+    ax.fill_between(x.index, g + t, g + t + x, color="#e9c46a", alpha=0.75,
                     label=f"XAT {WEIGHT_XAT:.0%} (SPY · TLT · GLD)")
     ax.axhline(0, color="black", linewidth=0.5)
     ax.set_ylabel("Cumulative P&L ($)")
