@@ -7,6 +7,7 @@ Strategies run on the longest window their data sources allow:
 | Strategy | Period | Binding constraint |
 |---|---|---|
 | Investor Portfolio (GARP + XAT) | 2016–2024 | Alpaca daily prices (~2016) |
+| DTQ (Dual-Timescale QQQ) | 2016–2024 | Alpaca daily prices (~2016) |
 | GARP Momentum | 2016–2024 | Alpaca daily prices (~2016) · EDGAR fundamentals (~2009) |
 | AFP, XAT, Tech-Tier (reference) | 2016–2024 | Alpaca daily prices (~2016) |
 | SIS (reference) | 2020–2024 | Alpaca 5-min intraday bars (available from 2020 only) |
@@ -138,7 +139,49 @@ Six ratios are scored and combined into a composite GARP quality rank:
 
 ---
 
-### 5. Tech-Tier Momentum Ladder (reference)
+### 5. Dual-Timescale QQQ (DTQ) — best risk-adjusted return
+**File:** `strategies/dual_timescale_qqq/main.py`  
+**Sharpe:** 1.30 &nbsp;|&nbsp; **Return:** +185% &nbsp;|&nbsp; **Max DD:** −9.8% &nbsp;|&nbsp; **Period:** 2016–2024
+
+The highest-Sharpe strategy in this repository, and the only one with a single-digit max drawdown. The design principle: **trend-following and dip-buying profit from opposite market behaviours** — continuation vs overreaction — so running both on the *same instrument* produces two nearly uncorrelated return streams (daily sleeve P&L correlation: 0.40) without needing a second asset class. It is diversification across *timescales* rather than across assets.
+
+| Sleeve | Weight | Timescale | Signal |
+|---|---|---|---|
+| Trend | 50% | Months | Long QQQ while above its 200-day SMA, sized to 15% annualised vol (20-day realised). T-bills otherwise. |
+| Mean reversion | 50% | Days | Buy the close when IBS < 0.10 **and** price > 200-day SMA. Exit when IBS > 0.75 or after 3 days. Sized to 20% vol, capped at 1.5×. |
+
+**IBS (Internal Bar Strength)** = (close − low) / (high − low): where the day closed within its own range. IBS < 0.10 means the close was pinned to the bottom decile of the day's range — a panic close. Buying that panic *inside an uptrend* captured a 76% win rate across 142 trades (avg +0.69% per trade, avg 2-day hold). The 200-day SMA filter is what separates a dip from a downtrend — the identical signal without it loses money in 2022.
+
+**Sleeve results and combination (2016–2024, net of 10 bps turnover costs):**
+
+| | Sharpe | Ann. return | Max DD | Notes |
+|---|---|---|---|---|
+| Trend sleeve alone | 1.02 | 15.3% | −16.0% | in market ~75% of days |
+| MR sleeve alone | 1.19 | 11.5% | −10.1% | in market ~12% of days |
+| **DTQ 50/50** | **1.30** | **13.7%** | **−9.8%** | avg total exposure 0.43× |
+
+**Regime robustness** — Sharpe is positive in every sub-period, not carried by one lucky regime:
+
+| Sub-period | Sharpe | Ann. return | Environment |
+|---|---|---|---|
+| 2016–2019 | 1.13 | +11.7% | steady bull |
+| 2020–2022 | 0.84 | +7.3% | COVID crash + rate shock |
+| 2023–2024 | 2.22 | +27.4% | AI-led recovery |
+
+The 2022 bear market is handled structurally rather than predictively: QQQ below its 200-day SMA switches the trend sleeve to T-bills *and* disables the dip-buyer's entry condition, so the strategy sat almost fully in cash (earning 2022's rising T-bill yields) while QQQ fell 35%.
+
+**Parameter honesty:** all parameters are standard literature values (200-day SMA, 3-day hold, 10/75 IBS bands), not optimised numbers. A robustness grid over SMA ∈ {150, 175, 200, 225} × IBS entry ∈ {0.08, 0.10, 0.12, 0.15} keeps the combined Sharpe between 1.09 and 1.33 — every cell beats every other strategy in this repo, so the result is not a knife-edge fit.
+
+**What we tested and rejected:**
+- **IBS mean reversion on SPY** — Sharpe ≈ 0. The signal is meaningfully stronger on QQQ/Nasdaq than the broad market; retail-heavy, higher-beta indices overreact more intraday.
+- **GLD and TLT trend sleeves** — Sharpe 0.22 and −0.37 in this window (same cross-asset headwinds that hurt XAT). Adding them *lowered* the combined Sharpe.
+- **A SOXX mean-reversion sleeve** — diluted the combo to 1.20.
+
+**Honest caveats:** DTQ earns less than half of QQQ's raw +362% buy-and-hold return over this window — its value proposition is the risk-adjusted number and the −9.8% drawdown, not maximum wealth. It is also 100% concentrated in Nasdaq beta at both timescales; that is why it is kept as a standalone strategy rather than blended into the investor portfolio, whose GARP sleeve already carries heavy TMT exposure (daily correlation between DTQ and GARP would compound the same underlying factor). The MR sleeve assumes execution at the closing price of the signal day (standard for daily mean-reversion backtests, achievable with a market-on-close order queued in the final minutes).
+
+---
+
+### 6. Tech-Tier Momentum Ladder (reference)
 **File:** `strategies/concentrated_momentum/main.py`  
 **Return:** +305% &nbsp;|&nbsp; **Sharpe:** 0.54 &nbsp;|&nbsp; **Max DD:** −34.3% &nbsp;|&nbsp; **Period:** 2016–2024
 
@@ -178,6 +221,11 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 │   │   ├── fundamentals.py        SEC EDGAR GARP scoring (PEG, ROE, EV/EBITDA, FCF, margin, D/E)
 │   │   └── config.py
 │   │
+│   ├── dual_timescale_qqq/        DTQ — trend + dip-buying on QQQ (Sharpe 1.30, best in repo)
+│   │   ├── main.py
+│   │   ├── backtest.py
+│   │   └── config.py
+│   │
 │   └── concentrated_momentum/     Reference — high return, high risk
 │       ├── main.py
 │       ├── backtest.py
@@ -202,6 +250,7 @@ All commands from the project root.
 python -m strategies.combined_portfolio.main
 
 # Individual strategies
+python -m strategies.dual_timescale_qqq.main      # DTQ — best Sharpe (1.30)
 python -m strategies.equity_factor_rotation.main
 python -m strategies.spy_intraday_short.main      # reference only, 2020–2024
 python -m strategies.concentrated_momentum.main

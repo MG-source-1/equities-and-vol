@@ -7,7 +7,15 @@
       "Bash(grep -v \"NumPy\\\\|compiled\\\\|downgrade\\\\|pybind\\\\|expect\\\\|  File \\\\\"/\\\\|AttributeError\\\\|modules must\\\\|If you are\\\\|easiest solution\\\\|^$\")",
       "Bash(grep -v \"NumPy\\\\|compiled\\\\|downgrade\\\\|pybind\\\\|expect\\\\|  File \\\\\"/\\\\|AttributeError\\\\|modules must\\\\|If you are\\\\|easiest solution\\\\|^$\\\\|ChainedAssign\")",
       "Bash(pip install *)",
-      "Skill(run)"
+      "Skill(run)",
+      "Bash(cat)",
+      "Bash(python3 /tmp/proto1.py)",
+      "Bash(python3 /tmp/proto2.py)",
+      "Bash(python3 /tmp/proto3.py)",
+      "Bash(python3 /tmp/proto4.py)",
+      "Bash(mkdir -p /Users/markgarcera/Desktop/Y4S2/backtester/strategies/dual_timescale_qqq)",
+      "Bash(touch /Users/markgarcera/Desktop/Y4S2/backtester/strategies/dual_timescale_qqq/__init__.py)",
+      "Bash(python3 *)"
     ]
   }
 }
