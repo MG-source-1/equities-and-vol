@@ -21,7 +21,7 @@ Strategies run on the longest window their data sources allow:
 
 ### ★ Investor Portfolio — recommended allocation
 **File:** `strategies/combined_portfolio/main.py`  
-**Sharpe:** 1.25 &nbsp;|&nbsp; **Return:** +428% &nbsp;|&nbsp; **Max DD:** −18.4% &nbsp;|&nbsp; **Period:** 2016–2024
+**Sharpe:** 1.28 &nbsp;|&nbsp; **Return:** +458% &nbsp;|&nbsp; **Max DD:** −17.5% &nbsp;|&nbsp; **Period:** 2016–2024
 
 | Sleeve | Weight | Strategy | Purpose |
 |---|---|---|---|
@@ -29,9 +29,9 @@ Strategies run on the longest window their data sources allow:
 | TRIAD | 40% | Tri-timescale TMT (momentum + panic dips) | Alpha engine 2 — pure price action |
 | XAT | 20% | Cross-Asset Trend (SPY · TLT · GLD) | Regime diversifier |
 
-**Result:** Sharpe 1.25, +428% total return, Max DD −18.4% over 2016–2024. Beats SPY (+237%) by 192 percentage points and improves the previous 80/20 GARP/XAT configuration on every metric (Sharpe 1.03 → 1.25, return +364% → +428%, drawdown −21.3% → −18.4%).
+**Result:** Sharpe 1.28, +458% total return, Max DD −17.5% over 2016–2024. Beats SPY (+237%) by 221 percentage points and improves the previous 80/20 GARP/XAT configuration on every metric (Sharpe 1.03 → 1.28, return +364% → +458%, drawdown −21.3% → −17.5%). *(Numbers as of the July 2026 EDGAR refresh — fundamentals data updates shift GARP-dependent results slightly as new and amended filings arrive.)*
 
-**Why 40/40 rather than replacing GARP outright:** TRIAD backtests better than GARP standalone (Sharpe 1.47 vs 1.06) and a full 80% TRIAD swap backtests better still — but TRIAD was developed on this same 2016–2024 window, so part of its measured edge is research-selection bias that GARP, anchored on point-in-time EDGAR fundamentals, carries less of. The two engines trade the same 15 TMT names with *different selection logic* (fundamental quality vs pure momentum + panic dips) and fail differently: in a momentum crash GARP's quality screen holds fundamentally sound names through the noise, while TRIAD rotates faster in trend reversals. The 40/40 split therefore diversifies **model risk** — the risk a backtest cannot measure. TRIAD's weight was granted only after it passed an 18-month out-of-sample forward test (2025-01 → 2026-06, Sharpe 1.30 — see the TRIAD section); if it continues to hold up live, shifting further weight toward it is the natural evolution.
+**Why 40/40 rather than replacing GARP outright:** TRIAD backtests better than GARP standalone (Sharpe 1.47 vs 1.14) and a full 80% TRIAD swap backtests better still — but TRIAD was developed on this same 2016–2024 window, so part of its measured edge is research-selection bias that GARP, anchored on point-in-time EDGAR fundamentals, carries less of. The two engines trade the same 15 TMT names with *different selection logic* (fundamental quality vs pure momentum + panic dips) and fail differently: in a momentum crash GARP's quality screen holds fundamentally sound names through the noise, while TRIAD rotates faster in trend reversals. The 40/40 split therefore diversifies **model risk** — the risk a backtest cannot measure. TRIAD's weight was granted only after it passed an 18-month out-of-sample forward test (2025-01 → 2026-06, Sharpe 1.30 — see the TRIAD section); if it continues to hold up live, shifting further weight toward it is the natural evolution.
 
 **Why XAT includes SPY:** XAT is a cross-asset trend strategy, not a pure hedge. Including SPY lets XAT participate in equity upside when equities are trending, while rotating into TLT (bonds) or GLD (gold) in risk-off regimes. Removing SPY makes XAT entirely passive — it holds cash 35%+ of the time and generates negligible return.
 
@@ -80,7 +80,7 @@ Adding sectors with "good but not exceptional" momentum diluted exposure to the 
 | 45/45/10 GARP/XAT(SPY+TLT+GLD)/SIS | +69% | 0.84 | −17.6% | 2020–2024 | SPY back in XAT |
 | 70/20/10 GARP/XAT/SIS | +116% | 1.08 | −18.8% | 2020–2024 | With EDGAR fundamentals |
 | 80/20 GARP/XAT (no SIS) | +364% | 1.03 | −21.3% | 2016–2024 | Full window, no intraday constraint |
-| **40/40/20 GARP/TRIAD/XAT** | **+428%** | **1.25** | **−18.4%** | **2016–2024** | **Current — TRIAD added after passing its 2025–2026 out-of-sample test** |
+| **40/40/20 GARP/TRIAD/XAT** | **+458%** | **1.28** | **−17.5%** | **2016–2024** | **Current — TRIAD added after passing its 2025–2026 out-of-sample test** |
 
 ---
 
@@ -121,7 +121,7 @@ Uses Alpaca 5-minute SPY bars. On high-conviction mornings — when both the ove
 
 ### 4. GARP Momentum
 **File:** `strategies/garp_momentum/main.py`  
-**Sharpe:** 1.06 &nbsp;|&nbsp; **Return:** +455% &nbsp;|&nbsp; **Max DD:** −22.8% &nbsp;|&nbsp; **Period:** 2016–2024
+**Sharpe:** 1.14 &nbsp;|&nbsp; **Return:** +529% &nbsp;|&nbsp; **Max DD:** −20.5% &nbsp;|&nbsp; **Period:** 2016–2024
 
 Applies **Growth at a Reasonable Price (GARP)** fundamental screening to a 15-stock TMT universe (AAPL, MSFT, GOOGL, META, NVDA, AMD, AVGO, QCOM, ORCL, CRM, ADBE, NFLX, AMZN, TSLA, INTC), then selects and sizes positions using **Jegadeesh-Titman price momentum**.
 
@@ -138,7 +138,7 @@ Six ratios are scored and combined into a composite GARP quality rank:
 
 **Portfolio construction:** Composite rank = 65% price momentum (3m/6m/12m with 1-month skip) + 35% GARP score. Holds top 5 qualifying stocks, weighted by GARP score (higher quality = bigger allocation, capped at 30%). Three risk overlays: 20% annualised vol targeting, SPY 3m-momentum regime filter (scales to 0.6× or 0.3× in drawdowns), and 15% drawdown stop.
 
-**Current top GARP scores:** NVDA (0.793 — PEG 0.30, ROE 75%), MSFT (0.746), QCOM (0.736), GOOGL (0.721), AAPL (0.721). TSLA (0.203) and INTC (0.265) are correctly screened out by the fundamentals.
+**Current top GARP scores** (latest 2026 filings): ADBE (0.792), MSFT (0.744), CRM (0.734), QCOM (0.729), NVDA (0.714). TSLA (0.203) and INTC (0.265) are correctly screened out by the fundamentals. One coverage gap: AVGO's XBRL concept tagging stops matching after its 2024 10-K, so its score is stale — the composite treats it with its last known value.
 
 > **Data source:** Fundamental data comes from the SEC EDGAR XBRL Company Facts API — no API key required. EDGAR provides the exact `filed` date for every submission, making point-in-time accuracy inherent: each rebalance only sees data publicly filed on or before that date. Coverage goes back to ~2009 for most large-cap TMT names, giving the GARP quality screen genuine historical data throughout the full 2016–2024 backtest window. `yfinance` is not used.
 
@@ -282,7 +282,7 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 │   │   ├── STRATEGY.md
 │   │   └── generate_pdf.py
 │   │
-│   ├── garp_momentum/             GARP — TMT quality-momentum (Sharpe 1.06 over 2016–2024)
+│   ├── garp_momentum/             GARP — TMT quality-momentum (Sharpe 1.14 over 2016–2024)
 │   │   ├── main.py
 │   │   ├── backtest.py
 │   │   ├── fundamentals.py        SEC EDGAR GARP scoring (PEG, ROE, EV/EBITDA, FCF, margin, D/E)
@@ -303,9 +303,18 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 │       ├── backtest.py
 │       └── config.py
 │
+├── live/                  Live paper trading of the investor portfolio (Alpaca paper API)
+│   ├── rebalance.py       Daily: compute targets → submit market-on-close orders
+│   ├── reconcile.py       Morning: record equity, verify fills vs intentions
+│   ├── tearsheet.py       Monthly: live metrics vs backtest expectation
+│   ├── signals.py         Live targets via the same weight functions the backtests use
+│   ├── broker.py          Paper trading API wrapper (urllib, no SDK)
+│   └── config.py          Paper endpoint, drawdown guard, execution settings
+│
 ├── data_cache/            Cached downloads (gitignored)
 │                          Includes Alpaca price CSVs and EDGAR JSON facts files
-├── outputs/               Charts and CSVs (gitignored)
+├── outputs/               Charts and CSVs
+│   └── live/              Live track record: equity curve, daily decision logs, state
 ├── config.py              Shared: START_DATE=2016, capital, absolute paths
 ├── .env                   Alpaca API credentials (gitignored — never commit)
 └── requirements.txt
@@ -332,6 +341,59 @@ python -m strategies.garp_momentum.main
 # Generate PDF documentation for the intraday strategy
 python strategies/spy_intraday_short/generate_pdf.py
 ```
+
+---
+
+## Live Paper Trading
+
+The investor portfolio (40% GARP · 40% TRIAD · 20% XAT) runs live on the **Alpaca paper account** — the point is to build a track record that can't be curve-fit. Backtests prove the research; the live record proves the system.
+
+### The three jobs
+
+```bash
+# 1. Daily rebalance — run between 15:20 and 15:40 ET on trading days.
+#    Computes today's target weights with the SAME functions the backtests
+#    use, diffs against current positions, submits market-on-close orders.
+python -m live.rebalance              # dry run (prints orders, submits nothing)
+python -m live.rebalance --execute    # submit MOC orders to the paper account
+python -m live.rebalance --force      # compute signals even when market closed (testing)
+
+# 2. Morning reconcile — run any time after the close.
+#    Appends account equity to outputs/live/equity_curve.csv and checks
+#    yesterday's intended orders against actual fills (slippage in bps).
+python -m live.reconcile
+
+# 3. Tearsheet — run monthly (needs ≥5 live days).
+#    Live Sharpe/vol/drawdown next to the backtest's expectation, and where
+#    the live window return sits in the distribution of all same-length
+#    backtest windows ("is live behaving like the simulation said?").
+python -m live.tearsheet
+```
+
+### Scheduling from Singapore
+
+The rebalance job checks the Alpaca market clock and exits instantly when the market is closed, so the cron doesn't need to track US daylight saving — schedule it at **both** possible SGT times and let the wrong one no-op:
+
+```cron
+# US market close is 04:00 SGT (EDT) or 05:00 SGT (EST).
+25 3 * * 2-6  cd ~/Desktop/Y4S2/backtester && python3 -m live.rebalance --execute >> outputs/live/cron.log 2>&1
+25 4 * * 2-6  cd ~/Desktop/Y4S2/backtester && python3 -m live.rebalance --execute >> outputs/live/cron.log 2>&1
+0  7 * * 2-6  cd ~/Desktop/Y4S2/backtester && python3 -m live.reconcile          >> outputs/live/cron.log 2>&1
+```
+
+Every daily decision is logged to `outputs/live/decisions/YYYY-MM-DD.json` with the full inputs — equity, sleeve diagnostics, target weights, orders — so any divergence from the backtest can be replayed and explained later.
+
+### Known deviations from the backtest (documented honestly)
+
+| Deviation | Why | Expected impact |
+|---|---|---|
+| Signal prices are the ~15:19 ET snapshot, not the official close | Free Alpaca data plan rejects the most recent 15 minutes | Tiny signal noise; fills still happen at the actual closing auction via MOC |
+| Whole-share orders, trades under $200 skipped | Alpaca MOC orders don't support fractional shares | Weight rounding of a few basis points on a $100k account |
+| Drawdown stop applied at portfolio level (−15% / 21 days), not per sleeve | Sleeve-level stops require tracking virtual per-sleeve equity | Guard triggers on the same magnitude of loss, slightly different timing |
+| XAT's internal 12% sleeve stop not replicated | Same reason as above | Covered by the portfolio-level guard |
+| Idle cash earns 0 in the paper account | Backtest holds BIL for uninvested capital | Live understates returns by roughly the T-bill rate × average cash weight |
+
+EDGAR fundamentals refresh automatically when caches are older than 7 days, so new 10-Q/10-K filings flow into the GARP score — the backtests keep their caches permanent.
 
 ---
 

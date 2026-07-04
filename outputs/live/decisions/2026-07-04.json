@@ -1,0 +1,142 @@
+{
+  "utc_time": "2026-07-04T16:21:23.026877+00:00",
+  "equity": 100000.0,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100000.0,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-07-02",
+    "weights": {
+      "AMD": 0.06811,
+      "AVGO": 0.03832,
+      "GOOGL": 0.06372,
+      "INTC": 0.05475,
+      "QCOM": 0.07088,
+      "QQQ": 0.03505,
+      "SPY": 0.07912,
+      "TLT": 0.087
+    },
+    "prices": {
+      "AAPL": 308.63,
+      "ADBE": 219.72,
+      "AMD": 517.82,
+      "AMZN": 242.67,
+      "AVGO": 360.45,
+      "CRM": 166.11,
+      "GLD": 378.13,
+      "GOOGL": 359.91,
+      "INTC": 120.35,
+      "META": 582.9,
+      "MSFT": 390.49,
+      "NFLX": 77.65,
+      "NVDA": 194.83,
+      "ORCL": 140.27,
+      "QCOM": 176.25,
+      "QQQ": 712.6,
+      "SPY": 744.78,
+      "TLT": 85.51,
+      "TSLA": 393.45
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-06-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.0996,
+          "AMD": 0.0481,
+          "AVGO": 0.0958,
+          "QCOM": 0.1147,
+          "INTC": 0.0146
+        }
+      },
+      "triad": {
+        "leaders": {
+          "GOOGL": 0.0995,
+          "AMD": 0.0995,
+          "INTC": 0.0995
+        },
+        "stock_dips": {
+          "AMD": 0.25,
+          "QCOM": 0.25,
+          "INTC": 0.25
+        },
+        "index_dip": 0.5842
+      },
+      "xat": {
+        "SPY": 0.3956,
+        "TLT": 0.435
+      },
+      "gross": 0.4969
+    }
+  },
+  "positions_before": {},
+  "orders": [
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "qty": 13,
+      "ref_price": 517.82,
+      "est_value": 6731.66,
+      "target_qty": 13
+    },
+    {
+      "symbol": "AVGO",
+      "side": "buy",
+      "qty": 10,
+      "ref_price": 360.45,
+      "est_value": 3604.5,
+      "target_qty": 10
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "buy",
+      "qty": 17,
+      "ref_price": 359.91,
+      "est_value": 6118.47,
+      "target_qty": 17
+    },
+    {
+      "symbol": "INTC",
+      "side": "buy",
+      "qty": 45,
+      "ref_price": 120.35,
+      "est_value": 5415.75,
+      "target_qty": 45
+    },
+    {
+      "symbol": "QCOM",
+      "side": "buy",
+      "qty": 40,
+      "ref_price": 176.25,
+      "est_value": 7050.0,
+      "target_qty": 40
+    },
+    {
+      "symbol": "QQQ",
+      "side": "buy",
+      "qty": 4,
+      "ref_price": 712.6,
+      "est_value": 2850.4,
+      "target_qty": 4
+    },
+    {
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 10,
+      "ref_price": 744.78,
+      "est_value": 7447.8,
+      "target_qty": 10
+    },
+    {
+      "symbol": "TLT",
+      "side": "buy",
+      "qty": 101,
+      "ref_price": 85.51,
+      "est_value": 8636.51,
+      "target_qty": 101
+    }
+  ],
+  "executed": false
+}

@@ -62,6 +62,7 @@ def fetch_bars(
     adjustment: str = "all",   # "all" = split + dividend → total return prices
     cache_dir: str = "data_cache",
     verbose: bool = True,
+    use_cache: bool = True,    # False = always fetch fresh, never read/write cache (live trading)
 ) -> pd.DataFrame:
     """
     Fetches historical OHLCV bars from Alpaca for any timeframe.
@@ -76,7 +77,7 @@ def fetch_bars(
     # Include adjustment in filename so split-adjusted and total-return caches don't clash
     cache = os.path.join(cache_dir, f"{symbol}_{timeframe}_{adjustment}_{start}_{end}.csv")
 
-    if os.path.exists(cache):
+    if use_cache and os.path.exists(cache):
         if verbose:
             print(f"[data] {symbol} {timeframe} loaded from cache.")
         df = pd.read_csv(cache, index_col=0, parse_dates=True)
@@ -136,7 +137,8 @@ def fetch_bars(
         df.index = df.index.normalize()
 
     df = df[["open", "high", "low", "close", "volume"]]
-    df.to_csv(cache)
-    if verbose:
-        print(f"[data] Cached → {cache}")
+    if use_cache:
+        df.to_csv(cache)
+        if verbose:
+            print(f"[data] Cached → {cache}")
     return df
