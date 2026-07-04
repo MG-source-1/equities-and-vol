@@ -7,6 +7,7 @@ Strategies run on the longest window their data sources allow:
 | Strategy | Period | Binding constraint |
 |---|---|---|
 | Investor Portfolio (GARP + XAT) | 2016–2024 | Alpaca daily prices (~2016) |
+| TRIAD (Tri-Timescale TMT) | 2016–2026 | Alpaca daily prices (~2016) · 2025+ is out-of-sample |
 | DTQ (Dual-Timescale QQQ) | 2016–2024 | Alpaca daily prices (~2016) |
 | GARP Momentum | 2016–2024 | Alpaca daily prices (~2016) · EDGAR fundamentals (~2009) |
 | AFP, XAT, Tech-Tier (reference) | 2016–2024 | Alpaca daily prices (~2016) |
@@ -139,11 +140,11 @@ Six ratios are scored and combined into a composite GARP quality rank:
 
 ---
 
-### 5. Dual-Timescale QQQ (DTQ) — best risk-adjusted return
+### 5. Dual-Timescale QQQ (DTQ) — lowest drawdown
 **File:** `strategies/dual_timescale_qqq/main.py`  
 **Sharpe:** 1.30 &nbsp;|&nbsp; **Return:** +185% &nbsp;|&nbsp; **Max DD:** −9.8% &nbsp;|&nbsp; **Period:** 2016–2024
 
-The highest-Sharpe strategy in this repository, and the only one with a single-digit max drawdown. The design principle: **trend-following and dip-buying profit from opposite market behaviours** — continuation vs overreaction — so running both on the *same instrument* produces two nearly uncorrelated return streams (daily sleeve P&L correlation: 0.40) without needing a second asset class. It is diversification across *timescales* rather than across assets.
+The only strategy in this repository with a single-digit max drawdown (TRIAD later took the top Sharpe spot by reusing DTQ's mean-reversion sleeve at higher octane). The design principle: **trend-following and dip-buying profit from opposite market behaviours** — continuation vs overreaction — so running both on the *same instrument* produces two nearly uncorrelated return streams (daily sleeve P&L correlation: 0.40) without needing a second asset class. It is diversification across *timescales* rather than across assets.
 
 | Sleeve | Weight | Timescale | Signal |
 |---|---|---|---|
@@ -170,7 +171,7 @@ The highest-Sharpe strategy in this repository, and the only one with a single-d
 
 The 2022 bear market is handled structurally rather than predictively: QQQ below its 200-day SMA switches the trend sleeve to T-bills *and* disables the dip-buyer's entry condition, so the strategy sat almost fully in cash (earning 2022's rising T-bill yields) while QQQ fell 35%.
 
-**Parameter honesty:** all parameters are standard literature values (200-day SMA, 3-day hold, 10/75 IBS bands), not optimised numbers. A robustness grid over SMA ∈ {150, 175, 200, 225} × IBS entry ∈ {0.08, 0.10, 0.12, 0.15} keeps the combined Sharpe between 1.09 and 1.33 — every cell beats every other strategy in this repo, so the result is not a knife-edge fit.
+**Parameter honesty:** all parameters are standard literature values (200-day SMA, 3-day hold, 10/75 IBS bands), not optimised numbers. A robustness grid over SMA ∈ {150, 175, 200, 225} × IBS entry ∈ {0.08, 0.10, 0.12, 0.15} keeps the combined Sharpe between 1.09 and 1.33 — every cell beats the investor portfolio's 1.03, so the result is not a knife-edge fit.
 
 **What we tested and rejected:**
 - **IBS mean reversion on SPY** — Sharpe ≈ 0. The signal is meaningfully stronger on QQQ/Nasdaq than the broad market; retail-heavy, higher-beta indices overreact more intraday.
@@ -181,7 +182,69 @@ The 2022 bear market is handled structurally rather than predictively: QQQ below
 
 ---
 
-### 6. Tech-Tier Momentum Ladder (reference)
+### 6. TRIAD — Tri-Timescale TMT — beats the investor portfolio
+**File:** `strategies/triad/main.py`  
+**Sharpe:** 1.44 &nbsp;|&nbsp; **Return:** +951% &nbsp;|&nbsp; **Max DD:** −19.0% &nbsp;|&nbsp; **Period:** 2016–2026 (2025+ out-of-sample)
+
+Built as a direct challenger to the investor portfolio — and it wins on every headline metric. Over the development window (2016–2024, Sharpe 1.47, +616%):
+
+| | TRIAD | Investor Portfolio | QQQ B&H |
+|---|---|---|---|
+| Total return | **+616%** | +364% | +362% |
+| Ann. return | **27.2%** | ~20.5% | ~20.3% |
+| Sharpe | **1.47** | 1.03 | 0.80 |
+| Max drawdown | **−19.0%** | −21.3% | −35.0% |
+
+**The design idea:** the investor portfolio diversifies across *assets* (stocks + bonds + gold) — and its XAT sleeve was a drag in this window. TRIAD instead diversifies across *timescales*: one factor (TMT), harvested through three behaviours that pay off at different frequencies. Continuation pays over months; overreaction pays over days; and single-name panic is a different animal from index panic.
+
+| Sleeve | Weight | Timescale | Signal |
+|---|---|---|---|
+| **Leaders** | 60% | Months | Hold the top-3 of 15 TMT names by blended 3/6/12-month momentum (positive momentum only), equal weight, monthly rebalance, 25% sleeve vol target, scaled to 0.3× when QQQ < 200-day SMA |
+| **Stock dips** | 25% | Days | Buy single-name panic closes (IBS < 0.10) in names above their 200-day SMA with positive 6-month momentum; exit IBS > 0.75 or 3 days; 25% per name, gross ≤ 1× |
+| **Index dips** | 15% | Days | DTQ's QQQ mean-reversion sleeve, verbatim |
+
+Daily sleeve correlations are 0.33–0.56 — low enough that the combination's Sharpe (1.47) exceeds every sleeve alone (1.28 / 0.84 / 1.19). The Leaders sleeve supplies the return (+$463k of the +$616k total); the two dip sleeves supply the smoothing, deploying capital precisely on the days the Leaders sleeve is bleeding.
+
+**Sub-period Sharpe** — improves in *harder* regimes, because the dip engines earn most when volatility is high:
+
+| Sub-period | Sharpe | Ann. return |
+|---|---|---|
+| 2016–2019 | 1.07 | +19.0% |
+| 2020–2022 | 1.48 | +25.0% |
+| 2023–2024 | 2.11 | +45.4% |
+
+**Robustness:** a grid over momentum lookbacks {12m, 6+12m, 3+6m, 3+6+12m} × top-N {2, 3, 4} keeps the combined Sharpe between 1.22 and 1.53 — every cell beats the investor portfolio's 1.03.
+
+#### Out-of-sample validation (2025-01 → 2026-06)
+
+TRIAD's rules and parameters were frozen on 2016–2024 data; the following 18 months are a genuine forward test (the strategy's `config.py` extends its window to 2026-06 for exactly this purpose — all other strategies still end 2024-12):
+
+| 2025-01 → 2026-06 | TRIAD | QQQ B&H | SPY B&H |
+|---|---|---|---|
+| Total return | **+47.1%** | +45.1% | +29.6% |
+| Sharpe | **1.30** | 1.08 | 0.85 |
+| Max drawdown | **−12.6%** | −22.8% | −18.8% |
+
+The in-sample Sharpe of 1.47 degraded to 1.30 out-of-sample — a ~12% haircut, which is the normal signature of a real (non-overfit) edge rather than the collapse-toward-zero of a curve-fit one. Three findings from the forward window:
+
+- **Every structural mechanism fired as designed.** In the spring 2025 correction the regime scaler held TRIAD's drawdown to −12.6% while QQQ fell −22.8%; the momentum sleeve then rotated into the new leaders and delivered +33.6% vs QQQ's +20.2% in H1 2026. All three sleeves were independently profitable out-of-sample.
+- **The NVDA-dependence caveat did not materialise.** Out-of-sample top holdings were AVGO (25% of days), GOOGL (22%) and AMD (16%) — NVDA only 9%. The rule found the new leaders on its own.
+- **The outperformance is lumpy by construction.** TRIAD lagged QQQ in two of the three half-years (+1.6% vs +8.2%, then +8.3% vs +11.6%) and earned its edge from drawdown protection plus one strong concentration run. Expect to be behind the index most calm quarters.
+
+**Statistical honesty:** 18 months is one regime (a tech bull with one sharp correction), and a Sharpe measured over 1.5 years carries a standard error of roughly ±0.8. The forward test validates the mechanisms; it does not yet prove the magnitude.
+
+**What we tested and rejected:**
+- **An EDGAR GARP quality gate on both stock sleeves** (only trade names above the median point-in-time GARP score). It *reduced* the Leaders sleeve's Sharpe from 1.28 to 1.19 — the gate screens out exactly the momentum runs (AMD, TSLA) that momentum is supposed to ride. Quality and momentum are separate factors; forcing every position to satisfy both shrinks the opportunity set without cutting tail risk. Kept GARP fundamentals where they belong — in the GARP strategy.
+- **Vol-scaled dip sizing and a cross-sectional correlation brake** — each safety layer cut return faster than it cut risk (dip-sleeve Sharpe fell 0.84 → 0.75 as layers were added).
+
+**Honest caveats:**
+- **This is one factor, three ways.** Daily correlation with the investor portfolio is 0.81 — TRIAD is not a diversifier of it, it is a *replacement* bet that concentrated TMT momentum plus panic harvesting beats GARP-plus-cross-asset-trend. In a multi-year tech bear market or a momentum crash, all three sleeves degrade together; the 200-day regime scaler (which cut exposure through 2022 — the strategy lost far less than QQQ's −35%) is the only structural defence.
+- **NVDA was the top holding 31% of days.** Any TMT momentum strategy in 2016–2024 rides the great semiconductor run. The rule is fully systematic (no hindsight in the picks), but the *regime* was exceptionally kind to it; forward expectations should be haircut accordingly, exactly as with GARP.
+- Monthly top-3 concentration means single-name risk: one overnight gap in a 20%+ position is unhedged. The dip sleeves partially offset this only statistically, not structurally.
+
+---
+
+### 7. Tech-Tier Momentum Ladder (reference)
 **File:** `strategies/concentrated_momentum/main.py`  
 **Return:** +305% &nbsp;|&nbsp; **Sharpe:** 0.54 &nbsp;|&nbsp; **Max DD:** −34.3% &nbsp;|&nbsp; **Period:** 2016–2024
 
@@ -221,7 +284,12 @@ Concentrates monthly into the highest-momentum ETF from SOXX → QQQ → SPY. Us
 │   │   ├── fundamentals.py        SEC EDGAR GARP scoring (PEG, ROE, EV/EBITDA, FCF, margin, D/E)
 │   │   └── config.py
 │   │
-│   ├── dual_timescale_qqq/        DTQ — trend + dip-buying on QQQ (Sharpe 1.30, best in repo)
+│   ├── dual_timescale_qqq/        DTQ — trend + dip-buying on QQQ (Sharpe 1.30)
+│   │   ├── main.py
+│   │   ├── backtest.py
+│   │   └── config.py
+│   │
+│   ├── triad/                     TRIAD — tri-timescale TMT (Sharpe 1.44, +951% over 2016–2026 — best in repo)
 │   │   ├── main.py
 │   │   ├── backtest.py
 │   │   └── config.py
@@ -250,7 +318,8 @@ All commands from the project root.
 python -m strategies.combined_portfolio.main
 
 # Individual strategies
-python -m strategies.dual_timescale_qqq.main      # DTQ — best Sharpe (1.30)
+python -m strategies.triad.main                   # TRIAD — best Sharpe & return (1.44, +951%, runs to 2026-06)
+python -m strategies.dual_timescale_qqq.main      # DTQ — lowest drawdown per unit Sharpe (1.30)
 python -m strategies.equity_factor_rotation.main
 python -m strategies.spy_intraday_short.main      # reference only, 2020–2024
 python -m strategies.concentrated_momentum.main
