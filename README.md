@@ -10,6 +10,7 @@ Every strategy runs on the longest window its data sources allow:
 | TRIAD (Tri-Timescale TMT) | 2016–2026 | 2025+ held out-of-sample |
 | GARP Momentum | 2016–2024 | EDGAR fundamentals reach back to ~2009 |
 | DTQ (Dual-Timescale QQQ) | 2016–2024 | Alpaca daily prices (~2016) |
+| BTREND (Broad Cross-Asset Trend) | 2016–2026 | 2025+ is forward validation |
 | AFP, XAT, Tech-Tier (reference) | 2016–2024 | Alpaca daily prices (~2016) |
 | SIS (reference) | 2020–2024 | Alpaca 5-min intraday bars start in 2020 |
 
@@ -151,6 +152,24 @@ Sharpe is positive in every sub-period (1.13 / 0.84 / 2.22 across 2016–19, 202
 
 **Caveats:** DTQ earns less than half of QQQ's raw +362% — its value is the risk-adjusted number, not maximum wealth. It is kept standalone rather than blended into the portfolio because it would compound the same Nasdaq beta the TMT sleeves already carry.
 
+### BTREND — Broad Cross-Asset Trend — candidate diversifier
+**File:** `strategies/broad_trend/main.py`
+**Sharpe:** 0.33 &nbsp;|&nbsp; **Return:** +46% &nbsp;|&nbsp; **Max DD:** −7.8% &nbsp;|&nbsp; **Period:** 2016–2026 (2025+ forward validation)
+
+Per-asset **long/short time-series momentum** (Moskowitz-Ooi-Pedersen 2012) on 17 ETFs across five asset classes (US/intl equity, rates/credit, commodities, currencies, REITs). Each asset is judged on its own 3/6/12-month trend — long if positive, **short if negative** — sized by inverse vol with gross = 1, ±20% per-asset cap, and a 10% portfolio vol target. All parameters are untuned literature values shared with the rest of the repo; the strategy was built to answer a research question, not to maximise a backtest (see research log).
+
+Its job is not standalone return — it is to be the portfolio's first genuinely uncorrelated sleeve (correlation with the GARP/TRIAD alpha book: **+0.22**, vs +0.83 between GARP and TRIAD themselves). The crisis behaviour comes from the shorts:
+
+| Sub-period | Sharpe | Ann. return | Context |
+|---|---|---|---|
+| 2017–2019 | 0.09 | +1.7% | bull — nothing to do |
+| 2020 | 0.67 | +4.5% | COVID |
+| 2021–2022 | **0.95** | **+7.3%** | rate shock — short bonds/yen while stocks *and* bonds fell |
+| 2023–2024 | −0.77 | +1.5% | AI bull — whipsawed, roughly cash-like |
+| 2025–26H1 (forward) | **0.82** | +7.9% | untouched data; long credit/TIPS, short yen |
+
+Runs at 0.88 average gross / 0.34 net exposure, ~11 longs and ~6 shorts. **Status: validated candidate for the portfolio's 10% diversifier slot, not yet allocated** — the in-window portfolio improvement over plain T-bills is modest (equal Sharpe, better worst-year and 2022 drawdown) and shorting adds live mechanics (margin, borrow fees ~25–50 bps/yr on the short book, not yet modelled). Promotion follows the TRIAD process: prove it live first.
+
 ### Adaptive Factor Portfolio (AFP) — reference
 **File:** `strategies/equity_factor_rotation/main.py`
 **Sharpe:** 0.72 &nbsp;|&nbsp; **Return:** +102% &nbsp;|&nbsp; **Max DD:** −13.6% &nbsp;|&nbsp; **Period:** 2016–2024
@@ -214,9 +233,26 @@ With the constant-mix fix in place, every weight configuration was re-tested on 
 
 *\*Simplified excess-return convention for cross-row comparability; the headline 1.33 uses the standard `core/metrics.py` calculation.*
 
-T-bills beat XAT at every weight on every metric — including the two crisis episodes XAT existed to defend. 50/50 with no diversifier backtests highest, but both engines are one bet (long mega-cap TMT) evaluated on the most tech-friendly window in history; the 10% cash sleeve is the price of acknowledging that. If genuine crash convexity is wanted later, a broad managed-futures allocation is a better instrument than a 3-asset trend rotator.
+T-bills beat XAT at every weight on every metric — including the two crisis episodes XAT existed to defend. 50/50 with no diversifier backtests highest, but both engines are one bet (long mega-cap TMT) evaluated on the most tech-friendly window in history; the 10% cash sleeve is the price of acknowledging that.
 
 Earlier XAT research, preserved for the record: SPY had to be *in* the XAT universe (TLT+GLD-only left it in cash 35% of the time, portfolio Sharpe 1.08 → 0.80 over 2020–2024), which foreshadowed the problem — the sleeve only earned when it held the asset the alpha engines already owned.
+
+### The diversifier search, continued: BTREND (July 2026)
+
+XAT's replacement by T-bills left an open question: did cross-asset trend fail because trend-following doesn't work here, or because XAT's implementation (3 assets, long-only, winner-take-most rotation) couldn't express it? BTREND was built to answer that — per-asset TSMOM on 17 ETFs, all literature parameters, zero tuning — and tested in two variants:
+
+1. **Long-only, broad universe** (long up-trends, flat otherwise): standalone Sharpe 0.09, correlation +0.46 with the alpha book, and **dominated by T-bills in the diversifier slot** — same return, lower Sharpe, worse drawdown, worse in both crises. Verdict: breadth alone was *not* XAT's problem. A long-flat trend book holding SPY/QQQ/HYG most of the time is still equity beta, and in crises it's just slow cash.
+2. **Long/short** (short down-trends): standalone Sharpe 0.33 with max DD −7.8%, correlation with the alpha book **+0.22**, and — decisively — **positive in both crisis episodes**, including Sharpe 0.95 through 2021–2022 by being short bonds and yen while stocks and bonds fell together. This is the first diversifier tested that plain T-bills do *not* dominate:
+
+| Config (2016–2024) | Return | Sharpe | Max DD | 2022 DD | Worst year |
+|---|---|---|---|---|---|
+| 45/45/10 BIL (current) | +478% | 1.27 | −16.8% | −14.3% | −10.5% |
+| 45/45/10 BTREND L/S | +484% | 1.27 | −17.1% | **−13.0%** | **−9.6%** |
+| 40/40/10/10 BTREND+BIL | +394% | 1.27 | **−15.3%** | **−11.4%** | **−8.3%** |
+
+Results are unchanged at 20 bps costs (double the standard assumption). A quasi-forward test on 2025-01 → 2026-06 (fair because nothing was tuned on any window) delivered Sharpe 0.82.
+
+**Decision: BTREND is a validated candidate, not yet allocated.** The lesson of the whole diversifier search is that the crash protection of trend-following lives in the *shorts*, which no long-only implementation can capture — but the in-window gain over T-bills is modest, and shorting brings live mechanics (margin, ETF borrow costs) the paper system hasn't exercised. It gets promoted the way TRIAD did: run it, watch it, then allocate.
 
 ### Why SIS was removed
 
@@ -241,6 +277,7 @@ Expanding from 15 TMT names to 25 across five sectors (adding LLY, UNH, ABBV, V,
 │   ├── garp_momentum/             GARP — TMT quality-momentum; fundamentals.py = EDGAR scoring
 │   ├── triad/                     TRIAD — tri-timescale TMT (best Sharpe & return in repo)
 │   ├── dual_timescale_qqq/        DTQ — trend + dip-buying on QQQ (lowest drawdown)
+│   ├── broad_trend/               BTREND — long/short cross-asset TSMOM (candidate diversifier)
 │   ├── equity_factor_rotation/    AFP — factor rotation; engine also powers XAT
 │   ├── spy_intraday_short/        SIS — reference (2020–2024, intraday data constraint)
 │   └── concentrated_momentum/     Tech-Tier — reference (high return, high risk)
@@ -277,6 +314,7 @@ python -m strategies.combined_portfolio.main
 python -m strategies.garp_momentum.main
 python -m strategies.triad.main                   # runs to 2026-06 (out-of-sample window)
 python -m strategies.dual_timescale_qqq.main
+python -m strategies.broad_trend.main             # runs to 2026-06 (forward-validation window)
 python -m strategies.equity_factor_rotation.main
 python -m strategies.spy_intraday_short.main      # reference, 2020–2024
 python -m strategies.concentrated_momentum.main
