@@ -1,0 +1,138 @@
+{
+  "utc_time": "2026-07-07T19:25:36.693210+00:00",
+  "equity": 100000.0,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100000.0,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-07-07",
+    "weights": {
+      "AMD": 0.04672,
+      "AVGO": 0.04154,
+      "GOOGL": 0.06906,
+      "INTC": 0.05724,
+      "QCOM": 0.04974,
+      "SPY": 0.09471,
+      "TLT": 0.09606
+    },
+    "prices": {
+      "AAPL": 312.21,
+      "ADBE": 223.29,
+      "AMD": 510.0,
+      "AMZN": 245.89,
+      "AVGO": 367.5751,
+      "CRM": 169.725,
+      "GLD": 376.34,
+      "GOOGL": 368.45,
+      "INTC": 108.73,
+      "META": 617.025,
+      "MSFT": 390.3999,
+      "NFLX": 76.4952,
+      "NVDA": 195.985,
+      "ORCL": 140.38,
+      "QCOM": 180.585,
+      "QQQ": 707.4,
+      "SPY": 747.04,
+      "TLT": 84.645,
+      "TSLA": 402.78
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-06-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.108,
+          "AMD": 0.0521,
+          "AVGO": 0.1039,
+          "QCOM": 0.1243,
+          "INTC": 0.0159
+        }
+      },
+      "triad": {
+        "leaders": {
+          "GOOGL": 0.1078,
+          "AMD": 0.1078,
+          "INTC": 0.1078
+        },
+        "stock_dips": {
+          "INTC": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "xat": {
+        "SPY": 0.4735,
+        "TLT": 0.4803
+      },
+      "gross": 0.4551
+    }
+  },
+  "positions_before": {},
+  "orders": [
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "qty": 9,
+      "ref_price": 510.0,
+      "est_value": 4590.0,
+      "target_qty": 9,
+      "order_id": "72845dfa-d8b9-4f15-a22e-782e5750c705"
+    },
+    {
+      "symbol": "AVGO",
+      "side": "buy",
+      "qty": 11,
+      "ref_price": 367.58,
+      "est_value": 4043.33,
+      "target_qty": 11,
+      "order_id": "59c90820-459b-4ae2-b6cb-857c5fce0684"
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "buy",
+      "qty": 18,
+      "ref_price": 368.45,
+      "est_value": 6632.1,
+      "target_qty": 18,
+      "order_id": "7181b8fa-c321-4b73-ab84-53a040d53a67"
+    },
+    {
+      "symbol": "INTC",
+      "side": "buy",
+      "qty": 52,
+      "ref_price": 108.73,
+      "est_value": 5653.96,
+      "target_qty": 52,
+      "order_id": "49eabb08-c8a8-4ff6-a09a-1218e8335f5e"
+    },
+    {
+      "symbol": "QCOM",
+      "side": "buy",
+      "qty": 27,
+      "ref_price": 180.59,
+      "est_value": 4875.8,
+      "target_qty": 27,
+      "order_id": "b29e34cc-9a36-4dce-a5a7-be3074026068"
+    },
+    {
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 12,
+      "ref_price": 747.04,
+      "est_value": 8964.48,
+      "target_qty": 12,
+      "order_id": "5d4bbd61-10c9-4f19-8ba3-e9403c93064f"
+    },
+    {
+      "symbol": "TLT",
+      "side": "buy",
+      "qty": 113,
+      "ref_price": 84.64,
+      "est_value": 9564.89,
+      "target_qty": 113,
+      "order_id": "14b32228-0908-4523-a035-81d15ef8c38c"
+    }
+  ],
+  "executed": true
+}

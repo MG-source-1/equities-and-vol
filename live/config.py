@@ -1,8 +1,9 @@
 """
 Live paper-trading configuration.
 
-The live system trades the investor portfolio (40% GARP · 40% TRIAD · 20% XAT)
-on the Alpaca PAPER account daily. It never touches a real-money endpoint.
+The live system trades the investor portfolio (45% GARP · 45% TRIAD ·
+10% T-bills) on the Alpaca PAPER account daily. It never touches a
+real-money endpoint.
 """
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -15,7 +16,7 @@ PAPER_BASE_URL = "https://paper-api.alpaca.markets"
 
 # ── Sleeve allocation (kept in sync with the backtested portfolio) ─
 from strategies.combined_portfolio.config import (   # noqa: E402
-    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_XAT, XAT_TICKERS,
+    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_TBILL, TBILL_TICKER,
 )
 
 # ── Signal data window ────────────────────────────────────────

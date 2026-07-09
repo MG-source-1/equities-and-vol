@@ -1,0 +1,715 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[rebalance] Paper account equity: $100,000.00
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-07  (gross exposure 0.46)
+  BUY      9 AMD   @~$510.00    ($4,590)
+  BUY     11 AVGO  @~$367.58    ($4,043)
+  BUY     18 GOOGL @~$368.45    ($6,632)
+  BUY     52 INTC  @~$108.73    ($5,654)
+  BUY     27 QCOM  @~$180.59    ($4,876)
+  BUY     12 SPY   @~$747.04    ($8,964)
+  BUY    113 TLT   @~$84.64     ($9,565)
+  → submitted MOC buy 9 AMD
+  → submitted MOC buy 11 AVGO
+  → submitted MOC buy 18 GOOGL
+  → submitted MOC buy 52 INTC
+  → submitted MOC buy 27 QCOM
+  → submitted MOC buy 12 SPY
+  → submitted MOC buy 113 TLT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-07.json
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[rebalance] Market closed (next open 2026-07-08T09:30:00-04:00) — exiting.
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[reconcile] Equity $99,988.43 (cash $84,793.68) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 7 intended orders from 2026-07-07 …
+  buy  AMD   intended     9 filled       0  PARTIAL/MISSING  
+  buy  AVGO  intended    11 filled       6  PARTIAL/MISSING  fill $370.62 (+83 bps vs signal price)
+  buy  GOOGL intended    18 filled      18  OK  fill $367.06 (-38 bps vs signal price)
+  buy  INTC  intended    52 filled      13  PARTIAL/MISSING  fill $110.41 (+155 bps vs signal price)
+  buy  QCOM  intended    27 filled      27  OK  fill $182.97 (+132 bps vs signal price)
+  buy  SPY   intended    12 filled       0  PARTIAL/MISSING  
+  buy  TLT   intended   113 filled       0  PARTIAL/MISSING  
+[reconcile] WARNING: 5 order(s) need attention.
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[rebalance] Paper account equity: $100,017.70
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-08  (gross exposure 0.46)
+  BUY      9 AMD   @~$515.77    ($4,642)
+  BUY      4 AVGO  @~$391.48    ($1,566)
+  BUY      8 GOOGL @~$359.00    ($2,872)
+  BUY     18 INTC  @~$107.97    ($1,943)
+  BUY     12 SPY   @~$745.03    ($8,940)
+  BUY    113 TLT   @~$84.42     ($9,539)
+  → submitted MOC buy 9 AMD
+  → submitted MOC buy 4 AVGO
+  → submitted MOC buy 8 GOOGL
+  → submitted MOC buy 18 INTC
+  → submitted MOC buy 12 SPY
+  → submitted MOC buy 113 TLT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-08.json
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 24, in <module>
+    from live import broker
+  File "/Users/markgarcera/trading/backtester/live/broker.py", line 15, in <module>
+    from core.alpaca import get_headers
+  File "/Users/markgarcera/trading/backtester/live/../core/alpaca.py", line 18, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[rebalance] Market closed (next open 2026-07-09T09:30:00-04:00) — exiting.
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/__init__.py", line 28, in <module>
+    from pandas.compat.pyarrow import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 12, in <module>
+    import pyarrow as pa
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 17, in <module>
+    import pandas as pd
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+AttributeError: _ARRAY_API not found
+[reconcile] Equity $100,089.33 (cash $83,345.79) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-07-08 …
+  buy  AMD   intended     9 filled       0  PARTIAL/MISSING  
+  buy  AVGO  intended     4 filled       6  OK  fill $370.62 (-533 bps vs signal price)
+  buy  GOOGL intended     8 filled      22  OK  fill $361.97 (+83 bps vs signal price)
+  buy  INTC  intended    18 filled      13  PARTIAL/MISSING  fill $110.41 (+226 bps vs signal price)
+  buy  SPY   intended    12 filled       0  PARTIAL/MISSING  
+  buy  TLT   intended   113 filled       0  PARTIAL/MISSING  
+[reconcile] WARNING: 4 order(s) need attention.

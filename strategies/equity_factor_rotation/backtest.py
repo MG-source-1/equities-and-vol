@@ -136,7 +136,11 @@ def _compute_weights(
 ) -> pd.DataFrame:
     """Combines inverse-vol RP + rank tilt + correlation regime into final weights."""
     returns   = prices.pct_change()
-    daily_vol = (returns.rolling(vol_lookback).std() * np.sqrt(252)).clip(lower=0.02)
+    # Weights at index t are entered at the close of t-1 (they earn the
+    # return ending at t), so every input must be lagged one day: vol
+    # estimated through t-1 sizes the position entered at t-1's close.
+    daily_vol = (returns.rolling(vol_lookback).std() * np.sqrt(252)) \
+        .clip(lower=0.02).shift(1)
     daily_vol = daily_vol.replace(0, np.nan)
 
     inv_vol = 1.0 / daily_vol
@@ -151,11 +155,14 @@ def _compute_weights(
     row_sums2  = normalized.sum(axis=1).replace(0, np.nan)
     normalized = normalized.div(row_sums2, axis=0).fillna(0)
 
-    # Vol targeting (base)
-    port_ret = (normalized.shift(1) * returns).sum(axis=1)
+    # Vol targeting (base) — realized portfolio return at t is
+    # normalized[t] * returns[t] (weight entered at t-1's close earns the
+    # return ending at t); the scale is then lagged a day so the estimate
+    # only uses returns known at entry.
+    port_ret = (normalized * returns).sum(axis=1)
     port_vol = (port_ret.rolling(vol_lookback).std() * np.sqrt(252)) \
                .replace(0, np.nan).fillna(target_vol)
-    vol_scale = (target_vol / port_vol).clip(upper=max_leverage)
+    vol_scale = (target_vol / port_vol).clip(upper=max_leverage).shift(1).fillna(1.0)
 
     # Apply correlation regime scale on top of vol targeting
     effective_scale = vol_scale * corr_scale.reindex(prices.index).ffill().fillna(1.0)

@@ -62,8 +62,11 @@ def compute_leader_weights(
         mask = (closes.index > date) & (closes.index <= rebal[i + 1])
         weights.loc[mask, top] = 1.0 / len(top)
 
-    # Sleeve-level vol targeting on the unscaled sleeve return
-    sleeve_ret = (weights.shift(1) * rets).sum(axis=1)
+    # Sleeve-level vol targeting on the unscaled sleeve return.
+    # weights[t] is entered at t-1's close and earns the return ending at t,
+    # so the realized sleeve return at t is weights[t] * rets[t]; the scale
+    # is lagged a day so it only uses returns known at entry.
+    sleeve_ret = (weights * rets).sum(axis=1)
     realized   = sleeve_ret.rolling(vol_lookback).std() * np.sqrt(252)
     vol_scale  = (target_vol / realized).clip(upper=1.0).shift(1).fillna(0.0)
 
@@ -186,14 +189,15 @@ def run_triad_backtest(
         cfg.IDX_ENTRY_IBS, cfg.IDX_EXIT_IBS, cfg.IDX_MAX_HOLD,
         cfg.SMA_WINDOW, cfg.IDX_TARGET_VOL, cfg.VOL_LOOKBACK, cfg.IDX_MAX_SIZE)
 
-    # Scale sleeves to their capital split; weight held over t → t+1
-    stock_w = (cfg.LEADERS_WEIGHT * w_lead + cfg.STOCK_DIP_WEIGHT * w_sdip) \
-        .shift(1).fillna(0.0)
-    index_w = (cfg.INDEX_DIP_WEIGHT * w_idip).reindex(calendar).shift(1).fillna(0.0)
-
-    # Sleeve components kept for attribution
-    lead_w_held = (cfg.LEADERS_WEIGHT * w_lead).shift(1).fillna(0.0)
+    # Scale sleeves to their capital split. Dip weights are signal-day rows
+    # (pos[t] = signal at t's close), so they shift one day to earn t → t+1.
+    # Leader weights already carry that lag in their month-end mask
+    # (populated from rebal date + 1), so shifting them again would enter a
+    # day late — one day after the close the live system trades at.
+    lead_w_held = (cfg.LEADERS_WEIGHT * w_lead).fillna(0.0)
     sdip_w_held = (cfg.STOCK_DIP_WEIGHT * w_sdip).shift(1).fillna(0.0)
+    stock_w = lead_w_held + sdip_w_held
+    index_w = (cfg.INDEX_DIP_WEIGHT * w_idip).reindex(calendar).shift(1).fillna(0.0)
 
     start_day = calendar[cfg.SMA_WINDOW + 1]
 

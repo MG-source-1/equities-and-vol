@@ -17,13 +17,17 @@ from config import START_DATE, END_DATE, INITIAL_CAPITAL, OUTPUT_DIR, DATA_CACHE
 # risk. A full swap to TRIAD backtests better still, but retiring a proven
 # fundamentals engine on one in-sample comparison would be overfitting the
 # research process itself.
-WEIGHT_GARP  = 0.40   # Alpha engine 1 — fundamental quality (EDGAR) + momentum
-WEIGHT_TRIAD = 0.40   # Alpha engine 2 — tri-timescale momentum + dip harvesting
-WEIGHT_XAT   = 0.20   # Cross-asset trend — regime diversifier
+#
+# 2026-07 revision 2: the 20% XAT sleeve replaced with 10% T-bills (BIL),
+# freeing 5% each to GARP/TRIAD. Under the daily-rebalanced constant mix,
+# T-bills strictly dominated XAT at every weight tested — more return, equal
+# or better Sharpe, smaller drawdown, including in the COVID and 2022
+# crisis episodes XAT was meant to defend. XAT is retained as a reference
+# strategy (equity_factor_rotation engine on SPY/TLT/GLD — see README).
+# The T-bill sleeve is held as an actual BIL position live, matching the
+# backtest's assumption that the sleeve earns the BIL return.
+WEIGHT_GARP  = 0.45   # Alpha engine 1 — fundamental quality (EDGAR) + momentum
+WEIGHT_TRIAD = 0.45   # Alpha engine 2 — tri-timescale momentum + dip harvesting
+WEIGHT_TBILL = 0.10   # T-bills (BIL) — dry powder; both alpha engines share one TMT regime bet
 
-# ── Cross-asset rotation universe ─────────────────────────────
-XAT_TICKERS = {
-    "SPY": "SPDR S&P 500 ETF",
-    "TLT": "iShares 20+ Year Treasury Bond",
-    "GLD": "SPDR Gold Shares",
-}
+TBILL_TICKER = "BIL"  # SPDR Bloomberg 1-3 Month T-Bill ETF

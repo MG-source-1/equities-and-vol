@@ -4,10 +4,11 @@ Live target-weight computation for the investor portfolio.
 Reuses the SAME weight functions the backtests use — the live target is
 "the last row of the backtest run through today", not a reimplementation:
 
-  GARP  — strategies.garp_momentum.backtest._compute_monthly_weights
-          + the daily regime/vol-targeting logic from run_garp_backtest
-  TRIAD — strategies.triad.backtest.compute_*_weights (unshifted rows)
-  XAT   — strategies.equity_factor_rotation.backtest.get_factor_weights
+  GARP   — strategies.garp_momentum.backtest._compute_monthly_weights
+           + the daily regime/vol-targeting logic from run_garp_backtest
+  TRIAD  — strategies.triad.backtest.compute_*_weights (unshifted rows)
+  T-bill — a fixed 10% BIL position (the backtest credits the sleeve the
+           BIL daily return; holding the ETF replicates it exactly)
 
 Timing convention: every function here answers "what should I hold from
 TODAY'S CLOSE onward", i.e. the weight the backtest would apply to
@@ -28,7 +29,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from core.alpaca import fetch_bars
 from live.config import (
     DATA_YEARS, DATA_CACHE_DIR, EDGAR_REFRESH_DAYS,
-    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_XAT, XAT_TICKERS,
+    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_TBILL, TBILL_TICKER,
 )
 
 from strategies.garp_momentum import config as garp_cfg
@@ -40,11 +41,9 @@ from strategies.triad.backtest import (
     compute_leader_weights, compute_stock_dip_weights, compute_index_dip_weights,
 )
 
-from strategies.equity_factor_rotation.backtest import get_factor_weights
-from strategies.equity_factor_rotation import config as afp_cfg
-
-
-ALL_SYMBOLS = sorted(set(garp_cfg.TICKERS) | {triad_cfg.INDEX_TICKER} | set(XAT_TICKERS))
+# SPY is needed for GARP's regime filter; BIL is the T-bill sleeve.
+ALL_SYMBOLS = sorted(set(garp_cfg.TICKERS)
+                     | {triad_cfg.INDEX_TICKER, "SPY", TBILL_TICKER})
 
 
 # ── Data ──────────────────────────────────────────────────────
@@ -175,22 +174,6 @@ def triad_target(bars: dict) -> tuple:
     return w, diag
 
 
-def xat_target(bars: dict) -> tuple:
-    """XAT sleeve target weights (SPY/TLT/GLD) as of today's close."""
-    px  = pd.DataFrame({t: bars[t]["close"] for t in XAT_TICKERS}).ffill()
-    ext = _extend_one_day(px)
-    weights = get_factor_weights(
-        ext,
-        afp_cfg.LOOKBACK_MONTHS, afp_cfg.RANK_TILT,
-        afp_cfg.CORR_WINDOW, afp_cfg.CORR_HIGH, afp_cfg.CORR_MID,
-        afp_cfg.TARGET_VOL, afp_cfg.MAX_WEIGHT, afp_cfg.MAX_LEVERAGE,
-        afp_cfg.VOL_LOOKBACK,
-    )
-    w = weights.iloc[-1].fillna(0)
-    diag = {t: round(v, 4) for t, v in w.items() if v > 0.001}
-    return w, diag
-
-
 # ── Combined portfolio target ─────────────────────────────────
 
 def compute_targets() -> dict:
@@ -205,12 +188,11 @@ def compute_targets() -> dict:
 
     g_w, g_diag = garp_target(bars)
     t_w, t_diag = triad_target(bars)
-    x_w, x_diag = xat_target(bars)
 
     combined = pd.Series(0.0, index=ALL_SYMBOLS)
     combined = combined.add(WEIGHT_GARP * g_w, fill_value=0.0)
     combined = combined.add(WEIGHT_TRIAD * t_w, fill_value=0.0)
-    combined = combined.add(WEIGHT_XAT * x_w, fill_value=0.0)
+    combined[TBILL_TICKER] = WEIGHT_TBILL   # fixed T-bill sleeve, held as BIL
     combined = combined[combined.abs() > 1e-6]
 
     prices = {s: float(bars[s]["close"].iloc[-1]) for s in ALL_SYMBOLS}
@@ -222,7 +204,7 @@ def compute_targets() -> dict:
         "diag": {
             "garp":  g_diag,
             "triad": t_diag,
-            "xat":   x_diag,
+            "tbill": WEIGHT_TBILL,
             "gross": round(float(combined.sum()), 4),
         },
     }
