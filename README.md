@@ -14,7 +14,7 @@ Every strategy runs on the longest window its data sources allow:
 | AFP, XAT, Tech-Tier (reference) | 2016–2024 | Alpaca daily prices (~2016) |
 | SIS (reference) | 2020–2024 | Alpaca 5-min intraday bars start in 2020 |
 
-**Timing convention, uniform across every engine:** signals are computed from data through today's close; positions are entered at that close (live: a market-on-close order using the ~15:19 SIP price) and earn from the next close-to-close return. Costs are 10 bps per unit of turnover; uninvested capital earns the T-bill (BIL) rate.
+**Timing convention, uniform across every engine:** signals are computed from data through today's close; positions are entered at that close (live: a market order at ~15:25 ET, ~30 minutes before the close) and earn from the next close-to-close return. Costs are 10 bps per unit of turnover; uninvested capital earns the T-bill (BIL) rate.
 
 ---
 
@@ -283,7 +283,7 @@ Expanding from 15 TMT names to 25 across five sectors (adding LLY, UNH, ABBV, V,
 │   └── concentrated_momentum/     Tech-Tier — reference (high return, high risk)
 │
 ├── live/                  Live paper trading of the investor portfolio (Alpaca paper API)
-│   ├── rebalance.py       Daily: compute targets → submit market-on-close orders
+│   ├── rebalance.py       Daily: compute targets → submit market orders (~15:25 ET)
 │   ├── reconcile.py       Morning: record equity, verify fills vs intentions
 │   ├── tearsheet.py       Monthly: live metrics vs backtest expectation
 │   ├── signals.py         Live targets via the same weight functions the backtests use
@@ -334,9 +334,9 @@ The investor portfolio runs live on the **Alpaca paper account** — the point i
 ```bash
 # 1. Daily rebalance — run between 15:20 and 15:40 ET on trading days.
 #    Computes today's targets with the SAME functions the backtests use,
-#    diffs against current positions, submits market-on-close orders.
+#    diffs against current positions, submits immediate market orders.
 python -m live.rebalance              # dry run (prints orders, submits nothing)
-python -m live.rebalance --execute    # submit MOC orders to the paper account
+python -m live.rebalance --execute    # submit market orders to the paper account
 python -m live.rebalance --force      # compute signals even when market closed (testing)
 
 # 2. Morning reconcile — run any time after the close.
@@ -367,8 +367,9 @@ Every daily decision is logged to `outputs/live/decisions/YYYY-MM-DD.json` with 
 
 | Deviation | Why | Expected impact |
 |---|---|---|
-| Signal prices are the ~15:19 ET snapshot, not the official close | Free Alpaca data plan rejects the most recent 15 minutes | Tiny signal noise; fills still happen at the actual closing auction via MOC |
-| Whole-share orders, trades under $200 skipped | Alpaca MOC orders don't support fractional shares | Weight rounding of a few basis points on a $100k account |
+| Signal prices are the ~15:19 ET snapshot, not the official close | Free Alpaca data plan rejects the most recent 15 minutes | Tiny signal noise |
+| Fills at ~15:25 ET market orders, not the closing auction | True MOC ("cls") orders mostly EXPIRE UNFILLED in Alpaca's paper simulator — observed July 2026, 15 of 18 expired; switched to immediate market orders | Execution ~30 min before the close the backtest assumes; a few bps of noise vs the auction price, but orders actually fill |
+| Whole-share orders, trades under $200 skipped | Fractional shares complicate qty-diff rebalancing | Weight rounding of a few basis points on a $100k account |
 | Drawdown stop applied at portfolio level (−15% / 21 days), not per sleeve | Sleeve-level stops require tracking virtual per-sleeve equity | Triggers on the same magnitude of loss, slightly different timing |
 | Idle cash earns 0 in the paper account | Backtest credits BIL on capital the engines leave uninvested (the 10% T-bill sleeve itself IS held as BIL, so it matches) | Live understates returns by ~the T-bill rate × average uninvested weight |
 

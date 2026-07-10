@@ -2,12 +2,14 @@
 Daily rebalance job — run between ~15:20 and 15:40 ET on trading days.
 
     python -m live.rebalance              # dry run: print orders, submit nothing
-    python -m live.rebalance --execute    # submit market-on-close orders
+    python -m live.rebalance --execute    # submit market orders (~15:25 ET)
     python -m live.rebalance --force      # compute even if market is closed (testing)
 
 Flow: check market clock → compute target weights (live/signals.py) →
 apply the portfolio-level drawdown guard → diff targets against current
-positions → submit whole-share MOC orders → write a decision log.
+positions → submit whole-share market orders → write a decision log.
+(Immediate market orders, not MOC — the paper simulator lets MOC orders
+expire unfilled; see live/broker.py.)
 
 Safe to schedule generously (e.g. hourly): it exits immediately unless the
 market is open, so a Singapore-time cron doesn't need to track US DST.
@@ -89,7 +91,7 @@ def build_orders(target_weights: dict, prices: dict,
             "est_value":  round(abs(delta) * price, 2),
             "target_qty": target_qty,
         })
-    # Sells first so MOC buy notional is covered by the same auction
+    # Sells first so their proceeds cover the buys
     return sorted(orders, key=lambda o: 0 if o["side"] == "sell" else 1)
 
 
@@ -135,7 +137,7 @@ def main():
             try:
                 resp = broker.submit_order(o["symbol"], o["qty"], o["side"])
                 submitted.append({**o, "order_id": resp.get("id")})
-                print(f"  → submitted MOC {o['side']} {o['qty']} {o['symbol']}")
+                print(f"  → submitted {o['side']} {o['qty']} {o['symbol']}")
             except Exception as e:
                 submitted.append({**o, "error": str(e)})
                 print(f"  → FAILED {o['symbol']}: {e}")

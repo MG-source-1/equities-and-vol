@@ -25,11 +25,11 @@ from strategies.combined_portfolio.config import (   # noqa: E402
 DATA_YEARS = 3
 
 # ── Execution ─────────────────────────────────────────────────
-# Orders are market-on-close (time_in_force="cls") so live fills match the
-# backtest's trade-at-the-close assumption. Alpaca's MOC submission cutoff
-# is 15:45 ET — run the rebalance job between ~15:20 and 15:40 ET.
+# Orders are immediate market orders submitted ~15:25 ET, approximating the
+# backtest's trade-at-the-close assumption to within ~30 minutes. True MOC
+# ("cls") orders were tried first and abandoned: Alpaca's paper simulator
+# lets them expire at the close mostly unfilled (see live/broker.py).
 MIN_TRADE_VALUE   = 200.0    # skip rebalance trades smaller than this ($)
-MOC_CUTOFF_ET     = "15:45"  # informational — enforced by Alpaca
 
 # ── Portfolio-level drawdown guard ────────────────────────────
 # The backtest applies drawdown stops per sleeve; live applies one guard at

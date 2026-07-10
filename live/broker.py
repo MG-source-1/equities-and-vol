@@ -57,10 +57,17 @@ def list_orders(status: str = "closed", after: str = None, limit: int = 500) -> 
 # ── Write endpoints (paper account only) ──────────────────────
 
 def submit_order(symbol: str, qty: int, side: str,
-                 time_in_force: str = "cls") -> dict:
+                 time_in_force: str = "day") -> dict:
     """
-    Whole-share market order. Default time_in_force "cls" = market-on-close,
-    matching the backtest's trade-at-the-close execution assumption.
+    Whole-share market order, filled immediately at the current price.
+
+    "day" (immediate market order) rather than "cls" (market-on-close):
+    Alpaca's PAPER simulator does not reliably execute MOC orders — they
+    mostly expire at the close unfilled or partially filled (observed
+    July 2026: 15 of 18 MOC orders expired). Since the rebalance job runs
+    ~15:25 ET, an immediate fill lands within ~30 minutes of the close the
+    backtest assumes — slightly noisier than the closing auction, but it
+    actually executes.
     """
     return _request("POST", "/v2/orders", body={
         "symbol":        symbol,
