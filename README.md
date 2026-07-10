@@ -290,6 +290,7 @@ Expanding from 15 TMT names to 25 across five sectors (adding LLY, UNH, ABBV, V,
 │   ├── broker.py          Paper trading API wrapper (urllib, no SDK)
 │   └── config.py          Paper endpoint, drawdown guard, execution settings
 │
+├── tests/                 No-lookahead property tests, golden numbers, timing checks
 ├── data_cache/            Cached downloads (gitignored) — Alpaca CSVs + EDGAR JSON
 ├── outputs/               Charts and CSVs
 │   └── live/              Live track record: equity curve, daily decision logs, state
@@ -377,10 +378,26 @@ EDGAR fundamentals refresh automatically when caches are older than 7 days, so n
 
 ---
 
+## Testing
+
+```bash
+python -m pytest tests/ -q        # ~6 seconds, runs entirely from data_cache/
+```
+
+Three layers, built after a July 2026 timing audit found bugs that had survived for months untested:
+
+- **`test_no_lookahead.py`** — two causality properties per engine. *Truncation*: removing the last 40 days must not change any surviving weight (catches dependence on the future). *Last-day perturbation*: bumping only the final day's prices must not move weights that were already decided (catches the subtler off-by-one where a position entered at yesterday's close is sized with today's data — the exact class of the XAT/AFP bug, which a truncation test provably cannot see).
+- **`test_golden_numbers.py`** — each engine must reproduce its documented results on the cached window. Price-only engines get tight tolerances; GARP gets a band, since its EDGAR inputs legitimately shift as new filings arrive.
+- **`test_execution_timing.py`** — synthetic-data check that a month-end decision enters at the decision close and earns from the next day: a crash engineered on day D+1 must hit the portfolio (no lag), while data after day D must never leak into P&L through D (no lookahead).
+
+The suite was validated by mutation: re-introducing each fixed July 2026 bug makes the corresponding test fail. Tests skip gracefully when `data_cache/` is absent (fresh clone); run any strategy once to populate it.
+
+---
+
 ## Setup
 
 ```bash
-pip install pandas numpy matplotlib markdown
+pip install pandas numpy matplotlib markdown pytest
 ```
 
 **Alpaca credentials** (required for all strategies):
@@ -416,5 +433,4 @@ First run downloads and caches all data; subsequent runs load from `data_cache/`
 
 ---
 
-*Mark Garcera · Aspiring Trader*
-*Academic grounding: Gao et al. (2018, JF) · Lou et al. (2019, JFE) · Moskowitz et al. (2012, JF)*
+*Mark Garcera · NUS CS · CFA Level 1 Passed (and going further)· Aspiring Junior Trader*
