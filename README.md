@@ -333,16 +333,17 @@ The investor portfolio runs live on the **Alpaca paper account** — the point i
 ### The three jobs
 
 ```bash
-# 1. Daily rebalance — run between 15:20 and 15:40 ET on trading days.
+# 1. Daily rebalance — only trades in the final 45 minutes of the session.
 #    Computes today's targets with the SAME functions the backtests use,
 #    diffs against current positions, submits immediate market orders.
+#    Dry runs never touch live state and log to a separate .dryrun.json.
 python -m live.rebalance              # dry run (prints orders, submits nothing)
 python -m live.rebalance --execute    # submit market orders to the paper account
 python -m live.rebalance --force      # compute signals even when market closed (testing)
 
 # 2. Morning reconcile — run any time after the close.
-#    Appends equity to outputs/live/equity_curve.csv and checks yesterday's
-#    intended orders against actual fills (slippage in bps).
+#    Appends equity to outputs/live/equity_curve.csv and checks each of
+#    yesterday's orders against its own fill by order_id (slippage in bps).
 python -m live.reconcile
 
 # 3. Tearsheet — run monthly (needs ≥5 live days).
@@ -353,7 +354,7 @@ python -m live.tearsheet
 
 ### Scheduling from Singapore
 
-The rebalance job checks the Alpaca market clock and exits instantly when the market is closed, so the cron doesn't need to track US daylight saving — schedule **both** possible SGT times and let the wrong one no-op:
+The rebalance job exits instantly unless the market is open **and within 45 minutes of the close**, so the cron doesn't need to track US daylight saving — schedule **both** possible SGT times and let the wrong one no-op (the market-open check alone isn't enough: in EST the early entry lands mid-session at 14:25 ET):
 
 ```cron
 # US market close is 04:00 SGT (EDT) or 05:00 SGT (EST).
