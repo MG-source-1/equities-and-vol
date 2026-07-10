@@ -44,7 +44,8 @@ def append_equity_curve() -> None:
 def latest_decision() -> dict:
     if not os.path.isdir(DECISIONS_DIR):
         return {}
-    files = sorted(f for f in os.listdir(DECISIONS_DIR) if f.endswith(".json"))
+    files = sorted(f for f in os.listdir(DECISIONS_DIR)
+                   if f.endswith(".json") and not f.endswith(".dryrun.json"))
     if not files:
         return {}
     with open(os.path.join(DECISIONS_DIR, files[-1])) as f:
@@ -57,22 +58,26 @@ def check_fills() -> None:
         print("[reconcile] No executed decision to reconcile.")
         return
 
+    # Match each intended order to ITS OWN fill via order_id (recorded in
+    # the decision log at submission). Matching by (symbol, side) over a
+    # multi-day window aggregates unrelated orders and can mark a missed
+    # fill "OK" because an earlier day's order filled.
     after  = (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()
     closed = broker.list_orders(status="closed", after=after)
-    fills  = {}
-    for o in closed:
-        if o.get("filled_at") and float(o.get("filled_qty") or 0) > 0:
-            key = (o["symbol"], o["side"])
-            fills.setdefault(key, {"qty": 0.0, "avg_px": float(o["filled_avg_price"] or 0)})
-            fills[key]["qty"] += float(o["filled_qty"])
+    by_id  = {o["id"]: o for o in closed if o.get("id")}
 
     print(f"[reconcile] Checking {len(decision['orders'])} intended orders "
           f"from {decision['utc_time'][:10]} …")
     problems = 0
     for o in decision["orders"]:
-        key    = (o["symbol"], o["side"])
-        filled = fills.get(key, {"qty": 0.0, "avg_px": 0.0})
-        status = "OK" if filled["qty"] >= o["qty"] else "PARTIAL/MISSING"
+        rec = by_id.get(o.get("order_id"))
+        if rec is None:
+            filled = {"qty": 0.0, "avg_px": 0.0}
+            status = "NO ORDER FOUND" if o.get("order_id") else "SUBMIT FAILED"
+        else:
+            filled = {"qty":    float(rec.get("filled_qty") or 0),
+                      "avg_px": float(rec.get("filled_avg_price") or 0)}
+            status = "OK" if filled["qty"] >= o["qty"] else "PARTIAL/MISSING"
         if status != "OK":
             problems += 1
         slip = ""

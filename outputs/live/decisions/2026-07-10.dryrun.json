@@ -1,0 +1,116 @@
+{
+  "utc_time": "2026-07-10T15:46:25.096833+00:00",
+  "equity": 99998.31,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-07-10",
+    "weights": {
+      "AMD": 0.05724,
+      "AVGO": 0.05051,
+      "BIL": 0.68776,
+      "GOOGL": 0.0844,
+      "INTC": 0.03963,
+      "QCOM": 0.06047
+    },
+    "prices": {
+      "AAPL": 313.18,
+      "ADBE": 224.77,
+      "AMD": 548.61,
+      "AMZN": 245.935,
+      "AVGO": 399.495,
+      "BIL": 91.5,
+      "CRM": 162.91,
+      "GOOGL": 353.605,
+      "INTC": 108.54,
+      "META": 670.04,
+      "MSFT": 383.63,
+      "NFLX": 73.024,
+      "NVDA": 208.15,
+      "ORCL": 140.5016,
+      "QCOM": 187.9,
+      "QQQ": 721.29,
+      "SPY": 751.77,
+      "TSLA": 407.05
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-06-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.1167,
+          "AMD": 0.0563,
+          "AVGO": 0.1122,
+          "QCOM": 0.1344,
+          "INTC": 0.0172
+        }
+      },
+      "triad": {
+        "leaders": {
+          "GOOGL": 0.1182,
+          "AMD": 0.1182,
+          "INTC": 0.1182
+        },
+        "stock_dips": {},
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.2922,
+      "bil_sweep": 0.6878,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AMD": 10.0,
+    "AVGO": 6.0,
+    "BIL": 92.0,
+    "GOOGL": 22.0,
+    "INTC": 20.0,
+    "QCOM": 28.0
+  },
+  "orders": [
+    {
+      "symbol": "AVGO",
+      "side": "buy",
+      "qty": 6,
+      "ref_price": 399.5,
+      "est_value": 2396.97,
+      "target_qty": 12
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 659,
+      "ref_price": 91.5,
+      "est_value": 60298.5,
+      "target_qty": 751
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "buy",
+      "qty": 1,
+      "ref_price": 353.61,
+      "est_value": 353.61,
+      "target_qty": 23
+    },
+    {
+      "symbol": "INTC",
+      "side": "buy",
+      "qty": 16,
+      "ref_price": 108.54,
+      "est_value": 1736.64,
+      "target_qty": 36
+    },
+    {
+      "symbol": "QCOM",
+      "side": "buy",
+      "qty": 4,
+      "ref_price": 187.9,
+      "est_value": 751.6,
+      "target_qty": 32
+    }
+  ],
+  "executed": false
+}

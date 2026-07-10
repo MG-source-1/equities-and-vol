@@ -27,6 +27,7 @@ from live import broker
 from live.config import (
     LIVE_DIR, DECISIONS_DIR, STATE_PATH,
     MIN_TRADE_VALUE, DD_STOP, DD_COOLDOWN_DAYS,
+    TBILL_TICKER, CASH_BUFFER,
 )
 from live.signals import compute_targets
 
@@ -108,6 +109,19 @@ def main():
         print(f"[rebalance] Market closed (next open {clock['next_open']}) — exiting.")
         return
 
+    # Only trade in the last ~45 minutes of the session. The market being
+    # open is not enough: in US winter (EST) the 03:25 SGT cron entry lands
+    # at 14:25 ET — mid-session, 95 minutes early — and would trade on
+    # stale prices, then trade AGAIN at the 04:25 entry. The DST-pair cron
+    # design only works with this guard.
+    if clock["is_open"] and not args.force:
+        next_close = datetime.fromisoformat(clock["next_close"])
+        mins_left  = (next_close - datetime.now(timezone.utc)).total_seconds() / 60
+        if mins_left > 45:
+            print(f"[rebalance] Market open but {mins_left:.0f} min to the close "
+                  f"— too early, exiting (trades in the final 45 min only).")
+            return
+
     account = broker.get_account()
     equity  = float(account["equity"])
     print(f"[rebalance] Paper account equity: ${equity:,.2f}")
@@ -117,9 +131,15 @@ def main():
     print(f"[rebalance] Signals as of {targets['as_of']}  "
           f"(gross exposure {targets['diag']['gross']:.2f})")
 
+    # Dry runs work on a COPY of the state and never save it: otherwise a
+    # --force test run would advance the drawdown-stop cooldown, move the
+    # equity peak, and overwrite the executed run's decision log.
     state   = load_state()
-    flatten = apply_drawdown_guard(state, equity)
-    weights = {} if flatten else targets["weights"]
+    guarded = state if args.execute else dict(state)
+    flatten = apply_drawdown_guard(guarded, equity)
+    # A triggered stop parks in T-bills, not idle cash — the backtest's
+    # drawdown stop earns the T-bill rate during its 21-day cooldown.
+    weights = {TBILL_TICKER: 1.0 - CASH_BUFFER} if flatten else targets["weights"]
 
     positions = broker.get_positions()
     orders    = build_orders(weights, targets["prices"], positions, equity)
@@ -145,26 +165,30 @@ def main():
         print("[rebalance] DRY RUN — nothing submitted (use --execute to trade).")
 
     # ── Decision log: every input to today's decision, replayable later ─
+    # Dry runs get their own file so they can never clobber the audit
+    # trail of what was actually traded.
     os.makedirs(DECISIONS_DIR, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     log = {
         "utc_time":      datetime.now(timezone.utc).isoformat(),
         "equity":        equity,
         "dd_guard":      {"flattened": flatten,
-                          "peak_equity": state["peak_equity"],
-                          "stop_active": state["dd_stop_active"]},
+                          "peak_equity": guarded["peak_equity"],
+                          "stop_active": guarded["dd_stop_active"]},
         "targets":       targets,
         "positions_before": positions,
         "orders":        submitted if args.execute else orders,
         "executed":      bool(args.execute),
     }
-    path = os.path.join(DECISIONS_DIR, f"{stamp}.json")
+    name = f"{stamp}.json" if args.execute else f"{stamp}.dryrun.json"
+    path = os.path.join(DECISIONS_DIR, name)
     with open(path, "w") as f:
         json.dump(log, f, indent=2, default=str)
     print(f"[rebalance] Decision log → {path}")
 
-    state["last_rebalance"] = stamp
-    save_state(state)
+    if args.execute:
+        guarded["last_rebalance"] = stamp
+        save_state(guarded)
 
 
 if __name__ == "__main__":

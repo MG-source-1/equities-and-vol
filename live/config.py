@@ -31,6 +31,12 @@ DATA_YEARS = 3
 # lets them expire at the close mostly unfilled (see live/broker.py).
 MIN_TRADE_VALUE   = 200.0    # skip rebalance trades smaller than this ($)
 
+# Cash sweep: all capital not consumed by the engines' target weights is
+# held as BIL (so live earns the T-bill rate the backtests credit on
+# uninvested capital), minus this buffer kept as actual cash so buy orders
+# never bounce on same-day BIL sales or whole-share rounding.
+CASH_BUFFER       = 0.02
+
 # ── Portfolio-level drawdown guard ────────────────────────────
 # The backtest applies drawdown stops per sleeve; live applies one guard at
 # the account level (a documented deviation — see README). Matches GARP's

@@ -7,8 +7,13 @@ Reuses the SAME weight functions the backtests use — the live target is
   GARP   — strategies.garp_momentum.backtest._compute_monthly_weights
            + the daily regime/vol-targeting logic from run_garp_backtest
   TRIAD  — strategies.triad.backtest.compute_*_weights (unshifted rows)
-  T-bill — a fixed 10% BIL position (the backtest credits the sleeve the
-           BIL daily return; holding the ETF replicates it exactly)
+  T-bill — BIL absorbs ALL capital the engines leave uninvested (minus a
+           small cash buffer), not just the structural 10% sleeve. The
+           backtests credit the T-bill rate on every uninvested dollar, so
+           the live account must actually hold BIL with it: when the risk
+           overlays cut exposure to 40%, ~58% of the account sits in BIL,
+           not idle cash. The 10% sleeve is simply the sweep's floor when
+           the engines are fully deployed.
 
 Timing convention: every function here answers "what should I hold from
 TODAY'S CLOSE onward", i.e. the weight the backtest would apply to
@@ -29,7 +34,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from core.alpaca import fetch_bars
 from live.config import (
     DATA_YEARS, DATA_CACHE_DIR, EDGAR_REFRESH_DAYS,
-    WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_TBILL, TBILL_TICKER,
+    WEIGHT_GARP, WEIGHT_TRIAD, TBILL_TICKER, CASH_BUFFER,
 )
 
 from strategies.garp_momentum import config as garp_cfg
@@ -192,7 +197,10 @@ def compute_targets() -> dict:
     combined = pd.Series(0.0, index=ALL_SYMBOLS)
     combined = combined.add(WEIGHT_GARP * g_w, fill_value=0.0)
     combined = combined.add(WEIGHT_TRIAD * t_w, fill_value=0.0)
-    combined[TBILL_TICKER] = WEIGHT_TBILL   # fixed T-bill sleeve, held as BIL
+    # Cash sweep: everything the engines don't want goes to BIL (T-bills),
+    # matching the backtests' T-bill credit on uninvested capital.
+    engine_gross = float(combined.sum())
+    combined[TBILL_TICKER] = max(0.0, 1.0 - CASH_BUFFER - engine_gross)
     combined = combined[combined.abs() > 1e-6]
 
     prices = {s: float(bars[s]["close"].iloc[-1]) for s in ALL_SYMBOLS}
@@ -202,9 +210,10 @@ def compute_targets() -> dict:
         "weights": {s: round(float(v), 5) for s, v in combined.items()},
         "prices":  prices,
         "diag": {
-            "garp":  g_diag,
-            "triad": t_diag,
-            "tbill": WEIGHT_TBILL,
-            "gross": round(float(combined.sum()), 4),
+            "garp":         g_diag,
+            "triad":        t_diag,
+            "engine_gross": round(engine_gross, 4),
+            "bil_sweep":    round(float(combined.get(TBILL_TICKER, 0.0)), 4),
+            "gross":        round(float(combined.sum()), 4),
         },
     }
