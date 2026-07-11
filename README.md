@@ -10,6 +10,7 @@ Every strategy runs on the longest window its data sources allow:
 | TRIAD (Tri-Timescale TMT) | 2016–2026 | 2025+ held out-of-sample |
 | GARP Momentum | 2016–2024 | EDGAR fundamentals reach back to ~2009 |
 | DTQ (Dual-Timescale QQQ) | 2016–2024 | Alpaca daily prices (~2016) |
+| VRP (short vol, options layer) | 2016–2026 | CBOE VIX history (synthetic option pricing) |
 | BTREND (Broad Cross-Asset Trend) | 2016–2026 | 2025+ is forward validation |
 | AFP, XAT, Tech-Tier (reference) | 2016–2024 | Alpaca daily prices (~2016) |
 | SIS (reference) | 2020–2024 | Alpaca 5-min intraday bars start in 2020 |
@@ -122,6 +123,26 @@ The in-sample Sharpe of 1.49 degraded to 1.38 out-of-sample — a modest haircut
 - **This is one factor, three ways.** Daily correlation with GARP is 0.83 — TRIAD diversifies *model* risk, not *market* risk, which is exactly how the portfolio uses it. In a multi-year tech bear, all three sleeves degrade together; the 200-day regime scaler is the only structural defence.
 - **NVDA was the top holding 31% of in-sample days.** The rule is fully systematic, but the regime was exceptionally kind to TMT momentum; forward expectations should be haircut accordingly.
 - **Monthly top-3 concentration means single-name risk** — one overnight gap in a 20%+ position is unhedged; the dip sleeves offset this statistically, not structurally.
+
+---
+
+## Options / Volatility Layer
+
+### VRP — Short Volatility Risk Premium
+**Files:** `core/options.py` (pricing) · `strategies/vrp_short_vol/` (strategy)
+**Sharpe:** 1.11 &nbsp;|&nbsp; **Return:** +268% &nbsp;|&nbsp; **Max DD:** −25.6% &nbsp;|&nbsp; **Period:** 2016–2026
+
+The classic equity-derivatives trade: implied vol persistently trades above subsequently-realised vol, because option sellers are paid to carry gamma risk through jumps. This book sells that premium and is run the way a desk would run it:
+
+- **Signal** — sell when VIX − EWMA(λ=0.94) realised vol > 1 vol point at the monthly roll; stay flat otherwise.
+- **Position** — short 25-delta SPY strangle, expiring at the next roll, priced with Black-Scholes (`core/options.py`: closed-form prices, greeks, implied-vol solver, delta→strike inversion — all finite-difference-tested).
+- **Sizing to the stress case** — vega budget of 0.5% equity per vol point, chosen so a COVID-scale +50pt VIX shock marks ≈ −25% before gamma (not to the average day). Hard stop at 3× premium received.
+- **Daily delta hedging** — this is where the strategy actually lives: unhedged, the same signal earns Sharpe **0.44** with −34% DD; hedged, **1.11** with −25.6%. The gap between theoretical edge and hedged capture, after 0.5 vol-pt option spreads and 1bp hedge slippage, is the desk-relevant number.
+- **Greeks-attributed P&L** — every day's P&L decomposes into delta / gamma / vega / theta / residual / costs, and the rows **sum to total P&L exactly** (enforced by a test). Whole-period: theta collected +$897k, gamma paid back −$563k, vega marks −$100k, costs −$62k — the short-vol business model in one line.
+- **Named stress replays** — Volmageddon −12.0% (stopped), COVID −25.4% (stopped, matching the sizing rationale), GameStop +7.0% (single-name event; index vol collapsed and the book collected).
+- **One-page desk-style risk report** — `outputs/vrp_risk_report.png`: position, book greeks, 21-day P&L attribution, stress table. Built to be screen-shared, not scrolled.
+
+**Pricing model honesty:** there is no free historical options data, so options are priced synthetically — BSM with the official CBOE VIX history as implied vol for both legs, i.e. **flat skew and flat term structure**. Flat skew prices the put wing *cheap*, which understates the premium a real seller collects — the simplification is conservative for a short-vol book, not flattering. Returns here are model-world numbers; the greeks, sizing, stop, hedging and attribution mechanics are exactly the real thing.
 
 ---
 
@@ -269,7 +290,8 @@ Expanding from 15 TMT names to 25 across five sectors (adding LLY, UNH, ABBV, V,
 ```
 ├── core/
 │   ├── alpaca.py          Shared Alpaca API (auth, pagination, caching, dividend-adjusted prices)
-│   ├── data.py            fetch_prices / fetch_spy / fetch_tbill (BIL proxy)
+│   ├── data.py            fetch_prices / fetch_spy / fetch_tbill (BIL) / fetch_vix (CBOE)
+│   ├── options.py         Black-Scholes prices, greeks, implied-vol solver, delta→strike
 │   └── metrics.py         Sharpe, drawdown, win rate
 │
 ├── strategies/
@@ -278,6 +300,8 @@ Expanding from 15 TMT names to 25 across five sectors (adding LLY, UNH, ABBV, V,
 │   ├── triad/                     TRIAD — tri-timescale TMT (best Sharpe & return in repo)
 │   ├── dual_timescale_qqq/        DTQ — trend + dip-buying on QQQ (lowest drawdown)
 │   ├── broad_trend/               BTREND — long/short cross-asset TSMOM (candidate diversifier)
+│   ├── vrp_short_vol/             VRP — short SPY strangles, delta-hedged, greeks-attributed
+│   │   └── risk_report.py         One-page desk-style daily risk report
 │   ├── equity_factor_rotation/    AFP — factor rotation; engine also powers XAT
 │   ├── spy_intraday_short/        SIS — reference (2020–2024, intraday data constraint)
 │   └── concentrated_momentum/     Tech-Tier — reference (high return, high risk)
@@ -316,6 +340,7 @@ python -m strategies.garp_momentum.main
 python -m strategies.triad.main                   # runs to 2026-06 (out-of-sample window)
 python -m strategies.dual_timescale_qqq.main
 python -m strategies.broad_trend.main             # runs to 2026-06 (forward-validation window)
+python -m strategies.vrp_short_vol.main           # options/vol layer + one-page risk report
 python -m strategies.equity_factor_rotation.main
 python -m strategies.spy_intraday_short.main      # reference, 2020–2024
 python -m strategies.concentrated_momentum.main
