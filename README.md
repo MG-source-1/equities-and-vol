@@ -1,6 +1,6 @@
 # Equities & Vol
 
-Systematic momentum and mean-reversion strategies on US equities, plus a delta-hedged short-vol options book, with a live paper-trading arm on Alpaca. Data comes from Alpaca (SIP feed), SEC EDGAR (fundamentals), and CBOE (VIX history) — no yfinance, no paid data.
+Systematic momentum and mean-reversion strategies on US equities, plus a delta-hedged short-vol options book, with a live paper-trading arm on Alpaca. Data comes from Alpaca (SIP feed), SEC EDGAR (fundamentals), and CBOE (VIX history).
 
 The repo is organized by mandate, the way a trading floor is: `strategies/equities/` is the core US equity book (single-name TMT momentum, index mean-reversion, factor rotation — this is what actually runs live), `strategies/vol/` is the options desk (short-vol VRP), and `strategies/cross_asset/` is a separate multi-asset research line, kept apart on purpose rather than blended into the equity book. See "Research Log" for why that separation exists.
 
