@@ -1,6 +1,8 @@
 # Strategy Backtester
 
-A systematic trading backtester covering equities, cross-asset trend, and short-vol options, with a live paper-trading arm on Alpaca. Data comes from Alpaca (SIP feed), SEC EDGAR (fundamentals), and CBOE (VIX history) — no yfinance, no paid data.
+A systematic trading backtester with a live paper-trading arm on Alpaca. Data comes from Alpaca (SIP feed), SEC EDGAR (fundamentals), and CBOE (VIX history) — no yfinance, no paid data.
+
+The repo is organized by mandate, the way a trading floor is: `strategies/equities/` is the core US equity book (single-name TMT momentum, index mean-reversion, factor rotation — this is what actually runs live), `strategies/vol/` is the options desk (short-vol VRP), and `strategies/cross_asset/` is a separate multi-asset research line, kept apart on purpose rather than blended into the equity book. See "Research Log" for why that separation exists.
 
 ![Investor portfolio vs SPY, 2016-2024](outputs/investor_portfolio.png)
 
@@ -25,7 +27,7 @@ All engines use the same execution convention: a signal computed from today's cl
 
 ## Investor Portfolio
 
-**`strategies/combined_portfolio/`** — Sharpe 1.33, +478% total return, −16.9% max drawdown, 2016–2024. SPY over the same window: +237%.
+**`strategies/equities/combined_portfolio/`** — Sharpe 1.33, +478% total return, −16.9% max drawdown, 2016–2024. SPY over the same window: +237%.
 
 | Sleeve | Weight | What it is |
 |---|---|---|
@@ -44,7 +46,7 @@ The 10% T-bill sleeve exists because GARP and TRIAD are still one bet — long U
 ## The Two Alpha Engines
 
 ### GARP Momentum
-**`strategies/garp_momentum/`** — Sharpe 1.14, +529%, −20.5% max DD, 2016–2024.
+**`strategies/equities/garp_momentum/`** — Sharpe 1.14, +529%, −20.5% max DD, 2016–2024.
 
 Growth-at-a-reasonable-price screening on 15 large-cap TMT names (AAPL, MSFT, GOOGL, META, NVDA, AMD, AVGO, QCOM, ORCL, CRM, ADBE, NFLX, AMZN, TSLA, INTC), combined with Jegadeesh-Titman momentum.
 
@@ -62,7 +64,7 @@ Composite rank is 65% momentum (3/6/12-month, 1-month skip) and 35% GARP score. 
 Fundamentals come straight from SEC EDGAR's XBRL API — every filing has an exact `filed` timestamp, so point-in-time accuracy is built in rather than approximated. Coverage goes back to roughly 2009 for these names. One known gap: AVGO's XBRL tagging stops matching cleanly after its 2024 10-K, so its score is stale until that's fixed.
 
 ### TRIAD — Tri-Timescale TMT
-**`strategies/triad/`** — Sharpe 1.47, +975%, −18.6% max DD, 2016–2026 (2025 onward is out-of-sample).
+**`strategies/equities/triad/`** — Sharpe 1.47, +975%, −18.6% max DD, 2016–2026 (2025 onward is out-of-sample).
 
 Same 15-stock universe as GARP, but the idea is different: instead of picking better stocks, harvest the same factor at three speeds.
 
@@ -85,7 +87,7 @@ Two things worth being honest about: TRIAD's daily correlation with GARP is 0.83
 ## Options / Volatility
 
 ### VRP — Short Volatility Risk Premium
-**`core/options.py`** (pricing) · **`strategies/vrp_short_vol/`** (strategy) — Sharpe 1.11, +268%, −25.6% max DD, 2016–2026.
+**`core/options.py`** (pricing) · **`strategies/vol/vrp_short_vol/`** (strategy) — Sharpe 1.11, +268%, −25.6% max DD, 2016–2026.
 
 Implied vol trades above realized vol most of the time, because option buyers pay a premium to hedge tail risk. This book sells that premium directly: short a 25-delta SPY strangle whenever VIX minus EWMA realized vol clears 1 point at the monthly roll, delta-hedged daily, sized to survive the tail rather than to look good on an average day.
 
@@ -107,17 +109,17 @@ VRP is **not** part of the live portfolio. It's a research and demonstration lay
 ## Everything Else
 
 ### DTQ — Dual-Timescale QQQ
-**`strategies/dual_timescale_qqq/`** — Sharpe 1.30, +185%, −9.8% max DD, 2016–2024.
+**`strategies/equities/dual_timescale_qqq/`** — Sharpe 1.30, +185%, −9.8% max DD, 2016–2024.
 
 The lowest drawdown in the repo, and the origin of TRIAD's mean-reversion sleeve. Trend-following and dip-buying respond to opposite behaviors — continuation vs overreaction — so running both on QQQ alone gets two nearly uncorrelated return streams (0.40 correlation) without needing a second asset. Trend sleeve is long QQQ above its 200-day SMA, vol-targeted; mean-reversion buys panic closes (IBS < 0.10) inside that same uptrend and exits within 3 days. Split 50/50, Sharpe goes from 1.02 / 1.19 standalone to 1.30 combined, and stays positive in every sub-period including the 2022 bear (where the trend filter simply parked the whole thing in T-bills while QQQ fell 35%). A parameter grid confirms this isn't overfit — Sharpe stays between 1.09 and 1.33 across a wide range of SMA and IBS settings. Kept standalone rather than folded into the main portfolio because it would just add more Nasdaq beta on top of what GARP and TRIAD already carry.
 
 ### BTREND — Broad Cross-Asset Trend
-**`strategies/broad_trend/`** — Sharpe 0.33, +46%, −7.8% max DD, 2016–2026.
+**`strategies/cross_asset/broad_trend/`** — Sharpe 0.33, +46%, −7.8% max DD, 2016–2026.
 
 Per-asset long/short trend-following (Moskowitz-Ooi-Pedersen) across 17 ETFs spanning equities, rates, credit, commodities, and currencies. The point isn't standalone return, it's being genuinely uncorrelated with the main portfolio — 0.22 correlation, vs 0.83 between GARP and TRIAD — and it's the first diversifier tested that actually beats plain T-bills, mostly because of the short side (short bonds and yen through 2021–22 while both stocks and bonds fell). It's a validated candidate for some of that 10% T-bill slot, not yet allocated, because shorting introduces live mechanics (margin, borrow costs) the paper account hasn't exercised yet. Same promotion bar as TRIAD: prove it live first.
 
 ### AFP — Adaptive Factor Portfolio
-**`strategies/equity_factor_rotation/`** — Sharpe 0.72, +102%, −13.6% max DD, 2016–2024.
+**`strategies/equities/equity_factor_rotation/`** — Sharpe 0.72, +102%, −13.6% max DD, 2016–2024.
 
 Monthly rotation across four factor ETFs (QQQ, QUAL, MTUM, USMV) with a leadership tilt and a correlation-regime filter that cuts exposure to 40% when QQQ and USMV start moving together — a proxy for "diversification has broken down." Caught both the 2020 crash and the 2022 rate shock without needing VIX data. Its engine also powers XAT below.
 
@@ -125,12 +127,12 @@ Monthly rotation across four factor ETFs (QQQ, QUAL, MTUM, USMV) with a leadersh
 Same engine as AFP, run on SPY/TLT/GLD. This was the portfolio's diversifier sleeve until mid-2026, when a corrected backtest showed T-bills beat it outright at every weight tested, including in the crises it existed to defend. See the research log for the numbers.
 
 ### SIS — SPY Intraday Afternoon Short
-**`strategies/spy_intraday_short/`** — Sharpe 0.10, +14%, −5.8% max DD, 2020–2024.
+**`strategies/equities/spy_intraday_short/`** — Sharpe 0.10, +14%, −5.8% max DD, 2020–2024.
 
 Shorts the last 30 minutes of the session on high-conviction mornings (overnight gap and first-30-minute move both strong and agreeing). The low headline Sharpe is mostly an artifact of only being active 18% of days — win rates (61–62%) suggest the signal itself is fine. Excluded from the main portfolio because its intraday data only exists from 2020 onward.
 
 ### Tech-Tier Momentum Ladder
-**`strategies/concentrated_momentum/`** — Sharpe 0.54, +305%, −34.3% max DD, 2016–2024. Concentrates monthly into whichever of SOXX/QQQ/SPY has the best momentum. Works, but the drawdown is too much to run as a primary strategy.
+**`strategies/equities/concentrated_momentum/`** — Sharpe 0.54, +305%, −34.3% max DD, 2016–2024. Concentrates monthly into whichever of SOXX/QQQ/SPY has the best momentum. Works, but the drawdown is too much to run as a primary strategy.
 
 ---
 
@@ -185,15 +187,20 @@ T-bills won on every metric at every weight, including the two crises XAT was su
 │   └── metrics.py         Sharpe, drawdown, win rate
 │
 ├── strategies/
-│   ├── combined_portfolio/    The live allocation (45% GARP + 45% TRIAD + 10% T-bills)
-│   ├── garp_momentum/         GARP — includes fundamentals.py, the EDGAR scoring
-│   ├── triad/                 TRIAD
-│   ├── vrp_short_vol/         VRP — includes risk_report.py, the one-pager
-│   ├── dual_timescale_qqq/    DTQ
-│   ├── broad_trend/           BTREND
-│   ├── equity_factor_rotation/ AFP (also powers XAT)
-│   ├── spy_intraday_short/    SIS
-│   └── concentrated_momentum/ Tech-Tier ladder
+│   ├── equities/               Single-name / index US equity — the core book
+│   │   ├── combined_portfolio/    The live allocation (45% GARP + 45% TRIAD + 10% T-bills)
+│   │   ├── garp_momentum/         GARP — includes fundamentals.py, the EDGAR scoring
+│   │   ├── triad/                 TRIAD
+│   │   ├── dual_timescale_qqq/    DTQ
+│   │   ├── equity_factor_rotation/ AFP (also powers the retired XAT experiment)
+│   │   ├── spy_intraday_short/    SIS
+│   │   └── concentrated_momentum/ Tech-Tier ladder
+│   │
+│   ├── vol/                    Options / volatility
+│   │   └── vrp_short_vol/         VRP — includes risk_report.py, the one-pager
+│   │
+│   └── cross_asset/             Multi-asset systematic research (not part of the equity book)
+│       └── broad_trend/           BTREND
 │
 ├── live/                  Live paper trading on Alpaca
 │   ├── rebalance.py       Daily: compute targets, submit orders
@@ -217,16 +224,16 @@ Each strategy folder is `main.py` (run this), `backtest.py` (the engine), `confi
 ## Running
 
 ```bash
-python -m strategies.combined_portfolio.main      # the live allocation
+python -m strategies.equities.combined_portfolio.main      # the live allocation
 
-python -m strategies.garp_momentum.main
-python -m strategies.triad.main                    # extends to 2026-06 for out-of-sample
-python -m strategies.vrp_short_vol.main             # options layer + risk report
-python -m strategies.dual_timescale_qqq.main
-python -m strategies.broad_trend.main               # extends to 2026-06
-python -m strategies.equity_factor_rotation.main
-python -m strategies.spy_intraday_short.main
-python -m strategies.concentrated_momentum.main
+python -m strategies.equities.garp_momentum.main
+python -m strategies.equities.triad.main                    # extends to 2026-06 for out-of-sample
+python -m strategies.vol.vrp_short_vol.main             # options layer + risk report
+python -m strategies.equities.dual_timescale_qqq.main
+python -m strategies.cross_asset.broad_trend.main               # extends to 2026-06
+python -m strategies.equities.equity_factor_rotation.main
+python -m strategies.equities.spy_intraday_short.main
+python -m strategies.equities.concentrated_momentum.main
 ```
 
 ## Live Paper Trading

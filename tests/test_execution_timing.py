@@ -39,7 +39,7 @@ def _make_cfg():
 
 
 def test_decision_enters_at_decision_close():
-    from strategies.broad_trend.backtest import run_trend_backtest, _month_end_dates
+    from strategies.cross_asset.broad_trend.backtest import run_trend_backtest, _month_end_dates
 
     dates = pd.bdate_range("2020-01-01", periods=460)
     up = 100 * (1.001) ** np.arange(len(dates))          # +0.1%/day, mom > 0

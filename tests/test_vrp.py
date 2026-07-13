@@ -15,7 +15,7 @@ from config import DATA_CACHE_DIR
 @pytest.fixture(scope="module")
 def vrp_inputs():
     from core.data import fetch_prices, fetch_tbill, fetch_vix
-    from strategies.vrp_short_vol import config as cfg
+    from strategies.vol.vrp_short_vol import config as cfg
     try:
         px = fetch_prices([cfg.UNDERLYING], "2018-01-01", "2021-12-31")[cfg.UNDERLYING]
         vix = fetch_vix("2018-01-01", "2021-12-31")
@@ -29,8 +29,8 @@ def vrp_inputs():
 
 @pytest.fixture(scope="module")
 def vrp_run(vrp_inputs):
-    from strategies.vrp_short_vol.backtest import run_vrp_backtest
-    from strategies.vrp_short_vol import config as cfg
+    from strategies.vol.vrp_short_vol.backtest import run_vrp_backtest
+    from strategies.vol.vrp_short_vol import config as cfg
     px, vix, tbill = vrp_inputs
     return run_vrp_backtest(px, vix, tbill, 100_000, cfg)
 
@@ -68,8 +68,8 @@ def test_no_lookahead_truncation(vrp_inputs):
     exchange calendar — known in advance, not price lookahead — so the
     comparison stops strictly before the last roll date the two runs share
     with different calendars ahead of them."""
-    from strategies.vrp_short_vol.backtest import run_vrp_backtest, _month_end_dates
-    from strategies.vrp_short_vol import config as cfg
+    from strategies.vol.vrp_short_vol.backtest import run_vrp_backtest, _month_end_dates
+    from strategies.vol.vrp_short_vol import config as cfg
     px, vix, tbill = vrp_inputs
     full = run_vrp_backtest(px, vix, tbill, 100_000, cfg)
     cut_px = px.iloc[:-40]

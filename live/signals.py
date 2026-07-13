@@ -4,9 +4,9 @@ Live target-weight computation for the investor portfolio.
 Reuses the SAME weight functions the backtests use — the live target is
 "the last row of the backtest run through today", not a reimplementation:
 
-  GARP   — strategies.garp_momentum.backtest._compute_monthly_weights
+  GARP   — strategies.equities.garp_momentum.backtest._compute_monthly_weights
            + the daily regime/vol-targeting logic from run_garp_backtest
-  TRIAD  — strategies.triad.backtest.compute_*_weights (unshifted rows)
+  TRIAD  — strategies.equities.triad.backtest.compute_*_weights (unshifted rows)
   T-bill — BIL absorbs ALL capital the engines leave uninvested (minus a
            small cash buffer), not just the structural 10% sleeve. The
            backtests credit the T-bill rate on every uninvested dollar, so
@@ -37,12 +37,12 @@ from live.config import (
     WEIGHT_GARP, WEIGHT_TRIAD, TBILL_TICKER, CASH_BUFFER,
 )
 
-from strategies.garp_momentum import config as garp_cfg
-from strategies.garp_momentum.backtest import _compute_monthly_weights
-from strategies.garp_momentum.fundamentals import build_garp_history
+from strategies.equities.garp_momentum import config as garp_cfg
+from strategies.equities.garp_momentum.backtest import _compute_monthly_weights
+from strategies.equities.garp_momentum.fundamentals import build_garp_history
 
-from strategies.triad import config as triad_cfg
-from strategies.triad.backtest import (
+from strategies.equities.triad import config as triad_cfg
+from strategies.equities.triad.backtest import (
     compute_leader_weights, compute_stock_dip_weights, compute_index_dip_weights,
 )
 

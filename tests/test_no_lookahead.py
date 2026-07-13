@@ -78,8 +78,8 @@ def _bump_last_bars(bars: pd.DataFrame) -> pd.DataFrame:
 # ── TRIAD ─────────────────────────────────────────────────────
 
 def test_triad_leaders(tmt_bars, qqq_bars):
-    from strategies.triad.backtest import compute_leader_weights
-    from strategies.triad import config as cfg
+    from strategies.equities.triad.backtest import compute_leader_weights
+    from strategies.equities.triad import config as cfg
 
     calendar = qqq_bars.index
     closes = pd.DataFrame({t: b["close"].reindex(calendar)
@@ -99,8 +99,8 @@ def test_triad_leaders(tmt_bars, qqq_bars):
 
 
 def test_triad_stock_dips(tmt_bars, qqq_bars):
-    from strategies.triad.backtest import compute_stock_dip_weights
-    from strategies.triad import config as cfg
+    from strategies.equities.triad.backtest import compute_stock_dip_weights
+    from strategies.equities.triad import config as cfg
 
     calendar = qqq_bars.index
 
@@ -119,8 +119,8 @@ def test_triad_stock_dips(tmt_bars, qqq_bars):
 
 
 def test_triad_index_dips(qqq_bars):
-    from strategies.triad.backtest import compute_index_dip_weights
-    from strategies.triad import config as cfg
+    from strategies.equities.triad.backtest import compute_index_dip_weights
+    from strategies.equities.triad import config as cfg
 
     def run(bars):
         return compute_index_dip_weights(
@@ -135,8 +135,8 @@ def test_triad_index_dips(qqq_bars):
 # ── AFP / XAT (shared engine) ─────────────────────────────────
 
 def test_factor_weights(factor_prices):
-    from strategies.equity_factor_rotation.backtest import get_factor_weights
-    from strategies.equity_factor_rotation import config as cfg
+    from strategies.equities.equity_factor_rotation.backtest import get_factor_weights
+    from strategies.equities.equity_factor_rotation import config as cfg
 
     def run(px):
         return get_factor_weights(
@@ -152,8 +152,8 @@ def test_factor_weights(factor_prices):
 # ── BTREND ────────────────────────────────────────────────────
 
 def test_btrend_weights(btrend_prices):
-    from strategies.broad_trend.backtest import compute_trend_weights
-    from strategies.broad_trend import config as cfg
+    from strategies.cross_asset.broad_trend.backtest import compute_trend_weights
+    from strategies.cross_asset.broad_trend import config as cfg
 
     def run(px):
         return compute_trend_weights(
@@ -168,8 +168,8 @@ def test_btrend_weights(btrend_prices):
 # ── DTQ ───────────────────────────────────────────────────────
 
 def test_dtq_trend_sleeve(qqq_bars):
-    from strategies.dual_timescale_qqq.backtest import compute_trend_weights
-    from strategies.dual_timescale_qqq import config as cfg
+    from strategies.equities.dual_timescale_qqq.backtest import compute_trend_weights
+    from strategies.equities.dual_timescale_qqq import config as cfg
 
     def run(bars):
         return compute_trend_weights(
@@ -181,8 +181,8 @@ def test_dtq_trend_sleeve(qqq_bars):
 
 
 def test_dtq_mr_sleeve(qqq_bars):
-    from strategies.dual_timescale_qqq.backtest import compute_mr_weights
-    from strategies.dual_timescale_qqq import config as cfg
+    from strategies.equities.dual_timescale_qqq.backtest import compute_mr_weights
+    from strategies.equities.dual_timescale_qqq import config as cfg
 
     def run(bars):
         return compute_mr_weights(
@@ -201,8 +201,8 @@ def test_garp_monthly_weights(tmt_closes):
     before the truncation/perturbation point must be identical. GARP
     scores are held static to isolate the price-signal path from the
     EDGAR cache."""
-    from strategies.garp_momentum.backtest import _compute_monthly_weights
-    from strategies.garp_momentum import config as cfg
+    from strategies.equities.garp_momentum.backtest import _compute_monthly_weights
+    from strategies.equities.garp_momentum import config as cfg
 
     prices = tmt_closes[[t for t in cfg.TICKERS if t in tmt_closes.columns]]
     spy    = tmt_closes["SPY"]

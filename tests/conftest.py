@@ -33,7 +33,7 @@ def _cached(func, *args, **kwargs):
 def tmt_closes():
     """Daily closes for the 15-stock TMT universe + SPY, 2016–2024."""
     from core.data import fetch_prices
-    from strategies.garp_momentum.config import TICKERS
+    from strategies.equities.garp_momentum.config import TICKERS
     return _cached(fetch_prices, TICKERS + ["SPY"], START_DATE, END_DATE)
 
 
@@ -41,7 +41,7 @@ def tmt_closes():
 def tmt_bars():
     """OHLC bars for the TMT universe (TRIAD's input), 2016–2024."""
     from core.alpaca import fetch_bars
-    from strategies.triad import config as tc
+    from strategies.equities.triad import config as tc
     bars = {}
     for t in tc.TICKERS:
         bars[t] = _cached(fetch_bars, t, START_DATE, END_DATE, "1Day",
@@ -68,7 +68,7 @@ def factor_prices():
 def btrend_prices():
     """BTREND's 17-ETF universe over its own (extended) window."""
     from core.data import fetch_prices
-    from strategies.broad_trend import config as bt
+    from strategies.cross_asset.broad_trend import config as bt
     return _cached(fetch_prices, list(bt.TICKERS), bt.START_DATE, bt.END_DATE)
 
 

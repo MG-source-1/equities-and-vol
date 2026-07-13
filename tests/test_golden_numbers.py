@@ -28,8 +28,8 @@ def _stats(pf):
 # ── TRIAD (price-only, tight) ─────────────────────────────────
 
 def test_triad_golden(tmt_bars, qqq_bars, tbill_rate):
-    from strategies.triad.backtest import run_triad_backtest
-    from strategies.triad import config as cfg
+    from strategies.equities.triad.backtest import run_triad_backtest
+    from strategies.equities.triad import config as cfg
 
     pf = run_triad_backtest(tmt_bars, qqq_bars, tbill_rate, 100_000, cfg)
     tot, dd = _stats(pf)
@@ -40,8 +40,8 @@ def test_triad_golden(tmt_bars, qqq_bars, tbill_rate):
 # ── AFP (price-only, tight) ───────────────────────────────────
 
 def test_afp_golden(factor_prices, tbill_rate):
-    from strategies.equity_factor_rotation.backtest import run_factor_backtest
-    from strategies.equity_factor_rotation import config as cfg
+    from strategies.equities.equity_factor_rotation.backtest import run_factor_backtest
+    from strategies.equities.equity_factor_rotation import config as cfg
 
     pf = run_factor_backtest(
         factor_prices, tbill_rate, 100_000,
@@ -58,8 +58,8 @@ def test_afp_golden(factor_prices, tbill_rate):
 
 def test_btrend_golden(btrend_prices):
     from core.data import fetch_tbill
-    from strategies.broad_trend.backtest import run_trend_backtest
-    from strategies.broad_trend import config as cfg
+    from strategies.cross_asset.broad_trend.backtest import run_trend_backtest
+    from strategies.cross_asset.broad_trend import config as cfg
 
     tbill, _ = fetch_tbill(cfg.START_DATE, cfg.END_DATE, 100_000)
     pf = run_trend_backtest(btrend_prices, tbill, 100_000, cfg)
@@ -71,8 +71,8 @@ def test_btrend_golden(btrend_prices):
 # ── DTQ (price-only, tight) ───────────────────────────────────
 
 def test_dtq_golden(qqq_bars, tbill_rate):
-    from strategies.dual_timescale_qqq.backtest import run_dtq_backtest
-    from strategies.dual_timescale_qqq import config as cfg
+    from strategies.equities.dual_timescale_qqq.backtest import run_dtq_backtest
+    from strategies.equities.dual_timescale_qqq import config as cfg
 
     pf, _trades = run_dtq_backtest(
         qqq_bars, tbill_rate, 100_000,
@@ -92,9 +92,9 @@ def test_dtq_golden(qqq_bars, tbill_rate):
 def test_garp_golden_band(tmt_closes, tbill_rate):
     """The EDGAR cache refreshes weekly live, and new/amended filings move
     the score, so assert a band: drift inside it is data, outside it is code."""
-    from strategies.garp_momentum.fundamentals import build_garp_history
-    from strategies.garp_momentum.backtest import run_garp_backtest
-    from strategies.garp_momentum import config as cfg
+    from strategies.equities.garp_momentum.fundamentals import build_garp_history
+    from strategies.equities.garp_momentum.backtest import run_garp_backtest
+    from strategies.equities.garp_momentum import config as cfg
     from config import DATA_CACHE_DIR
 
     prices = tmt_closes[[t for t in cfg.TICKERS if t in tmt_closes.columns]]

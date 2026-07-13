@@ -15,7 +15,7 @@ from config import ROOT_DIR, DATA_CACHE_DIR  # noqa: F401
 PAPER_BASE_URL = "https://paper-api.alpaca.markets"
 
 # ── Sleeve allocation (kept in sync with the backtested portfolio) ─
-from strategies.combined_portfolio.config import (   # noqa: E402
+from strategies.equities.combined_portfolio.config import (   # noqa: E402
     WEIGHT_GARP, WEIGHT_TRIAD, WEIGHT_TBILL, TBILL_TICKER,
 )
 
