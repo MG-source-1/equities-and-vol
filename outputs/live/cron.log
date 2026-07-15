@@ -1151,3 +1151,45 @@ AttributeError: _ARRAY_API not found
   buy  QCOM  intended    17 filled      17  OK  fill $182.68 (+1 bps vs signal price)
   buy  QQQ   intended     6 filled       6  OK  fill $710.92 (-1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $100,118.00
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 67 filing dates (2009-07-22 → 2026-05-01)
+[fundamentals] MSFT: 67 filing dates (2009-10-23 → 2026-04-29)
+[fundamentals] GOOGL: 43 filing dates (2015-10-29 → 2026-04-30)
+[fundamentals] META: 56 filing dates (2012-07-31 → 2026-04-30)
+[fundamentals] NVDA: 68 filing dates (2009-08-20 → 2026-05-20)
+[fundamentals] AMD: 54 filing dates (2013-02-21 → 2026-05-06)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 64 filing dates (2009-12-22 → 2026-04-29)
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-05-28)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 68 filing dates (2009-07-31 → 2026-04-17)
+[fundamentals] AMZN: 68 filing dates (2009-07-24 → 2026-04-30)
+[fundamentals] TSLA: 60 filing dates (2011-08-12 → 2026-04-23)
+[fundamentals] INTC: 68 filing dates (2009-08-03 → 2026-04-24)
+[rebalance] Signals as of 2026-07-14  (gross exposure 0.98)
+  SELL    29 INTC  @~$108.21    ($3,138)
+  SELL    13 NVDA  @~$212.01    ($2,756)
+  SELL     6 QQQ   @~$720.86    ($4,325)
+  BUY    112 BIL   @~$91.51     ($10,249)
+  BUY      1 GOOGL @~$359.66    ($360)
+  BUY      2 QCOM  @~$178.78    ($358)
+  → submitted sell 29 INTC
+  → submitted sell 13 NVDA
+  → submitted sell 6 QQQ
+  → submitted buy 112 BIL
+  → submitted buy 1 GOOGL
+  → submitted buy 2 QCOM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-14.json
+[rebalance] Market closed (next open 2026-07-15T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,974.07 (cash $2,489.70) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-07-14 …
+  sell INTC  intended    29 filled      29  OK  fill $108.03 (-17 bps vs signal price)
+  sell NVDA  intended    13 filled      13  OK  fill $211.74 (-13 bps vs signal price)
+  sell QQQ   intended     6 filled       6  OK  fill $720.55 (-4 bps vs signal price)
+  buy  BIL   intended   112 filled     112  OK  fill $91.51 (+0 bps vs signal price)
+  buy  GOOGL intended     1 filled       1  OK  fill $359.74 (+2 bps vs signal price)
+  buy  QCOM  intended     2 filled       2  OK  fill $178.71 (-4 bps vs signal price)
+[reconcile] All orders filled as intended.
