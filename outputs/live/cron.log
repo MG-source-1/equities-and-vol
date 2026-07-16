@@ -1193,3 +1193,41 @@ AttributeError: _ARRAY_API not found
   buy  GOOGL intended     1 filled       1  OK  fill $359.74 (+2 bps vs signal price)
   buy  QCOM  intended     2 filled       2  OK  fill $178.71 (-4 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $99,796.78
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-15  (gross exposure 0.98)
+  SELL    53 BIL   @~$91.52     ($4,850)
+  BUY      6 AMD   @~$525.19    ($3,151)
+  BUY      1 AVGO  @~$392.44    ($392)
+  BUY      5 INTC  @~$101.30    ($506)
+  BUY      2 QCOM  @~$177.63    ($355)
+  → submitted sell 53 BIL
+  → submitted buy 6 AMD
+  → submitted buy 1 AVGO
+  → submitted buy 5 INTC
+  → submitted buy 2 QCOM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-15.json
+[rebalance] Market closed (next open 2026-07-16T09:30:00-04:00) — exiting.
+[reconcile] Equity $100,048.25 (cash $2,937.19) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 5 intended orders from 2026-07-15 …
+  sell BIL   intended    53 filled      53  OK  fill $91.51 (-1 bps vs signal price)
+  buy  AMD   intended     6 filled       6  OK  fill $524.76 (-8 bps vs signal price)
+  buy  AVGO  intended     1 filled       1  OK  fill $392.47 (+1 bps vs signal price)
+  buy  INTC  intended     5 filled       5  OK  fill $101.23 (-7 bps vs signal price)
+  buy  QCOM  intended     2 filled       2  OK  fill $177.67 (+2 bps vs signal price)
+[reconcile] All orders filled as intended.
