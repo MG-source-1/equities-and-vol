@@ -1231,3 +1231,103 @@ AttributeError: _ARRAY_API not found
   buy  INTC  intended     5 filled       5  OK  fill $101.23 (-7 bps vs signal price)
   buy  QCOM  intended     2 filled       2  OK  fill $177.67 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,938.52
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-16  (gross exposure 0.98)
+  SELL     1 AMD   @~$496.07    ($496)
+  SELL     8 AVGO  @~$376.12    ($3,009)
+  SELL    86 BIL   @~$91.53     ($7,871)
+  SELL     6 QCOM  @~$170.52    ($1,023)
+  BUY      7 AMZN  @~$251.62    ($1,761)
+  BUY      5 GOOGL @~$353.07    ($1,765)
+  BUY     20 INTC  @~$96.10     ($1,922)
+  BUY      2 META  @~$662.79    ($1,326)
+  BUY      7 QQQ   @~$704.31    ($4,930)
+  → submitted sell 1 AMD
+  → submitted sell 8 AVGO
+  → submitted sell 86 BIL
+  → submitted sell 6 QCOM
+  → submitted buy 7 AMZN
+  → submitted buy 5 GOOGL
+  → submitted buy 20 INTC
+  → submitted buy 2 META
+  → submitted buy 7 QQQ
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-16.json
+[rebalance] Market closed (next open 2026-07-17T09:30:00-04:00) — exiting.
+[reconcile] Equity $98,009.93 (cash $3,624.22) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 9 intended orders from 2026-07-16 …
+  sell AMD   intended     1 filled       1  OK  fill $495.43 (-13 bps vs signal price)
+  sell AVGO  intended     8 filled       8  OK  fill $375.93 (-5 bps vs signal price)
+  sell BIL   intended    86 filled      86  OK  fill $91.52 (-1 bps vs signal price)
+  sell QCOM  intended     6 filled       6  OK  fill $170.30 (-13 bps vs signal price)
+  buy  AMZN  intended     7 filled       7  OK  fill $251.57 (-2 bps vs signal price)
+  buy  GOOGL intended     5 filled       5  OK  fill $353.90 (+24 bps vs signal price)
+  buy  INTC  intended    20 filled      20  OK  fill $96.11 (+1 bps vs signal price)
+  buy  META  intended     2 filled       2  OK  fill $663.20 (+6 bps vs signal price)
+  buy  QQQ   intended     7 filled       7  OK  fill $704.18 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,321.31
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-17  (gross exposure 0.98)
+  SELL     4 AMD   @~$492.96    ($1,972)
+  SELL     7 AMZN  @~$247.36    ($1,732)
+  SELL    18 INTC  @~$94.94     ($1,709)
+  SELL     2 META  @~$643.06    ($1,286)
+  SELL    11 QCOM  @~$169.90    ($1,869)
+  SELL     7 QQQ   @~$694.61    ($4,862)
+  BUY      1 AVGO  @~$370.39    ($370)
+  BUY    138 BIL   @~$91.56     ($12,635)
+  BUY      4 GOOGL @~$344.93    ($1,380)
+  → submitted sell 4 AMD
+  → submitted sell 7 AMZN
+  → submitted sell 18 INTC
+  → submitted sell 2 META
+  → submitted sell 11 QCOM
+  → submitted sell 7 QQQ
+  → submitted buy 1 AVGO
+  → submitted buy 138 BIL
+  → submitted buy 4 GOOGL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-17.json
+[rebalance] Market closed (next open 2026-07-20T09:30:00-04:00) — exiting.
+[reconcile] Equity $97,438.80 (cash $2,658.28) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 9 intended orders from 2026-07-17 …
+  sell AMD   intended     4 filled       4  OK  fill $492.07 (-18 bps vs signal price)
+  sell AMZN  intended     7 filled       7  OK  fill $247.36 (+0 bps vs signal price)
+  sell INTC  intended    18 filled      18  OK  fill $94.79 (-16 bps vs signal price)
+  sell META  intended     2 filled       2  OK  fill $642.72 (-5 bps vs signal price)
+  sell QCOM  intended    11 filled      11  OK  fill $169.78 (-7 bps vs signal price)
+  sell QQQ   intended     7 filled       7  OK  fill $694.28 (-5 bps vs signal price)
+  buy  AVGO  intended     1 filled       1  OK  fill $370.19 (-5 bps vs signal price)
+  buy  BIL   intended   138 filled     138  OK  fill $91.56 (+0 bps vs signal price)
+  buy  GOOGL intended     4 filled       4  OK  fill $344.86 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.
