@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from live import broker
 from live.config import (
     LIVE_DIR, DECISIONS_DIR, STATE_PATH,
-    MIN_TRADE_VALUE, DD_STOP, DD_COOLDOWN_DAYS,
+    MIN_TRADE_VALUE, MIN_DRIFT_PCT, DD_STOP, DD_COOLDOWN_DAYS,
     TBILL_TICKER, CASH_BUFFER,
 )
 from live.signals import compute_targets
@@ -79,8 +79,12 @@ def build_orders(target_weights: dict, prices: dict,
         if not price or price <= 0:
             print(f"[orders] WARNING: no price for {sym}, skipping.")
             continue
-        target_qty  = int(target_weights.get(sym, 0.0) * equity / price)
+        target_w    = target_weights.get(sym, 0.0)
         current_qty = int(positions.get(sym, 0))
+        current_w   = current_qty * price / equity if equity > 0 else 0.0
+        if abs(target_w - current_w) < MIN_DRIFT_PCT:
+            continue
+        target_qty  = int(target_w * equity / price)
         delta       = target_qty - current_qty
         if delta == 0 or abs(delta) * price < MIN_TRADE_VALUE:
             continue

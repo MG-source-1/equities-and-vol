@@ -30,6 +30,7 @@ DATA_YEARS = 3
 # ("cls") orders were tried first and abandoned: Alpaca's paper simulator
 # lets them expire at the close mostly unfilled (see live/broker.py).
 MIN_TRADE_VALUE   = 200.0    # skip rebalance trades smaller than this ($)
+MIN_DRIFT_PCT     = 0.015    # skip a symbol's trade unless |target - current weight| exceeds this
 
 # Cash sweep: all capital not consumed by the engines' target weights is
 # held as BIL (so live earns the T-bill rate the backtests credit on
