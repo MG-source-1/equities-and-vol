@@ -1378,3 +1378,38 @@ AttributeError: _ARRAY_API not found
   buy  QCOM  intended    20 filled      20  OK  fill $170.34 (-10 bps vs signal price)
   buy  QQQ   intended     7 filled       7  OK  fill $696.71 (-4 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $99,532.34
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-21  (gross exposure 0.98)
+  SELL    33 INTC  @~$104.94    ($3,463)
+  SELL    13 NVDA  @~$207.10    ($2,692)
+  SELL     7 QQQ   @~$708.78    ($4,961)
+  BUY    138 BIL   @~$91.56     ($12,636)
+  → submitted sell 33 INTC
+  → submitted sell 13 NVDA
+  → submitted sell 7 QQQ
+  → submitted buy 138 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-21.json
+[rebalance] Market closed (next open 2026-07-22T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,578.77 (cash $1,764.60) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-07-21 …
+  sell INTC  intended    33 filled      33  OK  fill $104.95 (+1 bps vs signal price)
+  sell NVDA  intended    13 filled      13  OK  fill $207.04 (-3 bps vs signal price)
+  sell QQQ   intended     7 filled       7  OK  fill $708.72 (-1 bps vs signal price)
+  buy  BIL   intended   138 filled     138  OK  fill $91.57 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
