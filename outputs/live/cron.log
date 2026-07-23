@@ -1413,3 +1413,39 @@ AttributeError: _ARRAY_API not found
   sell QQQ   intended     7 filled       7  OK  fill $708.72 (-1 bps vs signal price)
   buy  BIL   intended   138 filled     138  OK  fill $91.57 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $100,056.95
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 67 filing dates (2009-07-22 → 2026-05-01)
+[fundamentals] MSFT: 67 filing dates (2009-10-23 → 2026-04-29)
+[fundamentals] GOOGL: 43 filing dates (2015-10-29 → 2026-04-30)
+[fundamentals] META: 56 filing dates (2012-07-31 → 2026-04-30)
+[fundamentals] NVDA: 68 filing dates (2009-08-20 → 2026-05-20)
+[fundamentals] AMD: 54 filing dates (2013-02-21 → 2026-05-06)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 64 filing dates (2009-12-22 → 2026-04-29)
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-05-28)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 68 filing dates (2009-07-24 → 2026-04-30)
+[fundamentals] TSLA: 60 filing dates (2011-08-12 → 2026-04-23)
+[fundamentals] INTC: 68 filing dates (2009-08-03 → 2026-04-24)
+[rebalance] Signals as of 2026-07-22  (gross exposure 0.98)
+  SELL     6 AMD   @~$556.52    ($3,339)
+  SELL    55 BIL   @~$91.58     ($5,037)
+  BUY     11 GOOGL @~$345.48    ($3,800)
+  BUY      4 META  @~$626.96    ($2,508)
+  → submitted sell 6 AMD
+  → submitted sell 55 BIL
+  → submitted buy 11 GOOGL
+  → submitted buy 4 META
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-22.json
+[rebalance] Market closed (next open 2026-07-23T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,310.76 (cash $3,831.04) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-07-22 …
+  sell AMD   intended     6 filled       6  OK  fill $556.16 (-6 bps vs signal price)
+  sell BIL   intended    55 filled      55  OK  fill $91.57 (-1 bps vs signal price)
+  buy  GOOGL intended    11 filled      11  OK  fill $345.31 (-5 bps vs signal price)
+  buy  META  intended     4 filled       4  OK  fill $627.11 (+2 bps vs signal price)
+[reconcile] All orders filled as intended.
