@@ -1,0 +1,99 @@
+{
+  "utc_time": "2026-07-23T19:25:35.632488+00:00",
+  "equity": 98053.26,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-07-23",
+    "weights": {
+      "AMD": 0.07172,
+      "AVGO": 0.05967,
+      "BIL": 0.56621,
+      "GOOGL": 0.13193,
+      "INTC": 0.05091,
+      "META": 0.02813,
+      "QCOM": 0.07143
+    },
+    "prices": {
+      "AAPL": 320.99,
+      "ADBE": 212.28,
+      "AMD": 537.99,
+      "AMZN": 233.57,
+      "AVGO": 390.9,
+      "BIL": 91.58,
+      "CRM": 157.375,
+      "GOOGL": 317.92,
+      "INTC": 100.445,
+      "META": 607.23,
+      "MSFT": 381.2024,
+      "NFLX": 68.775,
+      "NVDA": 208.015,
+      "ORCL": 120.185,
+      "QCOM": 169.89,
+      "QQQ": 691.07,
+      "SPY": 737.62,
+      "TSLA": 320.395
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-06-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.1378,
+          "AMD": 0.0665,
+          "AVGO": 0.1326,
+          "QCOM": 0.1587,
+          "INTC": 0.0203
+        }
+      },
+      "triad": {
+        "leaders": {
+          "GOOGL": 0.1548,
+          "AMD": 0.1548,
+          "INTC": 0.1548
+        },
+        "stock_dips": {
+          "GOOGL": 0.25,
+          "META": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.4138,
+      "bil_sweep": 0.5662,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AMD": 13.0,
+    "AVGO": 15.0,
+    "BIL": 572.0,
+    "GOOGL": 39.0,
+    "INTC": 46.0,
+    "META": 4.0,
+    "QCOM": 56.0
+  },
+  "orders": [
+    {
+      "symbol": "QCOM",
+      "side": "sell",
+      "qty": 15,
+      "ref_price": 169.89,
+      "est_value": 2548.35,
+      "target_qty": 41,
+      "order_id": "4cde1d59-58bb-4132-9b66-00f673118932"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 34,
+      "ref_price": 91.58,
+      "est_value": 3113.72,
+      "target_qty": 606,
+      "order_id": "cae877b4-eb82-4b90-b501-0ed145be71c6"
+    }
+  ],
+  "executed": true
+}

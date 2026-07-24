@@ -1449,3 +1449,32 @@ AttributeError: _ARRAY_API not found
   buy  GOOGL intended    11 filled      11  OK  fill $345.31 (-5 bps vs signal price)
   buy  META  intended     4 filled       4  OK  fill $627.11 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $98,053.26
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-23  (gross exposure 0.98)
+  SELL    15 QCOM  @~$169.89    ($2,548)
+  BUY     34 BIL   @~$91.58     ($3,114)
+  → submitted sell 15 QCOM
+  → submitted buy 34 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-23.json
+[rebalance] Market closed (next open 2026-07-24T09:30:00-04:00) — exiting.
+[reconcile] Equity $98,511.32 (cash $3,266.98) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-07-23 …
+  sell QCOM  intended    15 filled      15  OK  fill $170.00 (+6 bps vs signal price)
+  buy  BIL   intended    34 filled      34  OK  fill $91.59 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
