@@ -1478,3 +1478,50 @@ AttributeError: _ARRAY_API not found
   sell QCOM  intended    15 filled      15  OK  fill $170.00 (+6 bps vs signal price)
   buy  BIL   intended    34 filled      34  OK  fill $91.59 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,165.08
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-24  (gross exposure 0.98)
+  SELL   127 BIL   @~$91.60     ($11,634)
+  SELL     8 GOOGL @~$319.61    ($2,557)
+  SELL     4 META  @~$600.62    ($2,402)
+  BUY      5 AMD   @~$520.21    ($2,601)
+  BUY      7 AVGO  @~$379.54    ($2,657)
+  BUY     37 INTC  @~$92.28     ($3,414)
+  BUY     13 NVDA  @~$205.16    ($2,667)
+  BUY      8 QQQ   @~$682.87    ($5,463)
+  → submitted sell 127 BIL
+  → submitted sell 8 GOOGL
+  → submitted sell 4 META
+  → submitted buy 5 AMD
+  → submitted buy 7 AVGO
+  → submitted buy 37 INTC
+  → submitted buy 13 NVDA
+  → submitted buy 8 QQQ
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-24.json
+[rebalance] Market closed (next open 2026-07-27T09:30:00-04:00) — exiting.
+[reconcile] Equity $97,211.61 (cash $3,053.25) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 8 intended orders from 2026-07-24 …
+  sell BIL   intended   127 filled     127  OK  fill $91.60 (+0 bps vs signal price)
+  sell GOOGL intended     8 filled       8  OK  fill $319.68 (+2 bps vs signal price)
+  sell META  intended     4 filled       4  OK  fill $600.32 (-5 bps vs signal price)
+  buy  AMD   intended     5 filled       5  OK  fill $520.37 (+3 bps vs signal price)
+  buy  AVGO  intended     7 filled       7  OK  fill $379.60 (+2 bps vs signal price)
+  buy  INTC  intended    37 filled      37  OK  fill $92.35 (+8 bps vs signal price)
+  buy  NVDA  intended    13 filled      13  OK  fill $205.15 (-0 bps vs signal price)
+  buy  QQQ   intended     8 filled       8  OK  fill $682.83 (-1 bps vs signal price)
+[reconcile] All orders filled as intended.
