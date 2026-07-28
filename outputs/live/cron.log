@@ -1525,3 +1525,41 @@ AttributeError: _ARRAY_API not found
   buy  NVDA  intended    13 filled      13  OK  fill $205.15 (-0 bps vs signal price)
   buy  QQQ   intended     8 filled       8  OK  fill $682.83 (-1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,099.15
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-27  (gross exposure 0.98)
+  SELL     4 AMD   @~$493.80    ($1,975)
+  SELL     6 AVGO  @~$383.86    ($2,303)
+  SELL    13 NVDA  @~$197.94    ($2,573)
+  SELL     8 QQQ   @~$682.87    ($5,463)
+  BUY    127 BIL   @~$91.62     ($11,636)
+  → submitted sell 4 AMD
+  → submitted sell 6 AVGO
+  → submitted sell 13 NVDA
+  → submitted sell 8 QQQ
+  → submitted buy 127 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-27.json
+[rebalance] Market closed (next open 2026-07-28T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,824.39 (cash $3,716.51) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 5 intended orders from 2026-07-27 …
+  sell AMD   intended     4 filled       4  OK  fill $492.68 (-23 bps vs signal price)
+  sell AVGO  intended     6 filled       6  OK  fill $383.47 (-10 bps vs signal price)
+  sell NVDA  intended    13 filled      13  OK  fill $197.55 (-20 bps vs signal price)
+  sell QQQ   intended     8 filled       8  OK  fill $682.42 (-7 bps vs signal price)
+  buy  BIL   intended   127 filled     127  OK  fill $91.62 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
