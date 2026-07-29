@@ -1563,3 +1563,29 @@ AttributeError: _ARRAY_API not found
   sell QQQ   intended     8 filled       8  OK  fill $682.42 (-7 bps vs signal price)
   buy  BIL   intended   127 filled     127  OK  fill $91.62 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $96,260.73
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-28  (gross exposure 0.98)
+  SELL    24 INTC  @~$87.80     ($2,107)
+  → submitted sell 24 INTC
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-28.json
+[rebalance] Market closed (next open 2026-07-29T09:30:00-04:00) — exiting.
+[reconcile] Equity $95,594.18 (cash $5,823.58) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 1 intended orders from 2026-07-28 …
+  sell INTC  intended    24 filled      24  OK  fill $87.80 (-1 bps vs signal price)
+[reconcile] All orders filled as intended.
