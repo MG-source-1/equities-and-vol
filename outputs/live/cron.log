@@ -1589,3 +1589,32 @@ AttributeError: _ARRAY_API not found
 [reconcile] Checking 1 intended orders from 2026-07-28 …
   sell INTC  intended    24 filled      24  OK  fill $87.80 (-1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $95,695.93
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-07-29  (gross exposure 0.98)
+  SELL    27 BIL   @~$91.64     ($2,474)
+  BUY     13 NVDA  @~$193.15    ($2,511)
+  → submitted sell 27 BIL
+  → submitted buy 13 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-29.json
+[rebalance] Market closed (next open 2026-07-30T09:30:00-04:00) — exiting.
+[reconcile] Equity $94,478.38 (cash $5,786.41) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-07-29 …
+  sell BIL   intended    27 filled      27  OK  fill $91.63 (-1 bps vs signal price)
+  buy  NVDA  intended    13 filled      13  OK  fill $193.17 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
