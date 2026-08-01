@@ -1618,3 +1618,52 @@ AttributeError: _ARRAY_API not found
   sell BIL   intended    27 filled      27  OK  fill $91.63 (-1 bps vs signal price)
   buy  NVDA  intended    13 filled      13  OK  fill $193.17 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 199, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 189, in main
+    with open(path, "w") as f:
+         ^^^^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-30.json'
+[reconcile] Equity $96,347.51 (cash $2,951.39) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-07-29 …
+  sell BIL   intended    27 filled      27  OK  fill $91.63 (-1 bps vs signal price)
+  buy  NVDA  intended    13 filled      13  OK  fill $193.17 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $96,741.60
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: EDGAR fetch failed (Expecting value: line 1 column 4664521 (char 4664520)) — neutral scores
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-05-28)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 61 filing dates (2011-08-12 → 2026-07-23)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-07-31  (gross exposure 0.98)
+  SELL    46 NVDA  @~$200.25    ($9,212)
+  BUY      7 AMD   @~$485.63    ($3,399)
+  BUY     26 BIL   @~$91.68     ($2,384)
+  BUY     33 INTC  @~$92.65     ($3,057)
+  → submitted sell 46 NVDA
+  → submitted buy 7 AMD
+  → submitted buy 26 BIL
+  → submitted buy 33 INTC
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-07-31.json
+[rebalance] Market closed (next open 2026-08-03T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,202.26 (cash $3,323.38) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-07-31 …
+  sell NVDA  intended    46 filled      46  OK  fill $200.27 (+1 bps vs signal price)
+  buy  AMD   intended     7 filled       7  OK  fill $485.96 (+7 bps vs signal price)
+  buy  BIL   intended    26 filled      26  OK  fill $91.68 (+0 bps vs signal price)
+  buy  INTC  intended    33 filled      33  OK  fill $92.58 (-8 bps vs signal price)
+[reconcile] All orders filled as intended.
