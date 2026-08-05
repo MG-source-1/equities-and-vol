@@ -1705,3 +1705,29 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  AAPL  intended    15 filled      15  OK  fill $304.99 (-1 bps vs signal price)
   buy  BIL   intended    42 filled      42  OK  fill $91.42 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $99,362.89
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: EDGAR fetch failed (Expecting value: line 1 column 4664521 (char 4664520)) — neutral scores
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-04  (gross exposure 0.98)
+  BUY     66 BIL   @~$91.42     ($6,034)
+  → submitted buy 66 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-04.json
+[rebalance] Market closed (next open 2026-08-05T09:30:00-04:00) — exiting.
+[reconcile] Equity $98,146.58 (cash $-2,142.43) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 1 intended orders from 2026-08-04 …
+  buy  BIL   intended    66 filled      66  OK  fill $91.43 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
