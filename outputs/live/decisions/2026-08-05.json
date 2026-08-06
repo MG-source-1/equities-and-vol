@@ -1,0 +1,97 @@
+{
+  "utc_time": "2026-08-05T19:25:35.478818+00:00",
+  "equity": 98395.17,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-08-05",
+    "weights": {
+      "AAPL": 0.11968,
+      "AMD": 0.07883,
+      "AMZN": 0.02813,
+      "AVGO": 0.06854,
+      "BIL": 0.5407,
+      "GOOGL": 0.08511,
+      "INTC": 0.05902
+    },
+    "prices": {
+      "AAPL": 309.86,
+      "ADBE": 257.88,
+      "AMD": 486.225,
+      "AMZN": 271.46,
+      "AVGO": 422.2301,
+      "BIL": 91.434,
+      "CRM": 192.24,
+      "GOOGL": 362.42,
+      "INTC": 102.4799,
+      "META": 587.57,
+      "MSFT": 490.625,
+      "NFLX": 73.77,
+      "NVDA": 221.87,
+      "ORCL": 144.635,
+      "QCOM": 158.89,
+      "QQQ": 721.085,
+      "SPY": 771.8699,
+      "TSLA": 322.17
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-07-31",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.18,
+          "GOOGL": 0.1891,
+          "AMD": 0.0893,
+          "AVGO": 0.1523,
+          "INTC": 0.0452
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.1432,
+          "AMD": 0.1432,
+          "INTC": 0.1432
+        },
+        "stock_dips": {
+          "AMZN": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.4393,
+      "bil_sweep": 0.5407,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 41.0,
+    "AMD": 17.0,
+    "AVGO": 16.0,
+    "BIL": 625.0,
+    "GOOGL": 24.0,
+    "INTC": 68.0
+  },
+  "orders": [
+    {
+      "symbol": "BIL",
+      "side": "sell",
+      "qty": 44,
+      "ref_price": 91.43,
+      "est_value": 4023.1,
+      "target_qty": 581,
+      "order_id": "c56a7d55-f0a3-46ca-949e-899ccc73f0ed"
+    },
+    {
+      "symbol": "AMZN",
+      "side": "buy",
+      "qty": 10,
+      "ref_price": 271.46,
+      "est_value": 2714.6,
+      "target_qty": 10,
+      "order_id": "f5e70bfc-1eb0-4b68-89a6-c61b14e84c07"
+    }
+  ],
+  "executed": true
+}
