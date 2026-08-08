@@ -1789,3 +1789,51 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell BIL   intended    59 filled      59  OK  fill $91.44 (-1 bps vs signal price)
   buy  QQQ   intended     6 filled       6  OK  fill $715.03 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $98,331.14
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 68 filing dates (2009-10-23 → 2026-07-29)
+[fundamentals] GOOGL: 44 filing dates (2015-10-29 → 2026-07-23)
+[fundamentals] META: 56 filing dates (2012-07-31 → 2026-04-30)
+[fundamentals] NVDA: 68 filing dates (2009-08-20 → 2026-05-20)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-05-28)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 61 filing dates (2011-08-12 → 2026-07-23)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-08-07  (gross exposure 0.98)
+  SELL    29 AAPL  @~$313.22    ($9,083)
+  SELL    10 AMZN  @~$274.61    ($2,746)
+  SELL     5 AVGO  @~$426.14    ($2,131)
+  SELL     7 GOOGL @~$355.01    ($2,485)
+  SELL    16 INTC  @~$101.36    ($1,622)
+  SELL     6 QQQ   @~$722.11    ($4,333)
+  BUY    170 BIL   @~$91.47     ($15,551)
+  BUY     33 QCOM  @~$167.14    ($5,516)
+  → submitted sell 29 AAPL
+  → submitted sell 10 AMZN
+  → submitted sell 5 AVGO
+  → submitted sell 7 GOOGL
+  → submitted sell 16 INTC
+  → submitted sell 6 QQQ
+  → submitted buy 170 BIL
+  → submitted buy 33 QCOM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-07.json
+[rebalance] Market closed (next open 2026-08-10T09:30:00-04:00) — exiting.
+[reconcile] Equity $98,398.54 (cash $1,609.04) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 8 intended orders from 2026-08-07 …
+  sell AAPL  intended    29 filled      29  OK  fill $313.31 (+3 bps vs signal price)
+  sell AMZN  intended    10 filled      10  OK  fill $274.67 (+2 bps vs signal price)
+  sell AVGO  intended     5 filled       5  OK  fill $426.43 (+7 bps vs signal price)
+  sell GOOGL intended     7 filled       7  OK  fill $355.00 (-0 bps vs signal price)
+  sell INTC  intended    16 filled      16  OK  fill $101.49 (+13 bps vs signal price)
+  sell QQQ   intended     6 filled       6  OK  fill $722.30 (+3 bps vs signal price)
+  buy  BIL   intended   170 filled     170  OK  fill $91.48 (+1 bps vs signal price)
+  buy  QCOM  intended    33 filled      33  OK  fill $167.17 (+2 bps vs signal price)
+[reconcile] All orders filled as intended.
