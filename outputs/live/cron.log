@@ -1837,3 +1837,27 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  BIL   intended   170 filled     170  OK  fill $91.48 (+1 bps vs signal price)
   buy  QCOM  intended    33 filled      33  OK  fill $167.17 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,971.11
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-10  (gross exposure 0.98)
+[rebalance] Portfolio already within tolerance — no trades.
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-10.json
+[rebalance] Market closed (next open 2026-08-11T09:30:00-04:00) — exiting.
+[reconcile] Equity $97,749.58 (cash $1,608.54) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 0 intended orders from 2026-08-10 …
+[reconcile] All orders filled as intended.
