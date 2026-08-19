@@ -2023,3 +2023,38 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  INTC  intended    31 filled      31  OK  fill $103.39 (+4 bps vs signal price)
   buy  QQQ   intended     7 filled       7  OK  fill $730.15 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $96,593.27
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-18  (gross exposure 0.98)
+  SELL     5 AMD   @~$481.65    ($2,408)
+  SELL     7 QQQ   @~$717.82    ($5,025)
+  BUY     45 BIL   @~$91.55     ($4,120)
+  BUY     12 NVDA  @~$219.34    ($2,632)
+  → submitted sell 5 AMD
+  → submitted sell 7 QQQ
+  → submitted buy 45 BIL
+  → submitted buy 12 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-18.json
+[rebalance] Market closed (next open 2026-08-19T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,431.67 (cash $5,165.44) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-08-18 …
+  sell AMD   intended     5 filled       5  OK  fill $481.45 (-4 bps vs signal price)
+  sell QQQ   intended     7 filled       7  OK  fill $717.82 (+0 bps vs signal price)
+  buy  BIL   intended    45 filled      45  OK  fill $91.56 (+1 bps vs signal price)
+  buy  NVDA  intended    12 filled      12  OK  fill $219.30 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.
