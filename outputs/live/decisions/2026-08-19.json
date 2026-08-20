@@ -1,0 +1,100 @@
+{
+  "utc_time": "2026-08-19T19:25:35.357821+00:00",
+  "equity": 96114.92,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-08-19",
+    "weights": {
+      "AAPL": 0.04459,
+      "AMD": 0.08377,
+      "AVGO": 0.05731,
+      "BIL": 0.56944,
+      "GOOGL": 0.07117,
+      "INTC": 0.06161,
+      "NVDA": 0.02813,
+      "QCOM": 0.06398
+    },
+    "prices": {
+      "AAPL": 316.25,
+      "ADBE": 273.023,
+      "AMD": 468.1228,
+      "AMZN": 264.6999,
+      "AVGO": 364.115,
+      "BIL": 91.56,
+      "CRM": 206.85,
+      "GOOGL": 344.6596,
+      "INTC": 93.4101,
+      "META": 550.3201,
+      "MSFT": 483.95,
+      "NFLX": 80.425,
+      "NVDA": 219.785,
+      "ORCL": 143.735,
+      "QCOM": 162.605,
+      "QQQ": 717.1399,
+      "SPY": 769.94,
+      "TSLA": 348.73
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-07-31",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.1582,
+          "AMD": 0.0871,
+          "AVGO": 0.1274,
+          "QCOM": 0.1422,
+          "INTC": 0.0378
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.1651,
+          "AMD": 0.1651,
+          "INTC": 0.1651
+        },
+        "stock_dips": {
+          "NVDA": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.4106,
+      "bil_sweep": 0.5694,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 12.0,
+    "AMD": 16.0,
+    "AVGO": 13.0,
+    "BIL": 571.0,
+    "GOOGL": 20.0,
+    "INTC": 83.0,
+    "NVDA": 12.0,
+    "QCOM": 33.0
+  },
+  "orders": [
+    {
+      "symbol": "INTC",
+      "side": "sell",
+      "qty": 20,
+      "ref_price": 93.41,
+      "est_value": 1868.2,
+      "target_qty": 63,
+      "order_id": "78e24f5b-e6ac-4d49-91d0-48451df54e55"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 26,
+      "ref_price": 91.56,
+      "est_value": 2380.56,
+      "target_qty": 597,
+      "order_id": "de767040-7b7f-4179-afdb-cca51859a252"
+    }
+  ],
+  "executed": true
+}

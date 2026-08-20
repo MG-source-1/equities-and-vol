@@ -2058,3 +2058,32 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  BIL   intended    45 filled      45  OK  fill $91.56 (+1 bps vs signal price)
   buy  NVDA  intended    12 filled      12  OK  fill $219.30 (-2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $96,114.92
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-19  (gross exposure 0.98)
+  SELL    20 INTC  @~$93.41     ($1,868)
+  BUY     26 BIL   @~$91.56     ($2,381)
+  → submitted sell 20 INTC
+  → submitted buy 26 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-19.json
+[rebalance] Market closed (next open 2026-08-20T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,189.74 (cash $4,652.20) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-08-19 …
+  sell INTC  intended    20 filled      20  OK  fill $93.39 (-2 bps vs signal price)
+  buy  BIL   intended    26 filled      26  OK  fill $91.57 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
