@@ -1,0 +1,108 @@
+{
+  "utc_time": "2026-08-20T19:25:35.478139+00:00",
+  "equity": 95838.04,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-08-20",
+    "weights": {
+      "AAPL": 0.07433,
+      "AMD": 0.08749,
+      "AVGO": 0.0604,
+      "BIL": 0.55122,
+      "GOOGL": 0.075,
+      "INTC": 0.06414,
+      "QCOM": 0.06743
+    },
+    "prices": {
+      "AAPL": 313.8798,
+      "ADBE": 272.72,
+      "AMD": 465.39,
+      "AMZN": 261.25,
+      "AVGO": 364.465,
+      "BIL": 91.5719,
+      "CRM": 206.81,
+      "GOOGL": 340.865,
+      "INTC": 92.385,
+      "META": 542.71,
+      "MSFT": 481.93,
+      "NFLX": 80.45,
+      "NVDA": 217.23,
+      "ORCL": 142.2979,
+      "QCOM": 161.1351,
+      "QQQ": 710.75,
+      "SPY": 763.65,
+      "TSLA": 343.35
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-07-31",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.1667,
+          "AMD": 0.0917,
+          "AVGO": 0.1342,
+          "QCOM": 0.1498,
+          "INTC": 0.0399
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.1711,
+          "AMD": 0.1711,
+          "INTC": 0.1711
+        },
+        "stock_dips": {
+          "AAPL": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.4288,
+      "bil_sweep": 0.5512,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 12.0,
+    "AMD": 16.0,
+    "AVGO": 13.0,
+    "BIL": 597.0,
+    "GOOGL": 20.0,
+    "INTC": 63.0,
+    "NVDA": 12.0,
+    "QCOM": 33.0
+  },
+  "orders": [
+    {
+      "symbol": "BIL",
+      "side": "sell",
+      "qty": 21,
+      "ref_price": 91.57,
+      "est_value": 1923.01,
+      "target_qty": 576,
+      "order_id": "1f189163-464b-43b1-a0f3-541f8feae062"
+    },
+    {
+      "symbol": "NVDA",
+      "side": "sell",
+      "qty": 12,
+      "ref_price": 217.23,
+      "est_value": 2606.76,
+      "target_qty": 0,
+      "order_id": "c07e7d74-3f7e-479f-a7b6-3a7f6f17bf13"
+    },
+    {
+      "symbol": "AAPL",
+      "side": "buy",
+      "qty": 10,
+      "ref_price": 313.88,
+      "est_value": 3138.8,
+      "target_qty": 22,
+      "order_id": "fb908d20-0029-466f-81b0-02701c991df9"
+    }
+  ],
+  "executed": true
+}
