@@ -1,0 +1,79 @@
+{
+  "utc_time": "2026-08-21T19:25:34.319336+00:00",
+  "equity": 95850.32,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 100239.94,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-08-21",
+    "weights": {
+      "AAPL": 0.07591,
+      "AMD": 0.08994,
+      "AVGO": 0.06167,
+      "BIL": 0.54095,
+      "GOOGL": 0.07658,
+      "INTC": 0.0661,
+      "QCOM": 0.06885
+    },
+    "prices": {
+      "AAPL": 309.45,
+      "ADBE": 273.78,
+      "AMD": 471.73,
+      "AMZN": 259.475,
+      "AVGO": 367.86,
+      "BIL": 91.6,
+      "CRM": 208.52,
+      "GOOGL": 345.38,
+      "INTC": 90.215,
+      "META": 550.3899,
+      "MSFT": 483.23,
+      "NFLX": 79.585,
+      "NVDA": 215.16,
+      "ORCL": 146.85,
+      "QCOM": 161.14,
+      "QQQ": 713.56,
+      "SPY": 766.2001,
+      "TSLA": 364.475
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-07-31",
+        "regime_scale": 1.0,
+        "holdings": {
+          "GOOGL": 0.1702,
+          "AMD": 0.0937,
+          "AVGO": 0.137,
+          "QCOM": 0.153,
+          "INTC": 0.0407
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.177,
+          "AMD": 0.177,
+          "INTC": 0.177
+        },
+        "stock_dips": {
+          "AAPL": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.4391,
+      "bil_sweep": 0.5409,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 22.0,
+    "AMD": 16.0,
+    "AVGO": 13.0,
+    "BIL": 576.0,
+    "GOOGL": 20.0,
+    "INTC": 63.0,
+    "QCOM": 33.0
+  },
+  "orders": [],
+  "executed": true
+}
