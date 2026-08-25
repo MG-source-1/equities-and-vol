@@ -2172,3 +2172,39 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell BIL   intended    40 filled      40  OK  fill $91.60 (-1 bps vs signal price)
   buy  NVDA  intended    12 filled      12  OK  fill $209.47 (-1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $95,665.69
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 68 filing dates (2009-10-23 → 2026-07-29)
+[fundamentals] GOOGL: 44 filing dates (2015-10-29 → 2026-07-23)
+[fundamentals] META: 57 filing dates (2012-07-31 → 2026-07-30)
+[fundamentals] NVDA: 68 filing dates (2009-08-20 → 2026-05-20)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-05-28)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 61 filing dates (2011-08-12 → 2026-07-23)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-08-25  (gross exposure 0.98)
+  SELL     7 AAPL  @~$309.18    ($2,164)
+  SELL    41 BIL   @~$91.62     ($3,756)
+  BUY     10 AMZN  @~$259.92    ($2,599)
+  BUY     42 INTC  @~$87.64     ($3,681)
+  → submitted sell 7 AAPL
+  → submitted sell 41 BIL
+  → submitted buy 10 AMZN
+  → submitted buy 42 INTC
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-25.json
+[rebalance] Market closed (next open 2026-08-26T09:30:00-04:00) — exiting.
+[reconcile] Equity $95,826.27 (cash $6,833.78) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-08-25 …
+  sell AAPL  intended     7 filled       7  OK  fill $309.22 (+1 bps vs signal price)
+  sell BIL   intended    41 filled      41  OK  fill $91.61 (-1 bps vs signal price)
+  buy  AMZN  intended    10 filled      10  OK  fill $260.01 (+3 bps vs signal price)
+  buy  INTC  intended    42 filled      42  OK  fill $87.64 (-0 bps vs signal price)
+[reconcile] All orders filled as intended.
