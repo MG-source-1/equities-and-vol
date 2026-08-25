@@ -2143,3 +2143,32 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
 [reconcile] Equity $95,854.01 (cash $6,043.81) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
 [reconcile] Checking 0 intended orders from 2026-08-21 …
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $95,386.24
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-24  (gross exposure 0.98)
+  SELL    40 BIL   @~$91.61     ($3,664)
+  BUY     12 NVDA  @~$209.50    ($2,514)
+  → submitted sell 40 BIL
+  → submitted buy 12 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-24.json
+[rebalance] Market closed (next open 2026-08-25T09:30:00-04:00) — exiting.
+[reconcile] Equity $95,279.45 (cash $7,194.17) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-08-24 …
+  sell BIL   intended    40 filled      40  OK  fill $91.60 (-1 bps vs signal price)
+  buy  NVDA  intended    12 filled      12  OK  fill $209.47 (-1 bps vs signal price)
+[reconcile] All orders filled as intended.
