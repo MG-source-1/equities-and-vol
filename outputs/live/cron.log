@@ -2208,3 +2208,44 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  AMZN  intended    10 filled      10  OK  fill $260.01 (+3 bps vs signal price)
   buy  INTC  intended    42 filled      42  OK  fill $87.64 (-0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $95,808.79
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-26  (gross exposure 0.98)
+  SELL    10 AMZN  @~$260.07    ($2,601)
+  SELL    12 NVDA  @~$210.96    ($2,532)
+  BUY      3 AMD   @~$483.89    ($1,452)
+  BUY      4 AVGO  @~$354.26    ($1,417)
+  BUY     38 BIL   @~$91.62     ($3,482)
+  BUY     10 QCOM  @~$163.66    ($1,637)
+  → submitted sell 10 AMZN
+  → submitted sell 12 NVDA
+  → submitted buy 3 AMD
+  → submitted buy 4 AVGO
+  → submitted buy 38 BIL
+  → submitted buy 10 QCOM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-26.json
+[rebalance] Market closed (next open 2026-08-27T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,103.65 (cash $3,978.81) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-08-26 …
+  sell AMZN  intended    10 filled      10  OK  fill $260.04 (-1 bps vs signal price)
+  sell NVDA  intended    12 filled      12  OK  fill $210.97 (+0 bps vs signal price)
+  buy  AMD   intended     3 filled       3  OK  fill $483.74 (-3 bps vs signal price)
+  buy  AVGO  intended     4 filled       4  OK  fill $354.20 (-2 bps vs signal price)
+  buy  BIL   intended    38 filled      38  OK  fill $91.63 (+1 bps vs signal price)
+  buy  QCOM  intended    10 filled      10  OK  fill $163.69 (+2 bps vs signal price)
+[reconcile] All orders filled as intended.
