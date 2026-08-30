@@ -2287,3 +2287,51 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  GOOGL intended     4 filled       4  OK  fill $340.71 (-1 bps vs signal price)
   buy  NVDA  intended    11 filled      11  OK  fill $227.06 (+4 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $52,879.14
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-08-28  (gross exposure 0.98)
+[guard] Live drawdown -47.2% breached −15% → flattening for 21 trading days.
+  SELL    20 AAPL  @~$319.71    ($6,394)
+  SELL    23 AMD   @~$468.63    ($10,778)
+  SELL    17 AVGO  @~$368.10    ($6,258)
+  SELL    24 GOOGL @~$347.56    ($8,341)
+  SELL   105 INTC  @~$89.72     ($9,420)
+  SELL    11 NVDA  @~$217.40    ($2,391)
+  SELL    43 QCOM  @~$163.77    ($7,042)
+  BUY    565 BIL   @~$91.66     ($51,785)
+  → submitted sell 20 AAPL
+  → submitted sell 23 AMD
+  → submitted sell 17 AVGO
+  → submitted sell 24 GOOGL
+  → submitted sell 105 INTC
+  → submitted sell 11 NVDA
+  → submitted sell 43 QCOM
+  → submitted buy 565 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-08-28.json
+[rebalance] Market closed (next open 2026-08-31T09:30:00-04:00) — exiting.
+[reconcile] Equity $52,869.33 (cash $1,081.43) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 8 intended orders from 2026-08-28 …
+  sell AAPL  intended    20 filled      20  OK  fill $319.80 (+3 bps vs signal price)
+  sell AMD   intended    23 filled      23  OK  fill $468.55 (-2 bps vs signal price)
+  sell AVGO  intended    17 filled      17  OK  fill $367.91 (-5 bps vs signal price)
+  sell GOOGL intended    24 filled      24  OK  fill $347.59 (+1 bps vs signal price)
+  sell INTC  intended   105 filled     105  OK  fill $89.70 (-2 bps vs signal price)
+  sell NVDA  intended    11 filled      11  OK  fill $217.34 (-3 bps vs signal price)
+  sell QCOM  intended    43 filled      43  OK  fill $163.70 (-4 bps vs signal price)
+  buy  BIL   intended   565 filled     565  OK  fill $91.66 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
