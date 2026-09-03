@@ -2385,3 +2385,29 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
 [reconcile] Equity $95,861.81 (cash $1,080.32) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
 [reconcile] Checking 0 intended orders from 2026-09-01 …
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $95,854.24
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 68 filing dates (2009-10-23 → 2026-07-29)
+[fundamentals] GOOGL: 44 filing dates (2015-10-29 → 2026-07-23)
+[fundamentals] META: 57 filing dates (2012-07-31 → 2026-07-30)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 58 filing dates (2010-07-01 → 2026-06-22)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 69 filing dates (2009-06-26 → 2026-06-15)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 61 filing dates (2011-08-12 → 2026-07-23)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-09-02  (gross exposure 0.98)
+[guard] Drawdown stop active — 18 days left.
+[rebalance] Portfolio already within tolerance — no trades.
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-02.json
+[rebalance] Market closed (next open 2026-09-03T09:30:00-04:00) — exiting.
+[reconcile] Equity $95,862.12 (cash $1,080.32) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 0 intended orders from 2026-09-02 …
+[reconcile] All orders filled as intended.
