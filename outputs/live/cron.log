@@ -2455,3 +2455,38 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  GOOGL intended    58 filled      58  OK  fill $343.05 (+5 bps vs signal price)
   buy  INTC  intended   124 filled     124  OK  fill $91.04 (-6 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $96,299.35
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-04  (gross exposure 0.98)
+  SELL     9 ADBE  @~$268.43    ($2,416)
+  SELL    29 BIL   @~$91.45     ($2,652)
+  BUY      5 MSFT  @~$500.02    ($2,500)
+  BUY     11 NVDA  @~$229.96    ($2,530)
+  → submitted sell 9 ADBE
+  → submitted sell 29 BIL
+  → submitted buy 5 MSFT
+  → submitted buy 11 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-04.json
+[rebalance] Market closed (next open 2026-09-08T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,458.03 (cash $2,767.61) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-09-04 …
+  sell ADBE  intended     9 filled       9  OK  fill $268.40 (-1 bps vs signal price)
+  sell BIL   intended    29 filled      29  OK  fill $91.44 (-1 bps vs signal price)
+  buy  MSFT  intended     5 filled       5  OK  fill $500.10 (+2 bps vs signal price)
+  buy  NVDA  intended    11 filled      11  OK  fill $229.92 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.
