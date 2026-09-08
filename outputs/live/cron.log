@@ -2490,3 +2490,12 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  MSFT  intended     5 filled       5  OK  fill $500.10 (+2 bps vs signal price)
   buy  NVDA  intended    11 filled      11  OK  fill $229.92 (-2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market closed (next open 2026-09-08T09:30:00-04:00) — exiting.
+[rebalance] Market closed (next open 2026-09-08T09:30:00-04:00) — exiting.
+[reconcile] Equity $96,489.91 (cash $2,767.48) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-09-04 …
+  sell ADBE  intended     9 filled       0  NO ORDER FOUND  
+  sell BIL   intended    29 filled       0  NO ORDER FOUND  
+  buy  MSFT  intended     5 filled       0  NO ORDER FOUND  
+  buy  NVDA  intended    11 filled       0  NO ORDER FOUND  
+[reconcile] WARNING: 4 order(s) need attention.

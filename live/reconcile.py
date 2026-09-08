@@ -62,7 +62,12 @@ def check_fills() -> None:
     # the decision log at submission). Matching by (symbol, side) over a
     # multi-day window aggregates unrelated orders and can mark a missed
     # fill "OK" because an earlier day's order filled.
-    after  = (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()
+    # Window starts just before the decision itself, not a fixed N days back
+    # from now — a long weekend/holiday between the decision and the next
+    # reconcile run would otherwise age the orders out of a "now - 3 days"
+    # cutoff and report false "NO ORDER FOUND"s for already-filled orders.
+    decision_time = datetime.fromisoformat(decision["utc_time"])
+    after = (decision_time - timedelta(hours=1)).isoformat()
     closed = broker.list_orders(status="closed", after=after)
     by_id  = {o["id"]: o for o in closed if o.get("id")}
 
