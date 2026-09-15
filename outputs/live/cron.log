@@ -2629,3 +2629,35 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  AMD   intended     5 filled       5  OK  fill $516.16 (+1 bps vs signal price)
   buy  BIL   intended    51 filled      51  OK  fill $91.50 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $98,205.31
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-14  (gross exposure 0.98)
+  SELL     5 AMD   @~$495.73    ($2,479)
+  SELL     5 GOOGL @~$347.64    ($1,738)
+  BUY     30 BIL   @~$91.50     ($2,745)
+  → submitted sell 5 AMD
+  → submitted sell 5 GOOGL
+  → submitted buy 30 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-14.json
+[rebalance] Market closed (next open 2026-09-15T09:30:00-04:00) — exiting.
+[reconcile] Equity $98,024.50 (cash $3,433.67) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 3 intended orders from 2026-09-14 …
+  sell AMD   intended     5 filled       5  OK  fill $495.76 (+1 bps vs signal price)
+  sell GOOGL intended     5 filled       5  OK  fill $347.60 (-1 bps vs signal price)
+  buy  BIL   intended    30 filled      30  OK  fill $91.50 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
