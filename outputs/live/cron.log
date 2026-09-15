@@ -2661,3 +2661,41 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell GOOGL intended     5 filled       5  OK  fill $347.60 (-1 bps vs signal price)
   buy  BIL   intended    30 filled      30  OK  fill $91.50 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $97,702.36
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-15  (gross exposure 0.98)
+  SELL   198 BIL   @~$91.50     ($18,117)
+  BUY     14 AMZN  @~$247.92    ($3,471)
+  BUY      5 MSFT  @~$496.75    ($2,484)
+  BUY     12 NVDA  @~$212.05    ($2,545)
+  BUY     14 QQQ   @~$704.33    ($9,861)
+  → submitted sell 198 BIL
+  → submitted buy 14 AMZN
+  → submitted buy 5 MSFT
+  → submitted buy 12 NVDA
+  → submitted buy 14 QQQ
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-15.json
+[rebalance] Market closed (next open 2026-09-16T09:30:00-04:00) — exiting.
+[reconcile] Equity $97,844.02 (cash $3,194.28) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 5 intended orders from 2026-09-15 …
+  sell BIL   intended   198 filled     198  OK  fill $91.50 (+0 bps vs signal price)
+  buy  AMZN  intended    14 filled      14  OK  fill $247.84 (-3 bps vs signal price)
+  buy  MSFT  intended     5 filled       5  OK  fill $496.48 (-5 bps vs signal price)
+  buy  NVDA  intended    12 filled      12  OK  fill $212.06 (+0 bps vs signal price)
+  buy  QQQ   intended    14 filled      14  OK  fill $704.25 (-1 bps vs signal price)
+[reconcile] All orders filled as intended.
