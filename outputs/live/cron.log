@@ -2734,3 +2734,53 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  GOOGL intended     6 filled       6  OK  fill $340.95 (-8 bps vs signal price)
   buy  INTC  intended    17 filled      17  OK  fill $99.66 (-13 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $101,164.27
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-17  (gross exposure 0.98)
+  SELL     6 AMD   @~$546.28    ($3,278)
+  SELL    10 AMZN  @~$251.09    ($2,511)
+  SELL     6 GOOGL @~$346.38    ($2,078)
+  SELL    28 INTC  @~$109.84    ($3,076)
+  SELL     5 MSFT  @~$496.24    ($2,481)
+  SELL    12 NVDA  @~$219.57    ($2,635)
+  SELL    14 QQQ   @~$716.60    ($10,032)
+  BUY    240 BIL   @~$91.52     ($21,965)
+  BUY     11 CRM   @~$244.82    ($2,693)
+  → submitted sell 6 AMD
+  → submitted sell 10 AMZN
+  → submitted sell 6 GOOGL
+  → submitted sell 28 INTC
+  → submitted sell 5 MSFT
+  → submitted sell 12 NVDA
+  → submitted sell 14 QQQ
+  → submitted buy 240 BIL
+  → submitted buy 11 CRM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-17.json
+[rebalance] Market closed (next open 2026-09-18T09:30:00-04:00) — exiting.
+[reconcile] Equity $101,016.54 (cash $3,570.31) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 9 intended orders from 2026-09-17 …
+  sell AMD   intended     6 filled       6  OK  fill $546.00 (-5 bps vs signal price)
+  sell AMZN  intended    10 filled      10  OK  fill $251.02 (-3 bps vs signal price)
+  sell GOOGL intended     6 filled       6  OK  fill $346.43 (+1 bps vs signal price)
+  sell INTC  intended    28 filled      28  OK  fill $109.72 (-11 bps vs signal price)
+  sell MSFT  intended     5 filled       5  OK  fill $496.22 (-0 bps vs signal price)
+  sell NVDA  intended    12 filled      12  OK  fill $219.61 (+2 bps vs signal price)
+  sell QQQ   intended    14 filled      14  OK  fill $716.55 (-1 bps vs signal price)
+  buy  BIL   intended   240 filled     240  OK  fill $91.53 (+1 bps vs signal price)
+  buy  CRM   intended    11 filled      11  OK  fill $244.64 (-7 bps vs signal price)
+[reconcile] All orders filled as intended.
