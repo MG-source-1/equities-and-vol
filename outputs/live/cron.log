@@ -2809,3 +2809,74 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
 [reconcile] Equity $101,588.15 (cash $3,570.31) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
 [reconcile] Checking 0 intended orders from 2026-09-18 …
 [reconcile] All orders filled as intended.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 199, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 189, in main
+    with open(path, "w") as f:
+         ^^^^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-21.json'
+[rebalance] Paper account equity: $104,590.98
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-21  (gross exposure 0.98)
+  SELL     3 AMD   @~$613.11    ($1,839)
+  SELL    11 CRM   @~$237.56    ($2,613)
+  SELL    15 INTC  @~$121.30    ($1,820)
+  BUY     79 BIL   @~$91.56     ($7,233)
+  → submitted sell 3 AMD
+  → submitted sell 11 CRM
+  → submitted sell 15 INTC
+  → submitted buy 79 BIL
+[rebalance] Market closed (next open 2026-09-22T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,842.63 (cash $2,609.56) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 0 intended orders from 2026-09-18 …
+[reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $104,568.77
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-22  (gross exposure 0.98)
+  SELL    69 BIL   @~$91.58     ($6,319)
+  BUY     12 CRM   @~$233.26    ($2,799)
+  BUY      7 GOOGL @~$353.05    ($2,471)
+  → submitted sell 69 BIL
+  → submitted buy 12 CRM
+  → submitted buy 7 GOOGL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-22.json
+[rebalance] Market closed (next open 2026-09-23T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,597.88 (cash $3,654.74) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 3 intended orders from 2026-09-22 …
+  sell BIL   intended    69 filled      69  OK  fill $91.57 (-1 bps vs signal price)
+  buy  CRM   intended    12 filled      12  OK  fill $233.35 (+4 bps vs signal price)
+  buy  GOOGL intended     7 filled       7  OK  fill $353.28 (+6 bps vs signal price)
+[reconcile] All orders filled as intended.
