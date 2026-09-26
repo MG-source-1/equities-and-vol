@@ -1,0 +1,97 @@
+{
+  "utc_time": "2026-09-25T19:25:33.842942+00:00",
+  "equity": 104102.56,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-09-25",
+    "weights": {
+      "AAPL": 0.10425,
+      "AMD": 0.11305,
+      "AMZN": 0.12485,
+      "BIL": 0.36285,
+      "CRM": 0.02813,
+      "GOOGL": 0.16674,
+      "INTC": 0.08013
+    },
+    "prices": {
+      "AAPL": 339.955,
+      "ADBE": 235.59,
+      "AMD": 630.58,
+      "AMZN": 249.7175,
+      "AVGO": 352.005,
+      "BIL": 91.6109,
+      "CRM": 233.805,
+      "GOOGL": 343.98,
+      "INTC": 124.73,
+      "META": 751.34,
+      "MSFT": 515.84,
+      "NFLX": 71.335,
+      "NVDA": 223.82,
+      "ORCL": 137.785,
+      "QCOM": 202.91,
+      "QQQ": 744.2,
+      "SPY": 770.56,
+      "TSLA": 371.965
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-08-31",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2317,
+          "GOOGL": 0.253,
+          "AMD": 0.1336,
+          "AMZN": 0.2774,
+          "INTC": 0.0605
+        }
+      },
+      "triad": {
+        "leaders": {
+          "GOOGL": 0.196,
+          "AMD": 0.196,
+          "INTC": 0.196
+        },
+        "stock_dips": {
+          "CRM": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.6171,
+      "bil_sweep": 0.3629,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 31.0,
+    "AMD": 20.0,
+    "AMZN": 52.0,
+    "BIL": 445.0,
+    "GOOGL": 50.0,
+    "INTC": 71.0
+  },
+  "orders": [
+    {
+      "symbol": "BIL",
+      "side": "sell",
+      "qty": 33,
+      "ref_price": 91.61,
+      "est_value": 3023.16,
+      "target_qty": 412,
+      "order_id": "f2ed4693-a4b2-4ba8-afc1-c12b68513ad3"
+    },
+    {
+      "symbol": "CRM",
+      "side": "buy",
+      "qty": 12,
+      "ref_price": 233.81,
+      "est_value": 2805.66,
+      "target_qty": 12,
+      "order_id": "852814fe-95dd-4123-bb3e-1f2f0fb8577b"
+    }
+  ],
+  "executed": true
+}

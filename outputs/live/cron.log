@@ -2912,3 +2912,72 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  AAPL  intended     9 filled       9  OK  fill $336.43 (+4 bps vs signal price)
   buy  BIL   intended    28 filled      28  OK  fill $91.59 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 199, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 189, in main
+    with open(path, "w") as f:
+         ^^^^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-24.json'
+[rebalance] Paper account equity: $104,019.51
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-24  (gross exposure 0.98)
+  SELL     9 AAPL  @~$338.00    ($3,042)
+  SELL    12 CRM   @~$240.09    ($2,881)
+  BUY     68 BIL   @~$91.59     ($6,228)
+  → submitted sell 9 AAPL
+  → submitted sell 12 CRM
+  → submitted buy 68 BIL
+[rebalance] Market closed (next open 2026-09-25T09:30:00-04:00) — exiting.
+[reconcile] Equity $103,991.14 (cash $1,144.42) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 3 intended orders from 2026-09-23 …
+  sell GOOGL intended    10 filled      10  OK  fill $339.08 (+0 bps vs signal price)
+  buy  AAPL  intended     9 filled       9  OK  fill $336.43 (+4 bps vs signal price)
+  buy  BIL   intended    28 filled      28  OK  fill $91.59 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $104,102.56
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-25  (gross exposure 0.98)
+  SELL    33 BIL   @~$91.61     ($3,023)
+  BUY     12 CRM   @~$233.81    ($2,806)
+  → submitted sell 33 BIL
+  → submitted buy 12 CRM
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-25.json
+[rebalance] Market closed (next open 2026-09-28T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,077.81 (cash $1,363.27) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-09-25 …
+  sell BIL   intended    33 filled      33  OK  fill $91.61 (+0 bps vs signal price)
+  buy  CRM   intended    12 filled      12  OK  fill $233.69 (-5 bps vs signal price)
+[reconcile] All orders filled as intended.
