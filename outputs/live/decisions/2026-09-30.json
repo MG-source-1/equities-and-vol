@@ -1,0 +1,138 @@
+{
+  "utc_time": "2026-09-30T19:25:38.515113+00:00",
+  "equity": 103539.56,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-09-30",
+    "weights": {
+      "AAPL": 0.17573,
+      "AMD": 0.10674,
+      "BIL": 0.29255,
+      "CRM": 0.08246,
+      "GOOGL": 0.10546,
+      "INTC": 0.05102,
+      "NVDA": 0.13791,
+      "QCOM": 0.02813
+    },
+    "prices": {
+      "AAPL": 335.56,
+      "ADBE": 240.215,
+      "AMD": 612.05,
+      "AMZN": 250.04,
+      "AVGO": 353.49,
+      "BIL": 91.645,
+      "CRM": 229.51,
+      "GOOGL": 348.65,
+      "INTC": 119.54,
+      "META": 733.35,
+      "MSFT": 517.42,
+      "NFLX": 69.855,
+      "NVDA": 230.575,
+      "ORCL": 138.06,
+      "QCOM": 184.16,
+      "QQQ": 743.26,
+      "SPY": 766.32,
+      "TSLA": 352.755
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2146,
+          "GOOGL": 0.2343,
+          "NVDA": 0.244,
+          "AMD": 0.1238,
+          "CRM": 0.1832
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.189,
+          "AMD": 0.189,
+          "INTC": 0.189
+        },
+        "stock_dips": {
+          "AAPL": 0.25,
+          "NVDA": 0.25,
+          "QCOM": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.6874,
+      "bil_sweep": 0.2926,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 39.0,
+    "AMD": 20.0,
+    "AMZN": 52.0,
+    "BIL": 321.0,
+    "GOOGL": 50.0,
+    "INTC": 92.0,
+    "NVDA": 10.0,
+    "QCOM": 12.0
+  },
+  "orders": [
+    {
+      "symbol": "AMZN",
+      "side": "sell",
+      "qty": 52,
+      "ref_price": 250.04,
+      "est_value": 13002.08,
+      "target_qty": 0,
+      "order_id": "fcb16285-943a-4c7b-8f0b-56bb911297f0"
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "sell",
+      "qty": 19,
+      "ref_price": 348.65,
+      "est_value": 6624.35,
+      "target_qty": 31,
+      "order_id": "6f28b9ed-4053-4f5f-b837-ca685e019116"
+    },
+    {
+      "symbol": "INTC",
+      "side": "sell",
+      "qty": 48,
+      "ref_price": 119.54,
+      "est_value": 5737.92,
+      "target_qty": 44,
+      "order_id": "f63b08d7-f5fe-49f0-a440-b41c6ac35ed3"
+    },
+    {
+      "symbol": "AAPL",
+      "side": "buy",
+      "qty": 15,
+      "ref_price": 335.56,
+      "est_value": 5033.4,
+      "target_qty": 54,
+      "order_id": "24521b6b-a03c-4acb-bc42-de8078f8a05d"
+    },
+    {
+      "symbol": "CRM",
+      "side": "buy",
+      "qty": 37,
+      "ref_price": 229.51,
+      "est_value": 8491.87,
+      "target_qty": 37,
+      "order_id": "6c1ab165-0365-4b95-916c-7e10d7fbe3df"
+    },
+    {
+      "symbol": "NVDA",
+      "side": "buy",
+      "qty": 51,
+      "ref_price": 230.57,
+      "est_value": 11759.32,
+      "target_qty": 61,
+      "order_id": "8c054528-5164-4a56-89b3-d715ba3fabfd"
+    }
+  ],
+  "executed": true
+}

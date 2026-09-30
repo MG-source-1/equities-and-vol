@@ -3055,3 +3055,44 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  NVDA  intended    10 filled      10  OK  fill $228.08 (-2 bps vs signal price)
   buy  QCOM  intended    12 filled      12  OK  fill $184.44 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $103,539.56
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-09-30  (gross exposure 0.98)
+  SELL    52 AMZN  @~$250.04    ($13,002)
+  SELL    19 GOOGL @~$348.65    ($6,624)
+  SELL    48 INTC  @~$119.54    ($5,738)
+  BUY     15 AAPL  @~$335.56    ($5,033)
+  BUY     37 CRM   @~$229.51    ($8,492)
+  BUY     51 NVDA  @~$230.57    ($11,759)
+  → submitted sell 52 AMZN
+  → submitted sell 19 GOOGL
+  → submitted sell 48 INTC
+  → submitted buy 15 AAPL
+  → submitted buy 37 CRM
+  → submitted buy 51 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-09-30.json
+[rebalance] Market closed (next open 2026-10-01T09:30:00-04:00) — exiting.
+[reconcile] Equity $103,411.08 (cash $2,938.19) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-09-30 …
+  sell AMZN  intended    52 filled      52  OK  fill $250.01 (-1 bps vs signal price)
+  sell GOOGL intended    19 filled      19  OK  fill $348.86 (+6 bps vs signal price)
+  sell INTC  intended    48 filled      48  OK  fill $119.64 (+8 bps vs signal price)
+  buy  AAPL  intended    15 filled      15  OK  fill $335.50 (-2 bps vs signal price)
+  buy  CRM   intended    37 filled      37  OK  fill $229.64 (+6 bps vs signal price)
+  buy  NVDA  intended    51 filled      51  OK  fill $230.53 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.
