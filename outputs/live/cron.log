@@ -3096,3 +3096,52 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  CRM   intended    37 filled      37  OK  fill $229.64 (+6 bps vs signal price)
   buy  NVDA  intended    51 filled      51  OK  fill $230.53 (-2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $103,227.05
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-01  (gross exposure 0.98)
+  SELL     8 AAPL  @~$329.55    ($2,636)
+  SELL    13 NVDA  @~$231.42    ($3,008)
+  SELL    12 QCOM  @~$183.33    ($2,200)
+  BUY    105 BIL   @~$91.41     ($9,598)
+  → submitted sell 8 AAPL
+  → submitted sell 13 NVDA
+  → submitted sell 12 QCOM
+  → submitted buy 105 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-01.json
+[rebalance] Market closed (next open 2026-10-02T09:30:00-04:00) — exiting.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 106, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 101, in main
+    append_equity_curve()
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 39, in append_equity_curve
+    curve.sort_index().to_csv(EQUITY_CSV)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py", line 3988, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/io/formats/format.py", line 1025, in to_csv
+    csv_formatter.save()
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/io/formats/csvs.py", line 251, in save
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 930, in get_handle
+    handle = open(
+             ^^^^^
+OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv'
