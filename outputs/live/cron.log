@@ -3145,3 +3145,50 @@ Traceback (most recent call last):
     handle = open(
              ^^^^^
 OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv'
+[rebalance] Paper account equity: $103,934.43
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-02  (gross exposure 0.98)
+  SELL     3 AMD   @~$633.42    ($1,900)
+  SELL   225 BIL   @~$91.42     ($20,570)
+  BUY     19 INTC  @~$119.72    ($2,275)
+  BUY      3 META  @~$727.41    ($2,182)
+  BUY      4 MSFT  @~$514.96    ($2,060)
+  BUY     10 NVDA  @~$233.91    ($2,339)
+  BUY     12 QCOM  @~$185.40    ($2,225)
+  BUY     12 QQQ   @~$749.13    ($8,990)
+  → submitted sell 3 AMD
+  → submitted sell 225 BIL
+  → submitted buy 19 INTC
+  → submitted buy 3 META
+  → submitted buy 4 MSFT
+  → submitted buy 10 NVDA
+  → submitted buy 12 QCOM
+  → submitted buy 12 QQQ
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-02.json
+[rebalance] Market closed (next open 2026-10-05T09:30:00-04:00) — exiting.
+[reconcile] Equity $103,900.92 (cash $3,579.96) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 8 intended orders from 2026-10-02 …
+  sell AMD   intended     3 filled       3  OK  fill $633.51 (+1 bps vs signal price)
+  sell BIL   intended   225 filled     225  OK  fill $91.42 (+0 bps vs signal price)
+  buy  INTC  intended    19 filled      19  OK  fill $119.80 (+7 bps vs signal price)
+  buy  META  intended     3 filled       3  OK  fill $727.88 (+6 bps vs signal price)
+  buy  MSFT  intended     4 filled       4  OK  fill $515.04 (+2 bps vs signal price)
+  buy  NVDA  intended    10 filled      10  OK  fill $233.93 (+1 bps vs signal price)
+  buy  QCOM  intended    12 filled      12  OK  fill $185.49 (+5 bps vs signal price)
+  buy  QQQ   intended    12 filled      12  OK  fill $749.25 (+2 bps vs signal price)
+[reconcile] All orders filled as intended.
