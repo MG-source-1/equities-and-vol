@@ -3192,3 +3192,38 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  QCOM  intended    12 filled      12  OK  fill $185.49 (+5 bps vs signal price)
   buy  QQQ   intended    12 filled      12  OK  fill $749.25 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $104,194.04
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-05  (gross exposure 0.98)
+  SELL     3 META  @~$744.02    ($2,232)
+  SELL    11 NVDA  @~$239.67    ($2,636)
+  SELL    12 QQQ   @~$756.67    ($9,080)
+  BUY    132 BIL   @~$91.44     ($12,070)
+  → submitted sell 3 META
+  → submitted sell 11 NVDA
+  → submitted sell 12 QQQ
+  → submitted buy 132 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-05.json
+[rebalance] Market closed (next open 2026-10-06T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,067.72 (cash $5,460.00) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-10-05 …
+  sell META  intended     3 filled       3  OK  fill $744.19 (+2 bps vs signal price)
+  sell NVDA  intended    11 filled      11  OK  fill $239.70 (+1 bps vs signal price)
+  sell QQQ   intended    12 filled      12  OK  fill $756.78 (+1 bps vs signal price)
+  buy  BIL   intended   132 filled     132  OK  fill $91.44 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
