@@ -3227,3 +3227,39 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell QQQ   intended    12 filled      12  OK  fill $756.78 (+1 bps vs signal price)
   buy  BIL   intended   132 filled     132  OK  fill $91.44 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $104,179.23
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 68 filing dates (2009-10-23 → 2026-07-29)
+[fundamentals] GOOGL: 44 filing dates (2015-10-29 → 2026-07-23)
+[fundamentals] META: 57 filing dates (2012-07-31 → 2026-07-30)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 59 filing dates (2010-07-01 → 2026-09-11)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 70 filing dates (2009-06-26 → 2026-09-22)
+[fundamentals] NFLX: 69 filing dates (2009-07-31 → 2026-07-17)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 61 filing dates (2011-08-12 → 2026-07-23)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-10-06  (gross exposure 0.98)
+  SELL     4 MSFT  @~$531.24    ($2,125)
+  SELL    12 QCOM  @~$181.40    ($2,177)
+  BUY     14 CRM   @~$223.40    ($3,128)
+  BUY     12 NVDA  @~$239.76    ($2,877)
+  → submitted sell 4 MSFT
+  → submitted sell 12 QCOM
+  → submitted buy 14 CRM
+  → submitted buy 12 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-06.json
+[rebalance] Market closed (next open 2026-10-07T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,182.05 (cash $3,751.80) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-10-06 …
+  sell MSFT  intended     4 filled       4  OK  fill $531.38 (+3 bps vs signal price)
+  sell QCOM  intended    12 filled      12  OK  fill $181.34 (-4 bps vs signal price)
+  buy  CRM   intended    14 filled      14  OK  fill $223.65 (+11 bps vs signal price)
+  buy  NVDA  intended    12 filled      12  OK  fill $239.86 (+4 bps vs signal price)
+[reconcile] All orders filled as intended.
