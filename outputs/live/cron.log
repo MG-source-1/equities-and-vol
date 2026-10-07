@@ -3263,3 +3263,32 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  CRM   intended    14 filled      14  OK  fill $223.65 (+11 bps vs signal price)
   buy  NVDA  intended    12 filled      12  OK  fill $239.86 (+4 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $104,041.86
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-07  (gross exposure 0.98)
+  SELL    14 CRM   @~$225.80    ($3,161)
+  BUY     54 BIL   @~$91.45     ($4,939)
+  → submitted sell 14 CRM
+  → submitted buy 54 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-07.json
+[rebalance] Market closed (next open 2026-10-08T09:30:00-04:00) — exiting.
+[reconcile] Equity $104,185.82 (cash $1,973.64) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-10-07 …
+  sell CRM   intended    14 filled      14  OK  fill $225.77 (-1 bps vs signal price)
+  buy  BIL   intended    54 filled      54  OK  fill $91.46 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
