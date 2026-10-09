@@ -1,0 +1,121 @@
+{
+  "utc_time": "2026-10-08T19:25:37.318903+00:00",
+  "equity": 102997.06,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-10-08",
+    "weights": {
+      "AAPL": 0.15014,
+      "AMD": 0.1374,
+      "BIL": 0.25684,
+      "CRM": 0.08246,
+      "GOOGL": 0.10546,
+      "INTC": 0.05355,
+      "META": 0.02813,
+      "MSFT": 0.02813,
+      "NVDA": 0.13791
+    },
+    "prices": {
+      "AAPL": 340.6,
+      "ADBE": 238.96,
+      "AMD": 616.26,
+      "AMZN": 255.02,
+      "AVGO": 358.745,
+      "BIL": 91.4692,
+      "CRM": 226.07,
+      "GOOGL": 348.15,
+      "INTC": 106.67,
+      "META": 719.965,
+      "MSFT": 522.3201,
+      "NFLX": 71.305,
+      "NVDA": 230.6637,
+      "ORCL": 135.61,
+      "QCOM": 175.0,
+      "QQQ": 747.08,
+      "SPY": 773.7,
+      "TSLA": 372.8
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2146,
+          "GOOGL": 0.2343,
+          "NVDA": 0.244,
+          "AMD": 0.1238,
+          "CRM": 0.1832
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.1983,
+          "AMD": 0.1983,
+          "INTC": 0.1983
+        },
+        "stock_dips": {
+          "MSFT": 0.25,
+          "META": 0.25,
+          "NVDA": 0.25,
+          "AMD": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.7232,
+      "bil_sweep": 0.2568,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 46.0,
+    "AMD": 17.0,
+    "BIL": 387.0,
+    "CRM": 37.0,
+    "GOOGL": 31.0,
+    "INTC": 63.0,
+    "NVDA": 59.0
+  },
+  "orders": [
+    {
+      "symbol": "BIL",
+      "side": "sell",
+      "qty": 98,
+      "ref_price": 91.47,
+      "est_value": 8963.98,
+      "target_qty": 289,
+      "order_id": "bd26a64b-9138-4c45-85fb-359bfe0e0e78"
+    },
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "qty": 5,
+      "ref_price": 616.26,
+      "est_value": 3081.3,
+      "target_qty": 22,
+      "order_id": "e8aead6e-823e-49c1-8a54-c1a3b0efc9b0"
+    },
+    {
+      "symbol": "META",
+      "side": "buy",
+      "qty": 4,
+      "ref_price": 719.97,
+      "est_value": 2879.86,
+      "target_qty": 4,
+      "order_id": "5c5a8ba5-68f5-4492-81d6-a70a7b145bcf"
+    },
+    {
+      "symbol": "MSFT",
+      "side": "buy",
+      "qty": 5,
+      "ref_price": 522.32,
+      "est_value": 2611.6,
+      "target_qty": 5,
+      "order_id": "3534751f-bd28-4b8c-9359-e6702520e79f"
+    }
+  ],
+  "executed": true
+}
