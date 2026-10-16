@@ -3462,3 +3462,35 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell BIL   intended    29 filled      29  OK  fill $91.52 (+0 bps vs signal price)
   buy  MSFT  intended     5 filled       5  OK  fill $534.13 (+2 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $101,755.16
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-15  (gross exposure 0.98)
+  SELL    11 AMZN  @~$255.44    ($2,810)
+  SELL     5 MSFT  @~$540.92    ($2,705)
+  BUY      7 GOOGL @~$349.19    ($2,444)
+  → submitted sell 11 AMZN
+  → submitted sell 5 MSFT
+  → submitted buy 7 GOOGL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-15.json
+[rebalance] Market closed (next open 2026-10-16T09:30:00-04:00) — exiting.
+[reconcile] Equity $101,487.79 (cash $5,528.08) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 3 intended orders from 2026-10-15 …
+  sell AMZN  intended    11 filled      11  OK  fill $255.23 (-8 bps vs signal price)
+  sell MSFT  intended     5 filled       5  OK  fill $540.77 (-3 bps vs signal price)
+  buy  GOOGL intended     7 filled       7  OK  fill $349.11 (-2 bps vs signal price)
+[reconcile] All orders filled as intended.

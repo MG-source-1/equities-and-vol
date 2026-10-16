@@ -1,0 +1,110 @@
+{
+  "utc_time": "2026-10-15T19:25:35.753111+00:00",
+  "equity": 101755.16,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-10-15",
+    "weights": {
+      "AAPL": 0.18188,
+      "AMD": 0.11289,
+      "BIL": 0.30224,
+      "CRM": 0.08246,
+      "GOOGL": 0.13358,
+      "INTC": 0.05717,
+      "NVDA": 0.10978
+    },
+    "prices": {
+      "AAPL": 343.08,
+      "ADBE": 249.505,
+      "AMD": 565.61,
+      "AMZN": 255.44,
+      "AVGO": 343.78,
+      "BIL": 91.54,
+      "CRM": 245.84,
+      "GOOGL": 349.1936,
+      "INTC": 95.95,
+      "META": 735.465,
+      "MSFT": 540.92,
+      "NFLX": 72.775,
+      "NVDA": 218.03,
+      "ORCL": 134.42,
+      "QCOM": 178.67,
+      "QQQ": 728.67,
+      "SPY": 772.68,
+      "TSLA": 363.278
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2146,
+          "GOOGL": 0.2343,
+          "NVDA": 0.244,
+          "AMD": 0.1238,
+          "CRM": 0.1832
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.2117,
+          "AMD": 0.2117,
+          "INTC": 0.2117
+        },
+        "stock_dips": {
+          "AAPL": 0.25,
+          "GOOGL": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.6778,
+      "bil_sweep": 0.3022,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 54.0,
+    "AMD": 18.0,
+    "AMZN": 11.0,
+    "BIL": 320.0,
+    "CRM": 37.0,
+    "GOOGL": 31.0,
+    "INTC": 54.0,
+    "MSFT": 5.0,
+    "NVDA": 49.0
+  },
+  "orders": [
+    {
+      "symbol": "AMZN",
+      "side": "sell",
+      "qty": 11,
+      "ref_price": 255.44,
+      "est_value": 2809.84,
+      "target_qty": 0,
+      "order_id": "6e426ea8-c05b-4417-a80a-b8c46b2e6118"
+    },
+    {
+      "symbol": "MSFT",
+      "side": "sell",
+      "qty": 5,
+      "ref_price": 540.92,
+      "est_value": 2704.6,
+      "target_qty": 0,
+      "order_id": "d7109236-8110-4751-aecf-f0fa41b140fb"
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "buy",
+      "qty": 7,
+      "ref_price": 349.19,
+      "est_value": 2444.36,
+      "target_qty": 38,
+      "order_id": "c8bb05a3-2777-4f93-beeb-593ec1af11fb"
+    }
+  ],
+  "executed": true
+}
