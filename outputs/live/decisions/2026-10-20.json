@@ -1,0 +1,100 @@
+{
+  "utc_time": "2026-10-20T19:25:32.551699+00:00",
+  "equity": 100300.26,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-10-20",
+    "weights": {
+      "AAPL": 0.17598,
+      "AMD": 0.16324,
+      "BIL": 0.23556,
+      "CRM": 0.08246,
+      "GOOGL": 0.10546,
+      "INTC": 0.10752,
+      "NVDA": 0.10978
+    },
+    "prices": {
+      "AAPL": 339.26,
+      "ADBE": 254.86,
+      "AMD": 538.09,
+      "AMZN": 262.41,
+      "AVGO": 334.82,
+      "BIL": 91.585,
+      "CRM": 241.99,
+      "GOOGL": 338.95,
+      "INTC": 92.0999,
+      "META": 689.11,
+      "MSFT": 530.7,
+      "NFLX": 68.6484,
+      "NVDA": 216.3899,
+      "ORCL": 131.055,
+      "QCOM": 176.36,
+      "QQQ": 717.2107,
+      "SPY": 768.02,
+      "TSLA": 374.635
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2146,
+          "GOOGL": 0.2343,
+          "NVDA": 0.244,
+          "AMD": 0.1238,
+          "CRM": 0.1832
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.2941,
+          "AMD": 0.2941,
+          "INTC": 0.2941
+        },
+        "stock_dips": {
+          "AMD": 0.25,
+          "INTC": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.7444,
+      "bil_sweep": 0.2356,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 50.0,
+    "AMD": 29.0,
+    "BIL": 270.0,
+    "CRM": 37.0,
+    "GOOGL": 30.0,
+    "INTC": 82.0,
+    "NVDA": 49.0,
+    "QCOM": 16.0
+  },
+  "orders": [
+    {
+      "symbol": "QCOM",
+      "side": "sell",
+      "qty": 16,
+      "ref_price": 176.36,
+      "est_value": 2821.76,
+      "target_qty": 0,
+      "order_id": "8a801b04-4ec0-44f3-8704-001028c341bb"
+    },
+    {
+      "symbol": "INTC",
+      "side": "buy",
+      "qty": 35,
+      "ref_price": 92.1,
+      "est_value": 3223.5,
+      "target_qty": 117,
+      "order_id": "c5a144b6-798b-42c8-a9a5-49e727368a71"
+    }
+  ],
+  "executed": true
+}

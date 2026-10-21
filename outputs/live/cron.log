@@ -3573,3 +3573,32 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  INTC  intended    28 filled      28  OK  fill $93.11 (-13 bps vs signal price)
   buy  QCOM  intended    16 filled      16  OK  fill $175.39 (-3 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $100,300.26
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-20  (gross exposure 0.98)
+  SELL    16 QCOM  @~$176.36    ($2,822)
+  BUY     35 INTC  @~$92.10     ($3,224)
+  → submitted sell 16 QCOM
+  → submitted buy 35 INTC
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-20.json
+[rebalance] Market closed (next open 2026-10-21T09:30:00-04:00) — exiting.
+[reconcile] Equity $101,155.13 (cash $2,503.06) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-10-20 …
+  sell QCOM  intended    16 filled      16  OK  fill $176.31 (-3 bps vs signal price)
+  buy  INTC  intended    35 filled      35  OK  fill $92.05 (-5 bps vs signal price)
+[reconcile] All orders filled as intended.
