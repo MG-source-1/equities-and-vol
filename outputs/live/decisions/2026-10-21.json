@@ -1,0 +1,98 @@
+{
+  "utc_time": "2026-10-21T19:25:32.796296+00:00",
+  "equity": 101144.25,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-10-21",
+    "weights": {
+      "AAPL": 0.17362,
+      "AMD": 0.13275,
+      "BIL": 0.27078,
+      "CRM": 0.08246,
+      "GOOGL": 0.10546,
+      "INTC": 0.10516,
+      "NVDA": 0.10978
+    },
+    "prices": {
+      "AAPL": 343.92,
+      "ADBE": 254.74,
+      "AMD": 553.62,
+      "AMZN": 262.065,
+      "AVGO": 336.89,
+      "BIL": 91.59,
+      "CRM": 241.91,
+      "GOOGL": 334.015,
+      "INTC": 92.3,
+      "META": 703.34,
+      "MSFT": 532.0529,
+      "NFLX": 65.415,
+      "NVDA": 221.15,
+      "ORCL": 128.84,
+      "QCOM": 176.97,
+      "QQQ": 724.98,
+      "SPY": 772.36,
+      "TSLA": 386.6811
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2146,
+          "GOOGL": 0.2343,
+          "NVDA": 0.244,
+          "AMD": 0.1238,
+          "CRM": 0.1832
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.2853,
+          "AMD": 0.2853,
+          "INTC": 0.2853
+        },
+        "stock_dips": {
+          "INTC": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.7092,
+      "bil_sweep": 0.2708,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 50.0,
+    "AMD": 29.0,
+    "BIL": 270.0,
+    "CRM": 37.0,
+    "GOOGL": 30.0,
+    "INTC": 117.0,
+    "NVDA": 49.0
+  },
+  "orders": [
+    {
+      "symbol": "AMD",
+      "side": "sell",
+      "qty": 5,
+      "ref_price": 553.62,
+      "est_value": 2768.1,
+      "target_qty": 24,
+      "order_id": "551afaff-5e06-4d99-a546-91407f323e63"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 29,
+      "ref_price": 91.59,
+      "est_value": 2656.11,
+      "target_qty": 299,
+      "order_id": "9ab7573e-2ae3-4bf8-bf17-ee12915d39f8"
+    }
+  ],
+  "executed": true
+}
