@@ -3631,3 +3631,36 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell AMD   intended     5 filled       5  OK  fill $554.76 (+21 bps vs signal price)
   buy  BIL   intended    29 filled      29  OK  fill $91.60 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $98,922.22
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 68 filing dates (2009-10-23 → 2026-07-29)
+[fundamentals] GOOGL: 44 filing dates (2015-10-29 → 2026-07-23)
+[fundamentals] META: 58 filing dates (2012-07-31 → 2026-10-22)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 59 filing dates (2010-07-01 → 2026-09-11)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 70 filing dates (2009-06-26 → 2026-09-22)
+[fundamentals] NFLX: 70 filing dates (2009-07-31 → 2026-10-21)
+[fundamentals] AMZN: 69 filing dates (2009-07-24 → 2026-07-31)
+[fundamentals] TSLA: 62 filing dates (2011-08-12 → 2026-10-22)
+[fundamentals] INTC: 69 filing dates (2009-08-03 → 2026-07-24)
+[rebalance] Signals as of 2026-10-22  (gross exposure 0.98)
+  SELL    51 BIL   @~$91.61     ($4,672)
+  BUY      4 AMD   @~$506.39    ($2,026)
+  BUY      5 MSFT  @~$521.62    ($2,608)
+  → submitted sell 51 BIL
+  → submitted buy 4 AMD
+  → submitted buy 5 MSFT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-22.json
+[rebalance] Market closed (next open 2026-10-23T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,051.95 (cash $2,659.55) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 3 intended orders from 2026-10-22 …
+  sell BIL   intended    51 filled      51  OK  fill $91.60 (-1 bps vs signal price)
+  buy  AMD   intended     4 filled       4  OK  fill $506.43 (+1 bps vs signal price)
+  buy  MSFT  intended     5 filled       5  OK  fill $521.33 (-6 bps vs signal price)
+[reconcile] All orders filled as intended.
