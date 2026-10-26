@@ -3702,3 +3702,32 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  ADBE  intended    10 filled      10  OK  fill $264.11 (+2 bps vs signal price)
   buy  BIL   intended    64 filled      64  OK  fill $91.64 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $99,667.61
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-26  (gross exposure 0.98)
+  SELL    10 ADBE  @~$255.75    ($2,558)
+  BUY     38 BIL   @~$91.64     ($3,483)
+  → submitted sell 10 ADBE
+  → submitted buy 38 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-26.json
+[rebalance] Market closed (next open 2026-10-27T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,682.71 (cash $2,066.78) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-10-26 …
+  sell ADBE  intended    10 filled      10  OK  fill $255.64 (-4 bps vs signal price)
+  buy  BIL   intended    38 filled      38  OK  fill $91.65 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.

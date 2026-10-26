@@ -1,0 +1,97 @@
+{
+  "utc_time": "2026-10-26T19:25:32.483854+00:00",
+  "equity": 99667.61,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-10-26",
+    "weights": {
+      "AAPL": 0.16752,
+      "AMD": 0.11687,
+      "BIL": 0.3219,
+      "CRM": 0.08066,
+      "GOOGL": 0.10916,
+      "INTC": 0.06937,
+      "NVDA": 0.11452
+    },
+    "prices": {
+      "AAPL": 343.63,
+      "ADBE": 255.75,
+      "AMD": 532.274,
+      "AMZN": 248.535,
+      "AVGO": 330.81,
+      "BIL": 91.645,
+      "CRM": 245.47,
+      "GOOGL": 317.04,
+      "INTC": 91.575,
+      "META": 632.58,
+      "MSFT": 531.81,
+      "NFLX": 63.555,
+      "NVDA": 216.635,
+      "ORCL": 126.865,
+      "QCOM": 179.625,
+      "QQQ": 713.31,
+      "SPY": 765.4799,
+      "TSLA": 394.314
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-09-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.2181,
+          "GOOGL": 0.2426,
+          "NVDA": 0.2545,
+          "AMD": 0.1056,
+          "CRM": 0.1792
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.2569,
+          "AMD": 0.2569,
+          "INTC": 0.2569
+        },
+        "stock_dips": {},
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.6581,
+      "bil_sweep": 0.3219,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 50.0,
+    "ADBE": 10.0,
+    "AMD": 22.0,
+    "BIL": 312.0,
+    "CRM": 37.0,
+    "GOOGL": 30.0,
+    "INTC": 81.0,
+    "NVDA": 49.0
+  },
+  "orders": [
+    {
+      "symbol": "ADBE",
+      "side": "sell",
+      "qty": 10,
+      "ref_price": 255.75,
+      "est_value": 2557.5,
+      "target_qty": 0,
+      "order_id": "672135d4-6f6a-4c66-8a62-d11e6bb3b15c"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 38,
+      "ref_price": 91.64,
+      "est_value": 3482.51,
+      "target_qty": 350,
+      "order_id": "c5a1c736-6e41-4c23-bab8-e8d10418f684"
+    }
+  ],
+  "executed": true
+}
