@@ -3757,3 +3757,38 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
 [reconcile] Checking 1 intended orders from 2026-10-27 …
   buy  BIL   intended    17 filled      17  OK  fill $91.66 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $100,817.50
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-10-28  (gross exposure 0.98)
+  SELL    95 BIL   @~$91.66     ($8,708)
+  BUY      6 AAPL  @~$344.20    ($2,065)
+  BUY      8 CRM   @~$240.95    ($1,928)
+  BUY     17 NVDA  @~$214.75    ($3,651)
+  → submitted sell 95 BIL
+  → submitted buy 6 AAPL
+  → submitted buy 8 CRM
+  → submitted buy 17 NVDA
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-28.json
+[rebalance] Market closed (next open 2026-10-29T09:30:00-04:00) — exiting.
+[reconcile] Equity $99,704.30 (cash $1,574.04) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-10-28 …
+  sell BIL   intended    95 filled      95  OK  fill $91.66 (+0 bps vs signal price)
+  buy  AAPL  intended     6 filled       6  OK  fill $344.26 (+2 bps vs signal price)
+  buy  CRM   intended     8 filled       8  OK  fill $241.09 (+6 bps vs signal price)
+  buy  NVDA  intended    17 filled      17  OK  fill $214.58 (-8 bps vs signal price)
+[reconcile] All orders filled as intended.
