@@ -3824,3 +3824,45 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  BIL   intended    46 filled      46  OK  fill $91.68 (+0 bps vs signal price)
   buy  GOOGL intended     6 filled       6  OK  fill $283.08 (+5 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Paper account equity: $94,026.19
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 68 filing dates (2009-07-22 → 2026-07-31)
+[fundamentals] MSFT: 69 filing dates (2009-10-23 → 2026-10-28)
+[fundamentals] GOOGL: 45 filing dates (2015-10-29 → 2026-10-29)
+[fundamentals] META: 58 filing dates (2012-07-31 → 2026-10-22)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 55 filing dates (2013-02-21 → 2026-08-05)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 65 filing dates (2009-12-22 → 2026-07-29)
+[fundamentals] ORCL: 59 filing dates (2010-07-01 → 2026-09-11)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 70 filing dates (2009-06-26 → 2026-09-22)
+[fundamentals] NFLX: 70 filing dates (2009-07-31 → 2026-10-21)
+[fundamentals] AMZN: 70 filing dates (2009-07-24 → 2026-10-30)
+[fundamentals] TSLA: 62 filing dates (2011-08-12 → 2026-10-22)
+[fundamentals] INTC: 70 filing dates (2009-08-03 → 2026-10-30)
+[rebalance] Signals as of 2026-10-30  (gross exposure 0.98)
+  SELL    16 AAPL  @~$343.19    ($5,491)
+  SELL     8 AMD   @~$499.18    ($3,993)
+  SELL    19 CRM   @~$228.60    ($4,343)
+  SELL    81 INTC  @~$63.90     ($5,175)
+  BUY    133 BIL   @~$91.70     ($12,196)
+  BUY      9 MSFT  @~$521.53    ($4,694)
+  → submitted sell 16 AAPL
+  → submitted sell 8 AMD
+  → submitted sell 19 CRM
+  → submitted sell 81 INTC
+  → submitted buy 133 BIL
+  → submitted buy 9 MSFT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-10-30.json
+[rebalance] Market closed (next open 2026-11-02T09:30:00-05:00) — exiting.
+[reconcile] Equity $94,451.42 (cash $971.96) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-10-30 …
+  sell AAPL  intended    16 filled      16  OK  fill $343.60 (+12 bps vs signal price)
+  sell AMD   intended     8 filled       8  OK  fill $499.04 (-3 bps vs signal price)
+  sell CRM   intended    19 filled      19  OK  fill $228.73 (+6 bps vs signal price)
+  sell INTC  intended    81 filled      81  OK  fill $63.93 (+4 bps vs signal price)
+  buy  BIL   intended   133 filled     133  OK  fill $91.71 (+1 bps vs signal price)
+  buy  MSFT  intended     9 filled       9  OK  fill $521.93 (+8 bps vs signal price)
+[reconcile] All orders filled as intended.
