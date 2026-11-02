@@ -3866,3 +3866,41 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  BIL   intended   133 filled     133  OK  fill $91.71 (+1 bps vs signal price)
   buy  MSFT  intended     9 filled       9  OK  fill $521.93 (+8 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $93,444.29
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-11-02  (gross exposure 0.98)
+  SELL     5 AAPL  @~$338.81    ($1,694)
+  SELL    31 BIL   @~$91.41     ($2,834)
+  SELL    10 CRM   @~$226.96    ($2,270)
+  BUY      7 AMD   @~$472.17    ($3,305)
+  BUY      6 MSFT  @~$512.96    ($3,078)
+  → submitted sell 5 AAPL
+  → submitted sell 31 BIL
+  → submitted sell 10 CRM
+  → submitted buy 7 AMD
+  → submitted buy 6 MSFT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-02.json
+[reconcile] Equity $92,799.00 (cash $1,388.27) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 5 intended orders from 2026-11-02 …
+  sell AAPL  intended     5 filled       5  OK  fill $338.62 (-6 bps vs signal price)
+  sell BIL   intended    31 filled      31  OK  fill $91.40 (-1 bps vs signal price)
+  sell CRM   intended    10 filled      10  OK  fill $226.80 (-7 bps vs signal price)
+  buy  AMD   intended     7 filled       7  OK  fill $471.71 (-10 bps vs signal price)
+  buy  MSFT  intended     6 filled       6  OK  fill $512.63 (-6 bps vs signal price)
+[reconcile] All orders filled as intended.
