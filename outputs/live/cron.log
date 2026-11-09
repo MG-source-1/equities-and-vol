@@ -3936,3 +3936,48 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell MSFT  intended     5 filled       5  OK  fill $522.96 (-2 bps vs signal price)
   buy  QQQ   intended     8 filled       8  OK  fill $685.48 (-3 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $94,018.92
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 69 filing dates (2009-07-22 → 2026-11-03)
+[fundamentals] MSFT: 69 filing dates (2009-10-23 → 2026-10-28)
+[fundamentals] GOOGL: 45 filing dates (2015-10-29 → 2026-10-29)
+[fundamentals] META: 58 filing dates (2012-07-31 → 2026-10-22)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 56 filing dates (2013-02-21 → 2026-11-04)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 66 filing dates (2009-12-22 → 2026-11-04)
+[fundamentals] ORCL: 59 filing dates (2010-07-01 → 2026-09-11)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 70 filing dates (2009-06-26 → 2026-09-22)
+[fundamentals] NFLX: 70 filing dates (2009-07-31 → 2026-10-21)
+[fundamentals] AMZN: 70 filing dates (2009-07-24 → 2026-10-30)
+[fundamentals] TSLA: 62 filing dates (2011-08-12 → 2026-10-22)
+[fundamentals] INTC: 70 filing dates (2009-08-03 → 2026-10-30)
+[rebalance] Signals as of 2026-11-09  (gross exposure 0.98)
+  SELL    13 AAPL  @~$350.89    ($4,562)
+  SELL    10 AMD   @~$513.56    ($5,136)
+  SELL    15 GOOGL @~$289.49    ($4,342)
+  SELL     4 MSFT  @~$547.61    ($2,190)
+  SELL    16 NVDA  @~$178.01    ($2,848)
+  SELL     8 QQQ   @~$681.11    ($5,449)
+  BUY    242 BIL   @~$91.47     ($22,137)
+  → submitted sell 13 AAPL
+  → submitted sell 10 AMD
+  → submitted sell 15 GOOGL
+  → submitted sell 4 MSFT
+  → submitted sell 16 NVDA
+  → submitted sell 8 QQQ
+  → submitted buy 242 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-09.json
+[reconcile] Equity $94,024.62 (cash $2,522.44) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 7 intended orders from 2026-11-09 …
+  sell AAPL  intended    13 filled      13  OK  fill $350.97 (+2 bps vs signal price)
+  sell AMD   intended    10 filled      10  OK  fill $514.15 (+11 bps vs signal price)
+  sell GOOGL intended    15 filled      15  OK  fill $289.44 (-2 bps vs signal price)
+  sell MSFT  intended     4 filled       4  OK  fill $547.91 (+5 bps vs signal price)
+  sell NVDA  intended    16 filled      16  OK  fill $178.20 (+11 bps vs signal price)
+  sell QQQ   intended     8 filled       8  OK  fill $681.42 (+5 bps vs signal price)
+  buy  BIL   intended   242 filled     242  OK  fill $91.48 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
