@@ -1,0 +1,114 @@
+{
+  "utc_time": "2026-11-10T20:25:34.836698+00:00",
+  "equity": 93516.14,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-11-10",
+    "weights": {
+      "AAPL": 0.06078,
+      "AMD": 0.04145,
+      "BIL": 0.6951,
+      "CRM": 0.00992,
+      "GOOGL": 0.06596,
+      "MSFT": 0.03851,
+      "NVDA": 0.06828
+    },
+    "prices": {
+      "AAPL": 348.73,
+      "ADBE": 235.19,
+      "AMD": 517.22,
+      "AMZN": 271.735,
+      "AVGO": 332.52,
+      "BIL": 91.495,
+      "CRM": 212.18,
+      "GOOGL": 287.41,
+      "INTC": 58.0597,
+      "META": 644.67,
+      "MSFT": 533.64,
+      "NFLX": 62.905,
+      "NVDA": 168.4801,
+      "ORCL": 117.825,
+      "QCOM": 173.16,
+      "QQQ": 674.065,
+      "SPY": 749.38,
+      "TSLA": 377.74
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-10-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.113,
+          "MSFT": 0.0856,
+          "GOOGL": 0.1466,
+          "NVDA": 0.1517,
+          "AMD": 0.0701
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.0367,
+          "AMD": 0.0367,
+          "CRM": 0.0367
+        },
+        "stock_dips": {},
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.2849,
+      "bil_sweep": 0.6951,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 22.0,
+    "AMD": 11.0,
+    "BIL": 646.0,
+    "CRM": 16.0,
+    "GOOGL": 21.0,
+    "MSFT": 6.0,
+    "NVDA": 35.0
+  },
+  "orders": [
+    {
+      "symbol": "AAPL",
+      "side": "sell",
+      "qty": 6,
+      "ref_price": 348.73,
+      "est_value": 2092.38,
+      "target_qty": 16,
+      "order_id": "5d9a6a72-a470-4d44-afd6-5f672e148a5e"
+    },
+    {
+      "symbol": "AMD",
+      "side": "sell",
+      "qty": 4,
+      "ref_price": 517.22,
+      "est_value": 2068.88,
+      "target_qty": 7,
+      "order_id": "56284125-ced7-4c33-8487-a3d160442fb9"
+    },
+    {
+      "symbol": "CRM",
+      "side": "sell",
+      "qty": 12,
+      "ref_price": 212.18,
+      "est_value": 2546.16,
+      "target_qty": 4,
+      "order_id": "9d67d967-2e97-447e-8c9c-a21e54e6bf08"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 64,
+      "ref_price": 91.5,
+      "est_value": 5855.68,
+      "target_qty": 710,
+      "order_id": "6d127d49-38c3-4893-a928-8af6bdbd35be"
+    }
+  ],
+  "executed": true
+}

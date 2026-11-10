@@ -3981,3 +3981,38 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell QQQ   intended     8 filled       8  OK  fill $681.42 (+5 bps vs signal price)
   buy  BIL   intended   242 filled     242  OK  fill $91.48 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $93,516.14
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-11-10  (gross exposure 0.98)
+  SELL     6 AAPL  @~$348.73    ($2,092)
+  SELL     4 AMD   @~$517.22    ($2,069)
+  SELL    12 CRM   @~$212.18    ($2,546)
+  BUY     64 BIL   @~$91.50     ($5,856)
+  → submitted sell 6 AAPL
+  → submitted sell 4 AMD
+  → submitted sell 12 CRM
+  → submitted buy 64 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-10.json
+[reconcile] Equity $93,555.34 (cash $3,372.89) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 4 intended orders from 2026-11-10 …
+  sell AAPL  intended     6 filled       6  OK  fill $348.70 (-1 bps vs signal price)
+  sell AMD   intended     4 filled       4  OK  fill $517.02 (-4 bps vs signal price)
+  sell CRM   intended    12 filled      12  OK  fill $212.22 (+2 bps vs signal price)
+  buy  BIL   intended    64 filled      64  OK  fill $91.50 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
