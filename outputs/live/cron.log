@@ -4016,3 +4016,44 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   sell CRM   intended    12 filled      12  OK  fill $212.22 (+2 bps vs signal price)
   buy  BIL   intended    64 filled      64  OK  fill $91.50 (+0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $94,175.42
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-11-11  (gross exposure 0.98)
+  SELL   113 BIL   @~$91.50     ($10,339)
+  BUY      5 AAPL  @~$354.94    ($1,775)
+  BUY      3 AMD   @~$555.25    ($1,666)
+  BUY     10 CRM   @~$217.30    ($2,173)
+  BUY      4 META  @~$634.46    ($2,538)
+  BUY      5 MSFT  @~$519.72    ($2,599)
+  → submitted sell 113 BIL
+  → submitted buy 5 AAPL
+  → submitted buy 3 AMD
+  → submitted buy 10 CRM
+  → submitted buy 4 META
+  → submitted buy 5 MSFT
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-11.json
+[reconcile] Equity $93,909.13 (cash $2,958.92) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 6 intended orders from 2026-11-11 …
+  sell BIL   intended   113 filled     113  OK  fill $91.49 (-1 bps vs signal price)
+  buy  AAPL  intended     5 filled       5  OK  fill $355.07 (+4 bps vs signal price)
+  buy  AMD   intended     3 filled       3  OK  fill $555.65 (+7 bps vs signal price)
+  buy  CRM   intended    10 filled      10  OK  fill $217.38 (+4 bps vs signal price)
+  buy  META  intended     4 filled       4  OK  fill $634.36 (-2 bps vs signal price)
+  buy  MSFT  intended     5 filled       5  OK  fill $519.73 (+0 bps vs signal price)
+[reconcile] All orders filled as intended.
