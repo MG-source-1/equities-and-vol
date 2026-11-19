@@ -4156,3 +4156,78 @@ OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtes
   buy  AMD   intended     5 filled       5  OK  fill $502.77 (+8 bps vs signal price)
   buy  MSFT  intended     5 filled       5  OK  fill $517.78 (-0 bps vs signal price)
 [reconcile] All orders filled as intended.
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 199, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/rebalance.py", line 189, in main
+    with open(path, "w") as f:
+         ^^^^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device: '/Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-17.json'
+[rebalance] Paper account equity: $92,133.18
+[rebalance] Computing target weights …
+[signals] EDGAR caches stale — refreshing fundamentals …
+[fundamentals] AAPL: 69 filing dates (2009-07-22 → 2026-11-03)
+[fundamentals] MSFT: 69 filing dates (2009-10-23 → 2026-10-28)
+[fundamentals] GOOGL: 45 filing dates (2015-10-29 → 2026-10-29)
+[fundamentals] META: 58 filing dates (2012-07-31 → 2026-10-22)
+[fundamentals] NVDA: 69 filing dates (2009-08-20 → 2026-08-26)
+[fundamentals] AMD: 56 filing dates (2013-02-21 → 2026-11-04)
+[fundamentals] AVGO: 7 filing dates (2018-06-14 → 2024-12-20)
+[fundamentals] QCOM: 66 filing dates (2009-12-22 → 2026-11-04)
+[fundamentals] ORCL: 59 filing dates (2010-07-01 → 2026-09-11)
+[fundamentals] CRM: 55 filing dates (2009-08-25 → 2026-08-27)
+[fundamentals] ADBE: 70 filing dates (2009-06-26 → 2026-09-22)
+[fundamentals] NFLX: 70 filing dates (2009-07-31 → 2026-10-21)
+[fundamentals] AMZN: 70 filing dates (2009-07-24 → 2026-10-30)
+[fundamentals] TSLA: 62 filing dates (2011-08-12 → 2026-10-22)
+[fundamentals] INTC: 70 filing dates (2009-08-03 → 2026-10-30)
+[rebalance] Signals as of 2026-11-17  (gross exposure 0.98)
+  SELL     6 AAPL  @~$350.75    ($2,104)
+  SELL     5 AMD   @~$489.88    ($2,449)
+  SELL     9 AMZN  @~$257.31    ($2,316)
+  SELL     5 MSFT  @~$505.59    ($2,528)
+  BUY    110 BIL   @~$91.55     ($10,070)
+  → submitted sell 6 AAPL
+  → submitted sell 5 AMD
+  → submitted sell 9 AMZN
+  → submitted sell 5 MSFT
+  → submitted buy 110 BIL
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 106, in <module>
+    main()
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 101, in main
+    append_equity_curve()
+  File "/Users/markgarcera/trading/backtester/live/reconcile.py", line 39, in append_equity_curve
+    curve.sort_index().to_csv(EQUITY_CSV)
+  File "/Users/markgarcera/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py", line 3988, in to_csv
+object address  : 0x10989ad40
+
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $92,338.01
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: 70 filing dates (2009-08-03 → 2026-10-30)
+[rebalance] Signals as of 2026-11-18  (gross exposure 0.98)
+[rebalance] Portfolio already within tolerance — no trades.
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-18.json
+[reconcile] Equity $92,348.39 (cash $3,018.07) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 0 intended orders from 2026-11-18 …
+[reconcile] All orders filled as intended.
