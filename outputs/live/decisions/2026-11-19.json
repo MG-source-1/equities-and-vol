@@ -1,0 +1,98 @@
+{
+  "utc_time": "2026-11-19T20:25:31.430180+00:00",
+  "equity": 91703.79,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-11-19",
+    "weights": {
+      "AAPL": 0.05888,
+      "AMD": 0.0402,
+      "BIL": 0.67623,
+      "CRM": 0.00974,
+      "GOOGL": 0.06369,
+      "MSFT": 0.06532,
+      "NVDA": 0.06594
+    },
+    "prices": {
+      "AAPL": 349.57,
+      "ADBE": 221.385,
+      "AMD": 483.9,
+      "AMZN": 257.945,
+      "AVGO": 348.005,
+      "BIL": 91.569,
+      "CRM": 183.565,
+      "GOOGL": 274.755,
+      "INTC": 55.785,
+      "META": 598.09,
+      "MSFT": 501.26,
+      "NFLX": 58.29,
+      "NVDA": 147.59,
+      "ORCL": 110.9,
+      "QCOM": 162.16,
+      "QQQ": 647.02,
+      "SPY": 717.9,
+      "TSLA": 375.865
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-10-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.1092,
+          "MSFT": 0.0827,
+          "GOOGL": 0.1415,
+          "NVDA": 0.1465,
+          "AMD": 0.0677
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.0361,
+          "AMD": 0.0361,
+          "CRM": 0.0361
+        },
+        "stock_dips": {
+          "MSFT": 0.25
+        },
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.3038,
+      "bil_sweep": 0.6762,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 15.0,
+    "AMD": 7.0,
+    "BIL": 714.0,
+    "CRM": 4.0,
+    "GOOGL": 21.0,
+    "MSFT": 6.0,
+    "NVDA": 35.0
+  },
+  "orders": [
+    {
+      "symbol": "BIL",
+      "side": "sell",
+      "qty": 37,
+      "ref_price": 91.57,
+      "est_value": 3388.05,
+      "target_qty": 677,
+      "order_id": "36bdabe4-e7ab-4767-96b1-f35db4661445"
+    },
+    {
+      "symbol": "MSFT",
+      "side": "buy",
+      "qty": 5,
+      "ref_price": 501.26,
+      "est_value": 2506.3,
+      "target_qty": 11,
+      "order_id": "f4456591-7131-4921-b2df-c27e51fa13ef"
+    }
+  ],
+  "executed": true
+}
