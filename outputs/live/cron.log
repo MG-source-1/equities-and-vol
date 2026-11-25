@@ -4286,3 +4286,34 @@ object address  : 0x10989ad40
 [reconcile] Checking 1 intended orders from 2026-11-20 …
   buy  BIL   intended    17 filled      17  OK  fill $91.60 (+1 bps vs signal price)
 [reconcile] All orders filled as intended.
+Traceback (most recent call last):
+object address  : 0x10705f140
+[rebalance] Market open but 95 min to the close — too early, exiting (trades in the final 45 min only).
+[rebalance] Paper account equity: $91,697.49
+[rebalance] Computing target weights …
+[fundamentals] AAPL: loaded from cache
+[fundamentals] MSFT: loaded from cache
+[fundamentals] GOOGL: loaded from cache
+[fundamentals] META: loaded from cache
+[fundamentals] NVDA: loaded from cache
+[fundamentals] AMD: loaded from cache
+[fundamentals] AVGO: loaded from cache
+[fundamentals] QCOM: loaded from cache
+[fundamentals] ORCL: loaded from cache
+[fundamentals] CRM: loaded from cache
+[fundamentals] ADBE: loaded from cache
+[fundamentals] NFLX: loaded from cache
+[fundamentals] AMZN: loaded from cache
+[fundamentals] TSLA: loaded from cache
+[fundamentals] INTC: loaded from cache
+[rebalance] Signals as of 2026-11-24  (gross exposure 0.98)
+  SELL     7 MSFT  @~$493.94    ($3,458)
+  BUY     20 BIL   @~$91.61     ($1,832)
+  → submitted sell 7 MSFT
+  → submitted buy 20 BIL
+[rebalance] Decision log → /Users/markgarcera/trading/backtester/outputs/live/decisions/2026-11-24.json
+[reconcile] Equity $91,820.94 (cash $2,711.76) → /Users/markgarcera/trading/backtester/outputs/live/equity_curve.csv
+[reconcile] Checking 2 intended orders from 2026-11-24 …
+  sell MSFT  intended     7 filled       7  OK  fill $493.82 (-2 bps vs signal price)
+  buy  BIL   intended    20 filled      20  OK  fill $91.62 (+1 bps vs signal price)
+[reconcile] All orders filled as intended.
