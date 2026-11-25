@@ -1,0 +1,96 @@
+{
+  "utc_time": "2026-11-24T20:25:32.807733+00:00",
+  "equity": 91697.49,
+  "dd_guard": {
+    "flattened": false,
+    "peak_equity": 104568.77,
+    "stop_active": false
+  },
+  "targets": {
+    "as_of": "2026-11-24",
+    "weights": {
+      "AAPL": 0.03846,
+      "AMD": 0.02748,
+      "BIL": 0.80646,
+      "CRM": 0.00958,
+      "GOOGL": 0.03743,
+      "MSFT": 0.02185,
+      "NVDA": 0.03875
+    },
+    "prices": {
+      "AAPL": 351.8901,
+      "ADBE": 232.43,
+      "AMD": 411.32,
+      "AMZN": 251.385,
+      "AVGO": 301.49,
+      "BIL": 91.615,
+      "CRM": 192.655,
+      "GOOGL": 277.015,
+      "INTC": 54.6691,
+      "META": 588.2,
+      "MSFT": 493.94,
+      "NFLX": 58.83,
+      "NVDA": 152.7901,
+      "ORCL": 108.7803,
+      "QCOM": 165.43,
+      "QQQ": 635.4,
+      "SPY": 716.23,
+      "TSLA": 381.88
+    },
+    "diag": {
+      "garp": {
+        "rebalance_date": "2026-10-30",
+        "regime_scale": 1.0,
+        "holdings": {
+          "AAPL": 0.0642,
+          "MSFT": 0.0486,
+          "GOOGL": 0.0832,
+          "NVDA": 0.0861,
+          "AMD": 0.0398
+        }
+      },
+      "triad": {
+        "leaders": {
+          "AAPL": 0.0355,
+          "AMD": 0.0355,
+          "CRM": 0.0355
+        },
+        "stock_dips": {},
+        "index_dip": 0.0
+      },
+      "engine_gross": 0.1735,
+      "bil_sweep": 0.8065,
+      "gross": 0.98
+    }
+  },
+  "positions_before": {
+    "AAPL": 9.0,
+    "AMD": 7.0,
+    "BIL": 787.0,
+    "CRM": 4.0,
+    "GOOGL": 11.0,
+    "MSFT": 11.0,
+    "NVDA": 21.0
+  },
+  "orders": [
+    {
+      "symbol": "MSFT",
+      "side": "sell",
+      "qty": 7,
+      "ref_price": 493.94,
+      "est_value": 3457.58,
+      "target_qty": 4,
+      "order_id": "54cae675-6a0d-4a34-9d17-c0e2f22cac7e"
+    },
+    {
+      "symbol": "BIL",
+      "side": "buy",
+      "qty": 20,
+      "ref_price": 91.61,
+      "est_value": 1832.3,
+      "target_qty": 807,
+      "order_id": "22f8702d-e104-4163-ab19-7bcc3e819bef"
+    }
+  ],
+  "executed": true
+}
